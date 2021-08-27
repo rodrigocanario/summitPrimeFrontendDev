@@ -1,0 +1,189 @@
+@font-face {
+  font-family: fontSummit;
+  src: url('./Fonts/nexa-extrabold.ttf');
+}
+
+#body {
+  align-items: flex-start;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: rgb(1,23,97);
+  background: linear-gradient(160deg, rgba(1,23,97,1) 0%, rgba(73,255,241,1) 100%);
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+h1{
+  color: white;
+}
+p{
+  color: white;
+}
+span{
+  color: white !important;
+}
+.icon{
+ font-size: 35px; 
+}
+
+/* --------------------login------------------- */
+
+#login-background{
+  background-color: #0000009e;
+    border-radius: 10px;
+    padding: 60px;
+    padding-top: 20px;
+
+}
+#login-titulo{
+  color: white;
+  font-weight: 100;
+  padding: 10px;
+  margin-bottom: 45px;
+}
+.login-input{
+  background-color: transparent;
+    border-radius: 6px;
+    border: white solid 1px;
+    padding: 7px;
+    margin-bottom: 10px;
+    color: white;
+    text-align: center;
+}
+.login-input:focus::placeholder {
+  color: transparent;
+}
+.login-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(255, 255, 255, 0.652);
+  opacity: 1; /* Firefox */
+}
+#login-button{
+  background-color: #1c7098;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 40px;
+    color: white;
+}
+
+#summit-titulo{
+  text-align: center;
+  color: white;
+  font-family: fontSummit
+}
+#summit-img{
+  text-align: center;
+  max-width: 150px;
+}
+
+/* -------------------table---------------------- */
+
+table{
+  width:100% !important;
+  table-layout: fixed !important;
+}
+
+#table-header{
+  background-color: rgba(255,255,255,0.3);
+ }
+#table-body{
+    height:665px;
+    overflow-x:auto;
+    margin-top: 0px;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+#th{
+  padding: 20px 15px;
+  text-align: center;
+  font-size: 15px;
+  color: #fff;
+  text-transform: uppercase;
+}
+#td{
+  padding: 0px;
+  text-align: center;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  border-bottom: solid 1px rgba(255,255,255,0.5);
+}
+#td-footer{
+  padding-top: 30px;
+}
+#tr{
+  color: white;
+}
+
+.table-input{
+  width: 100%;
+  border: rgba(255,255,255,0.5) solid 1px;
+    border-radius: 10px;
+    background-color: transparent;
+  text-align: center;
+  color: white;
+}
+
+.table-input:focus{
+  outline: none !important;
+  border: white solid 2px;
+}
+
+.quantity-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+}
+.quantity-input:focus{
+  outline: none !important;
+  border: white solid 2px;
+}
+
+.quantity-input__modifier {
+  padding: 0px;
+  width: 3rem;
+  font-size: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border: 0px;
+  background-color: inherit;
+  color: white;
+}
+
+.quantity-input__screen {
+  width: 4rem;
+  padding: 0px;
+  font-size: 1.5rem;
+  border: transparent solid 2px;
+  text-align: center;
+  background-color: inherit;
+  color: white;
+}
+.quantity-input__screen:focus{
+  outline: none !important;
+  border: white solid 2px;
+  border-radius: 3px;
+}
+.nome{
+  font-size: 15px !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+} 
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+/* -----------------------vnda----------------------- */
+.buttonVndaTableRow{
+  
+}
