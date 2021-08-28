@@ -3,6 +3,7 @@ import { Admin } from './Screens/Admin/Admin';
 import { Error } from './Screens/Error';
 import { Orcamento } from './Screens/Orcamento';
 import { Vnda } from './Screens/Vnda/Vnda';
+import { VndaCarrinhosPerdidos } from './Screens/Vnda/VndaCarrinhosPerdidos';
 
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path='/' component={Orcamento} exact />
-        <Route path='/vnda' component={Vnda} />
+        <Route path='/vnda/pedidos' component={Vnda} />
+        <Route path='/vnda/carrinhosPerdidos' component={VndaCarrinhosPerdidos} />
         <Route path='/admin' component={Admin} />
         <Route path='*' component={Error} />
       </Switch>
