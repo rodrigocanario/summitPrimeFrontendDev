@@ -184,6 +184,15 @@ table{
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
 }
 /* -----------------------vnda----------------------- */
-.buttonVndaTableRow{
-  
+.input1{
+  width: 100%;
+    background-color: transparent;
+    border: white solid 1px;
+    margin: 0px 0px 30px 0px;
+    border-radius: 10px;
+    height: 5rem;
+    font-size: 4rem;
+    color: white;
+    text-align: center;
 }
+h2{color: white;}

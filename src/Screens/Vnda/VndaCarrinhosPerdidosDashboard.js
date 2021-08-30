@@ -5,10 +5,12 @@ const XLSX = require('xlsx')
 
 export const VndaCarrinhosPerdidosDashboard = () => {
     let data = []
-    let max = 1571
+    const [max, setMax] = useState(1571)
+    const [min, setMin] = useState(1)
+
     let buscar = async()=>{
-        for (let i = 1; i < max; i++) {
-            setCarregando(Math.floor((i/max)*100))
+        for (let i = min; i < max; i++) {
+            setCarregando(Math.floor(((i)/(max))*100))
             await getCarrinhoPerdido(i).then((r)=>{
                 if(r && r.items && r.items[0]){
                     let id = r.id
@@ -26,6 +28,7 @@ export const VndaCarrinhosPerdidosDashboard = () => {
             })
             .catch(()=>{})
         }
+        setCarregando(100)
         // console.log(data);
     }
 const fazerLista = async()=>{
@@ -50,28 +53,39 @@ const fazerLista = async()=>{
     fontSize: '4rem'
     }}>Carrinhos Perdidos</h1>                  
     <Container >
+                
         <Row style={{ height: "100vh" }} className="text-center align-items-center justify-content-center">
+            <Row className="text-center align-items-center justify-content-center">
+            <Col xs={2}>
+                <h2>Min.</h2>
+            <input className='input1' defaultValue={min} onChange={(e)=>{setMin(e.target.value)}}/>
+            </Col>
+            <Col xs={2}>
+                <h2>Max.</h2>
+            <input className='input1' defaultValue={max} onChange={(e)=>{setMax(e.target.value)}}/>
+            </Col>
                 {carregando === '' ? 
                 (<Row className="align-items-center justify-content-center">
                     <Col xs={6}>
                     <Button 
                     onClick={handleClick}
                     style={{padding: '2.5rem 3rem',
-                            fontSize: '3.25rem',
-                            borderRadius: '.3rem'}} 
+                    fontSize: '3.25rem',
+                    borderRadius: '.3rem'}} 
                     variant="outline-light" 
                     >Gerar Excel</Button>
                     </Col>
                 </Row>)
                 : 
                 (<Row className="text-center align-items-center justify-content-center">
-                    <Col xs={3}>
+                    <Col xs={4}>
                         <h1>{carregando}%</h1>
                     <ProgressBar animated now={carregando} />
                     </Col>
                 </Row> )}
                 
                 
+                    </Row>
         </Row>
     </Container>
     </>
