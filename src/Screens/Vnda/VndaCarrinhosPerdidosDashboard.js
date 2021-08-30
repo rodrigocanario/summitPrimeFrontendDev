@@ -5,12 +5,12 @@ const XLSX = require('xlsx')
 
 export const VndaCarrinhosPerdidosDashboard = () => {
     let data = []
-    const [max, setMax] = useState(1571)
-    const [min, setMin] = useState(1)
+    const [max, setMax] = useState(0)
+    const [min, setMin] = useState(0)
 
     let buscar = async()=>{
-        for (let i = min; i < max; i++) {
-            setCarregando(Math.floor(((i-min)/(max-min))*100))
+        for (let i = min; i < max+1; i++) {
+            setCarregando(Math.floor(((i-min)/(max+1-min))*100))
             await getCarrinhoPerdido(i).then((r)=>{
                 if(r && r.items && r.items[0]){
                     let id = r.id
@@ -83,9 +83,7 @@ const fazerLista = async()=>{
                     <ProgressBar animated now={carregando} />
                     </Col>
                 </Row> )}
-                
-                
-                    </Row>
+            </Row>
         </Row>
     </Container>
     </>
