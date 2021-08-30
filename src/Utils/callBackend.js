@@ -126,8 +126,9 @@ export const fazerCadastro = (data) => {
 export const getCarrinhoPerdido = async (id) => {
     let resposta
     let token = localStorage.getItem('adminToken')
+    let data = {id}
     if (token) {
-        await callBackend('/getCarrinhoPerdido', token, id)
+        await callBackend('/getCarrinhoPerdido', token, data)
             .then((resp) => {
                 resposta = resp
             })

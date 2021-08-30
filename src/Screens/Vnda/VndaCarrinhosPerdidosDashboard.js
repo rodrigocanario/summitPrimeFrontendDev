@@ -8,12 +8,12 @@ export const VndaCarrinhosPerdidosDashboard = () => {
     let max = 1571
     let buscar = async()=>{
         for (let i = 1; i < max; i++) {
-            setCarregando(Math.floor(i/max))
+            setCarregando(Math.floor((i/max)*100))
             await getCarrinhoPerdido(i).then((r)=>{
-                if(r.data && r.data.items && r.data.items[0]){
-                    let id = r.data.id
-                    let carrinhos = r.data.items
-                    let date = r.data.updated_at
+                if(r && r.items && r.items[0]){
+                    let id = r.id
+                    let carrinhos = r.items
+                    let date = r.updated_at
                     for (let j = 0; j < carrinhos.length; j++) {
                         data.push({
                             ID : id,
@@ -24,17 +24,19 @@ export const VndaCarrinhosPerdidosDashboard = () => {
                     }
                 }
             })
+            .catch(()=>{})
         }
-        console.log(data);
+        // console.log(data);
     }
 const fazerLista = async()=>{
-await buscar()
-const ws = XLSX.utils.json_to_sheet(data)
-const wb = XLSX.utils.book_new()
-XLSX.utils.book_append_sheet(wb, ws, 'Sheet1')
-XLSX.writeFile(wb, 'CarrinhosPerdidos.xlsx')
+    await buscar()
+    console.log(data);
+    const ws = XLSX.utils.json_to_sheet(data)
+    const wb = XLSX.utils.book_new()
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1')
+    XLSX.writeFile(wb, 'CarrinhosPerdidos.xlsx')
 }
-    const [carregando, setCarregando] = useState(0)
+    const [carregando, setCarregando] = useState('')
     const handleClick = ()=>{
         fazerLista()
     }
@@ -49,7 +51,7 @@ XLSX.writeFile(wb, 'CarrinhosPerdidos.xlsx')
     }}>Carrinhos Perdidos</h1>                  
     <Container >
         <Row style={{ height: "100vh" }} className="text-center align-items-center justify-content-center">
-                {carregando === 0 ? 
+                {carregando === '' ? 
                 (<Row className="align-items-center justify-content-center">
                     <Col xs={6}>
                     <Button 
@@ -62,9 +64,10 @@ XLSX.writeFile(wb, 'CarrinhosPerdidos.xlsx')
                     </Col>
                 </Row>)
                 : 
-                (<Row className="align-items-center justify-content-center">
+                (<Row className="text-center align-items-center justify-content-center">
                     <Col xs={3}>
-                    <ProgressBar now={carregando} />
+                        <h1>{carregando}%</h1>
+                    <ProgressBar animated now={carregando} />
                     </Col>
                 </Row> )}
                 
