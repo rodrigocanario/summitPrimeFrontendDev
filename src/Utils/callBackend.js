@@ -122,3 +122,16 @@ export const fazerCadastro = (data) => {
             })
     }
 }
+
+export const getCarrinhoPerdido = async (id) => {
+    let resposta
+    let token = localStorage.getItem('adminToken')
+    if (token) {
+        await callBackend('/getCarrinhoPerdido', token, id)
+            .then((resp) => {
+                resposta = resp
+            })
+        return resposta
+    }
+    return false
+}

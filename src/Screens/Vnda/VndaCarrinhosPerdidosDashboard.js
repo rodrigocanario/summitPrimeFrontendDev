@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Col, Container, ProgressBar, Row } from 'react-bootstrap'
-const axios = require('axios')
+import { getCarrinhoPerdido } from '../../Utils/callBackend'
 const XLSX = require('xlsx')
 
 export const VndaCarrinhosPerdidosDashboard = () => {
@@ -9,26 +9,24 @@ export const VndaCarrinhosPerdidosDashboard = () => {
     let buscar = async()=>{
         for (let i = 1; i < max; i++) {
             setCarregando(Math.floor(i/max))
-                await axios.get(`https://www.summit.com.br/api/v2/carts/${i}`,{headers: {Authorization: 'Token 8wbGXxFKJFtb2FFLAtMHNcGo'}})
-                .then((r)=>{
-                    if(r.data && r.data.items && r.data.items[0]){
-                        let id = r.data.id
-                        let carrinhos = r.data.items
-                        let date = r.data.updated_at
-                        for (let j = 0; j < carrinhos.length; j++) {
-                            data.push({
-                                ID : id,
-                                'Data de Criaçao': date,
-                                SKU: carrinhos[j].product_reference,
-                                'Nome do Item': carrinhos[j].product_name
-                            })
-                        }
+            await getCarrinhoPerdido(i).then((r)=>{
+                if(r.data && r.data.items && r.data.items[0]){
+                    let id = r.data.id
+                    let carrinhos = r.data.items
+                    let date = r.data.updated_at
+                    for (let j = 0; j < carrinhos.length; j++) {
+                        data.push({
+                            ID : id,
+                            'Data de Criaçao': date,
+                            SKU: carrinhos[j].product_reference,
+                            'Nome do Item': carrinhos[j].product_name
+                        })
                     }
-                })
-                .catch(()=>{
-                })
+                }
+            })
+        }
+        console.log(data);
     }
-}
 const fazerLista = async()=>{
 await buscar()
 const ws = XLSX.utils.json_to_sheet(data)
