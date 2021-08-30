@@ -37,11 +37,9 @@ export const login = async (data) => {
 
 export const adminLogin = async (data) => {
     let resposta
-    console.log(data);
     await callBackend('/adminLogin', '', data)
         .then((resp) => {
             resposta = resp
-            console.log(resp.token);
             if (resp && resp.token) {
                 localStorage.setItem('adminToken', resp.token)
             }
@@ -115,11 +113,7 @@ export const fazerCadastro = (data) => {
     if (token) {
         data.cnpj = parseInt(data.cnpj)
         data.previsaoEntrega = parseInt(data.previsaoEntrega)
-        console.log(data);
         callBackend('/register', token, data)
-            .then((resp) => {
-                console.log(resp);
-            })
     }
 }
 

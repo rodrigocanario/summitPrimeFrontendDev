@@ -39,9 +39,9 @@ export const AdminLogin = () => {
                         <Col>
                             <Row className="align-items-start justify-content-center">
                                 <Col xs={6}>
-                                    <Row className="align-items-center justify-content-center">
+                                    <Row className=" text-center align-items-center justify-content-center">
 
-                                        <Image src='logo.png' id='summit-img' alt='summit-logo' fluid />
+                                        <Image src='../logo.png' id='summit-img' alt='summit-logo' fluid />
 
 
                                         <h1 className='text-nowrap' id='summit-titulo'>Summit Prime </h1>

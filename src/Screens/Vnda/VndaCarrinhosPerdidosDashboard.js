@@ -9,8 +9,8 @@ export const VndaCarrinhosPerdidosDashboard = () => {
     const [min, setMin] = useState(0)
 
     let buscar = async()=>{
-        for (let i = min; i < max+1; i++) {
-            setCarregando(Math.floor(((i-min)/(max+1-min))*100))
+        for (let i = min; i <= max; i++) {
+            setCarregando(Math.floor(((i-min)/(max-min))*100))
             await getCarrinhoPerdido(i).then((r)=>{
                 if(r && r.items && r.items[0]){
                     let id = r.id
