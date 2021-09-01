@@ -1,8 +1,8 @@
-const reducerPages = (state = 0, action) => {
+const reducerPages = (state = 'home', action) => {
     switch (action.type) {
-        case 'NEXT':
+        case 'SWITCH':
 
-            return state + 1
+            return action.page
 
         default:
             return state

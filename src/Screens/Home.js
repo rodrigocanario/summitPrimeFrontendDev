@@ -6,12 +6,13 @@ import { Tabela } from '../Components/Tabela'
 
 export const Home = () => {
     const login = useSelector(state => state.login)
-    const rows = useSelector((state) => state.itens)
+    const rows = useSelector((state) => state.orcamento.itens)
     const headers = ['Item', 'Referência', 'Nome', 'Múltiplo Caixa Master', 'Desconto Caixa Master', 'Valor Unitário', 'Quantidade', 'Valor', 'Estoque']
 
 
     return (
-        <Container >
+        <>
+        <Container fluid>
             <Row style={{ height: "100%", minHeight: '100vh' }} className="justify-content-center">
                 <Col sm="auto" className="text-center">
                     <Row>
@@ -25,5 +26,6 @@ export const Home = () => {
             </Row>
             <FooterHome />
         </Container>
+        </>
     )
 }

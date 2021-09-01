@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Fragment } from 'react'
 import { Button, Col, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { nextPage } from '../Redux/Actions'
+import { changePage} from '../Redux/Actions'
 import { enviarPedido } from '../Utils/callBackend'
 
 export const BotaoNext = () => {
@@ -36,7 +36,7 @@ export const BotaoNext = () => {
             produtos: produtosArr
         }
         enviarPedido(data)
-        dispatch(nextPage())
+        dispatch(changePage('obrigado'))
     }
     return (
         <Fragment>

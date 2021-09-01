@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import { useDispatch } from 'react-redux';
 import { updateVndaPedidos } from '../../../Redux/Actions';
 import { VndaTableBody } from './VndaTableBody'
@@ -9,10 +9,10 @@ var base = new Airtable({apiKey: 'keysF3r1wa1KybX8y'}).base('appqHN4JFZxWxuR4R')
 
 export const VndaTable = () => {
   const dispatch = useDispatch()
-  const headers = ['Nome do Cliente','CNPJ','Agente','Enviar Email']
+  const headers = ['ID','Nome do Cliente','CNPJ','Agente']
   useEffect(() => {
     base('Pedidos').select({
-      maxRecords: 2,
+      maxRecords: 3,
       view: "Lista de pedidos geral"
   }).eachPage(function page(records, fetchNextPage) {
       records.forEach((record)=>{
@@ -25,11 +25,11 @@ export const VndaTable = () => {
       if (err) { console.error(err); return; }
   });
   
-  }, [])
+  }, [dispatch])
     return (
         <section>
           <VndaTableHeader headers={headers}/>
-          <VndaTableBody/>
+            <VndaTableBody/>
           <VndaTableModal/>
         </section>
     )

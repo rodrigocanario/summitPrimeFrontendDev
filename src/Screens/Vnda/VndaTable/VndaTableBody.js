@@ -1,6 +1,5 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { VndaTableModal } from './VndaTableModal'
 import { VndaTableRow } from './VndaTableRow'
 
 export const VndaTableBody = () => {

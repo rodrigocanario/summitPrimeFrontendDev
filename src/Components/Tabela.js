@@ -1,5 +1,4 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { BotaoAdd } from './BotaoAdd'
 import { Tfooter } from './Tfooter'
 import { TRow } from './TRow'
@@ -11,10 +10,15 @@ export const Tabela = (props) => {
         <table border="0">
           <thead >
             <tr>
-              {
-                props.headers.map((element, index) => {
-                  return <th id='th' key={index}>{element}</th>
-                })}
+            <th id='th' className='tdIndex'>ITEM</th>
+            <th id='th' className='tdSku'>REFERÊNCIA</th>
+            <th id='th' >NOME</th>
+            <th id='th' className='tdCaixaMaster'>MÚLTIPLO CAIXA MASTER</th>
+            <th id='th' className='tdDescontoCaixaMaster'>DESCONTO CAIXA MASTER</th>
+            <th id='th' className='tdValor'>VALOR UNITÁRIO</th>
+            <th id='th' className='tdQuantidade'>QUANTIDADE</th>
+            <th id='th' className='tdPreco'>VALOR</th>
+            <th id='th' className='tdEstoque'>ESTOQUE</th>
             </tr>
           </thead>
         </table>
@@ -26,7 +30,9 @@ export const Tabela = (props) => {
               props.rows.map((element, index) => {
                 return <TRow key={index} index={index} />
               })}
-            <td> <BotaoAdd /> </td>
+              <tr>
+                <td> <BotaoAdd /> </td> 
+              </tr>
           </tbody>
 
         </table>

@@ -24,14 +24,11 @@ export const Login = () => {
         callBackend.login(form)
             .then((response) => {
                 if (response && response.token) {
-                    let cnpj = response.cnpj
-                    let razaoSocial = response.razaoSocial
-                    let UF = response.UF
-                    let tabela = response.tabela
                     callBackend.pedidoMin(response.UF)
-                        .then(response => {
-                            dispatch(login(cnpj, razaoSocial, UF, tabela))
-                            dispatch(pedidoMin(response.Estado, response.valor))
+                        .then(resp => {
+                            console.log({...response});
+                            dispatch(login({...response}))
+                            dispatch(pedidoMin(resp.Estado, resp.valor))
                             setLoading(false)
                         })
                 } else {

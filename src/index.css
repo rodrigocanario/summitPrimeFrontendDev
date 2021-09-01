@@ -97,7 +97,7 @@ table{
     border: 1px solid rgba(255,255,255,0.3);
 }
 #th{
-  padding: 20px 15px;
+  padding: 0px;
   text-align: center;
   font-size: 15px;
   color: #fff;
@@ -113,8 +113,35 @@ table{
   color: #fff;
   border-bottom: solid 1px rgba(255,255,255,0.5);
 }
+.tdNome
 #td-footer{
   padding-top: 30px;
+}
+.tdIndex{
+  width: 70px;
+}
+.tdSku{
+  width: 90px;
+}
+.tdCaixaMaster{
+  width: 108px;
+}
+.tdDescontoCaixaMaster{
+  width: 85px;
+}
+.tdValor{
+  width: 105px;
+}
+.tdQuantidade{
+  width: 120px;
+  padding: 2px 0px !important;
+
+}
+.tdPreco{
+  width: 130px;
+}
+.tdEstoque{
+  width: 130px;
 }
 #tr{
   color: white;
@@ -138,7 +165,8 @@ table{
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 3px;
+  background-color: #00000047;
+  border-radius: 30px;
 }
 .quantity-input:focus{
   outline: none !important;
@@ -152,7 +180,7 @@ table{
   text-align: center;
   cursor: pointer;
   border: 0px;
-  background-color: inherit;
+  background-color: transparent;
   color: white;
 }
 
@@ -160,9 +188,9 @@ table{
   width: 4rem;
   padding: 0px;
   font-size: 1.5rem;
-  border: transparent solid 2px;
+  border: none;
   text-align: center;
-  background-color: inherit;
+  background-color: transparent;
   color: white;
 }
 .quantity-input__screen:focus{
@@ -183,7 +211,32 @@ table{
 ::-webkit-scrollbar-thumb {
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
 }
+
+/* ------------------------header------------------------ */
+.header{
+  font-size: 2rem;
+  color: white;
+  background-color: #00000070;
+  height: 100px;
+  margin-bottom: 25px;
+  width: 100%;
+  margin: 0px !important;
+}
+.h3Header:hover{
+cursor:pointer
+}
 /* -----------------------vnda----------------------- */
+.tdRowVnda{
+  padding: 10px 7px !important;
+}
+.tdRowVndaMain{
+  text-transform: capitalize;
+}
+.tdRowVndaMain:hover{
+  box-shadow: inset white 0px 0px 20px 5px;
+  color: black;
+  cursor: pointer;
+}
 .input1{
   width: 100%;
     background-color: transparent;
@@ -196,3 +249,31 @@ table{
     text-align: center;
 }
 h2{color: white;}
+/* --------------------vndaModal------------------ */
+.modal-content{
+  background-color: #0000007a !important;
+  backdrop-filter: blur(20px);
+}
+.vndaModal{
+  backdrop-filter: blur(5px);
+    background-color: #ffffff00;
+}
+.vndaModalHeader{
+  color: white;
+  border-bottom: 1px solid #6c757d !important;
+}
+.vndaModalBody{
+  color: white;
+}
+.buttonModal{
+  background-color: transparent;
+  color: white;
+  border: solid 1px white;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 20px;
+}
+.modalHeaderButtons{
+  padding: 10px 20px 20px 20px;
+  font-size: 15px;
+}

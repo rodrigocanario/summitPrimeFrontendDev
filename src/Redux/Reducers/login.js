@@ -1,12 +1,12 @@
-const reducerLogin = (state = { cnpj: 0, razaoSocial: '', isLogged: false, UF: '', tabela: '' }, action) => {
+const reducerLogin = (state = {}, action) => {
     switch (action.type) {
         case 'LOGIN':
+            return { ...state, ...action.infos }
 
-            return { ...state, isLogged: true, cnpj: action.cnpj, razaoSocial: action.razaoSocial, UF: action.UF, tabela: action.tabela, previsao: action.previsao }
         case 'LOGOUT':
             localStorage.removeItem('token')
 
-            return { ...state, cnpj: 0, razaoSocial: '', isLogged: false, UF: '', tabela: '', previsao: 0 }
+            return { }
         default:
             return state
     }

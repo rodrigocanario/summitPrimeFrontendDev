@@ -4,7 +4,6 @@ import { adminLogin, adminLogout } from '../../Redux/Actions'
 import { isAdmin } from '../../Utils/callBackend'
 import { AdminLogin } from '../Admin/AdminLogin'
 import { VndaCarrinhosPerdidosDashboard } from './VndaCarrinhosPerdidosDashboard'
-import {VndaDashboard} from   './VndaDashboard'
 
 
 export const VndaCarrinhosPerdidos = () => {

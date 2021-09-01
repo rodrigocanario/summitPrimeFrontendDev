@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import reducerItens from "./itens";
+import reducerOrcamento from "./orcamento";
 import reducerLogin from "./login";
 import reducerPedMin from "./pedidoMin";
 import reducerPages from "./pages";
@@ -8,7 +8,7 @@ import reducerVndaPedidos from "./vndaPedidos";
 import reducerVndaModal from "./vndaModal";
 
 const allReducers = combineReducers({
-    itens: reducerItens,
+    orcamento: reducerOrcamento,
     login: reducerLogin,
     pedidoMin: reducerPedMin,
     pages: reducerPages,

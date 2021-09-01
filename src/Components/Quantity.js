@@ -4,8 +4,8 @@ import { BiMinus, BiPlus } from 'react-icons/bi'
 
 export const Quantity = (props) => {
     const dispatch = useDispatch()
-    const Infos = useSelector(state => state.itens[props.index])
-    const multiplo = useSelector(state => state.itens[props.index].multiplo)
+    const Infos = useSelector(state => state.orcamento.itens[props.index])
+    const multiplo = useSelector(state => state.orcamento.itens[props.index].multiplo)
     const incrementar = () => {
         dispatch(increment(props.index, multiplo))
         dispatch(calcularTotal(props.index))

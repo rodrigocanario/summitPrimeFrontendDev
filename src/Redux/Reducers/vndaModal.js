@@ -1,9 +1,10 @@
 const reducerVndaModal = (state = {show:false, pedido:{id:''}}, action) => {
     switch (action.type) {
         case 'SHOWVNDAMODAL':
-            return {show:true, pedido:action.pedido}
+            return {show:true, pedido:
+                {...action.pedido, 'Nome do cliente': action.pedido['Nome do cliente'].toLowerCase()}}
         case 'HIDEVNDAMODAL':
-            return {show: false}
+            return {...state, show: false}
         default:
             return state
     }

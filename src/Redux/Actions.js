@@ -11,11 +11,12 @@ export const decrement = (index, multiplo) => {
     }
 }
 
-export const trocarSKU = (infos, index) => {
+export const trocarItem = (infos, index, desconto) => {
     return {
-        type: 'TROCARINFO',
+        type: 'TROCARITEM',
         payload: infos,
-        index: index
+        index: index,
+        desconto
     }
 
 }
@@ -35,14 +36,10 @@ export const addItem = () => {
 
 }
 
-export const login = (cnpj, razaoSocial, UF, tabela, previsao) => {
+export const login = (infos) => {
     return {
         type: 'LOGIN',
-        cnpj,
-        razaoSocial,
-        UF,
-        tabela,
-        previsao
+        infos
 
     }
 }
@@ -72,9 +69,10 @@ export const pedidoMin = (UF, valor) => {
 
     }
 }
-export const nextPage = () => {
+export const changePage = (page) => {
     return {
-        type: 'NEXT',
+        type: 'SWITCH',
+        page
     }
 }
 export const updateVndaPedidos = (pedido) => {

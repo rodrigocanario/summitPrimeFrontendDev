@@ -8,14 +8,14 @@ import { isAuth, pedidoMin as pedMin } from '../Utils/callBackend';
 
 export const Orcamento = () => {
     const dispatch = useDispatch()
-    const isAuthenticated = useSelector(state => state.login.isLogged)
+    const isAuthenticated = useSelector(state => state.login.isAuth)
     const Infos = useSelector(state => state.itens)
     const [loading, setLoading] = useState(true)
     useEffect(() => {
         isAuth()
             .then((response) => {
                 if (response.isAuth) {
-                    dispatch(login(response.cnpj, response.razaoSocial, response.UF, response.tabela, response.previsao))
+                    dispatch(login(response))
                     pedMin(response.UF)
                         .then(response => {
                             dispatch(pedidoMin(response.Estado, response.valor))
