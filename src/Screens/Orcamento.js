@@ -9,7 +9,7 @@ import { isAuth, pedidoMin as pedMin } from '../Utils/callBackend';
 export const Orcamento = () => {
     const dispatch = useDispatch()
     const isAuthenticated = useSelector(state => state.login.isAuth)
-    const Infos = useSelector(state => state.itens)
+    const Infos = useSelector(state => state.orcamento)
     const [loading, setLoading] = useState(true)
     useEffect(() => {
         isAuth()
@@ -33,7 +33,7 @@ export const Orcamento = () => {
     }, [dispatch])
 
     useEffect(() => {
-        localStorage.setItem('produtos', JSON.stringify(Infos))
+        localStorage.setItem('orcamento', JSON.stringify(Infos))
 
 
     }, [Infos])

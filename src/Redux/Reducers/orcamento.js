@@ -2,10 +2,12 @@ let defaultState
 if (localStorage.getItem('orcamento')) {
     defaultState = JSON.parse(localStorage.getItem('orcamento'))
 } else {
-    defaultState = {pagamentoAntecipado:false, itens:[{ sku: '', nome: '', valor: 0, valorReal: 0, quantidade: 0, preco: 0, multiplo: 0, caixaMaster: 0, estoque: '' }]}
+    defaultState = {pagamentoAntecipado:false, subTotal:0, total:0, itens:[{ sku: '', nome: '', valor: 0, valorReal: 0, quantidade: 0, preco: 0, multiplo: 0, caixaMaster: 0, estoque: '' }]}
 }
 
 const reducerOrcamento = (state = defaultState, action) => {
+    let subtot = 0
+    let tot = 0
     switch (action.type) {
         case 'TROCARITEM':
             const info = action.payload
@@ -36,9 +38,31 @@ const reducerOrcamento = (state = defaultState, action) => {
         case 'TOTALPRODUTO':
                 let precoTotal = (Math.round((state.itens[action.index].quantidade * state.itens[action.index].valorReal) * 100)) / 100
                 state.itens[action.index] = {...state.itens[action.index], preco: precoTotal.toFixed(2)}
+
+                state.itens.forEach(element => {
+                    subtot= subtot + parseFloat(element.preco)
+                })
+                if(state.pagamentoAntecipado){
+                    tot = subtot*0.95
+                }else{
+                    tot = subtot
+                }
+                state = {...state, subTotal:subtot, total:tot.toFixed(2)}
                 return state;
         case 'ADDITEM':
             state.itens = [...state.itens, { sku: '', nome: '', valor: 0, quantidade: 0, preco: 0, multiplo: 0 }]
+            return state
+        case 'PAGAMENTOANTECIPADO':
+            state= {...state, pagamentoAntecipado: action.isPA}
+            state.itens.forEach(element => {
+                subtot= subtot + parseFloat(element.preco)
+            })
+            if(state.pagamentoAntecipado){
+                tot = subtot*0.95
+            }else{
+                tot = subtot
+            }
+            state = {...state, subTotal:subtot, total:tot.toFixed(2)}
             return state
         default:
             return state

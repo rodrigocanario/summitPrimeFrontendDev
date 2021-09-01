@@ -1,10 +1,10 @@
-export const increment = (index, multiplo) => {
+export const increment = (index) => {
     return {
         type: 'INCREMENT',
         index,
     }
 }
-export const decrement = (index, multiplo) => {
+export const decrement = (index) => {
     return {
         type: 'DECREMENT',
         index,
@@ -95,5 +95,11 @@ export const showVndaModal = (pedido) => {
 export const hideVndaModal = () => {
     return {
         type: 'HIDEVNDAMODAL',
+    }
+}
+export const pagamentoAntecipado = (isPA) => {
+    return {
+        type: 'PAGAMENTOANTECIPADO',
+        isPA
     }
 }

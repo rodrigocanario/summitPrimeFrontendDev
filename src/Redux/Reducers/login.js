@@ -4,6 +4,7 @@ const reducerLogin = (state = {}, action) => {
             return { ...state, ...action.infos }
 
         case 'LOGOUT':
+            localStorage.removeItem('orcamento')
             localStorage.removeItem('token')
 
             return { }

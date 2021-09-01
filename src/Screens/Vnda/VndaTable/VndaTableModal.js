@@ -1,15 +1,13 @@
 
-import React, {useState } from 'react'
-import {Button, Col, Modal, Row, Tab, Tabs } from 'react-bootstrap'
+import React from 'react'
+import {Col, Modal, Row} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { hideVndaModal } from '../../../Redux/Actions'
-import { VndaTableModalProdutos } from './VndaTableModalProdutos'
-import { BsListCheck, BsPersonBoundingBox} from 'react-icons/bs';
+import { BsPersonBoundingBox} from 'react-icons/bs';
 import {SiRedhat} from 'react-icons/si'
 
 
 export const VndaTableModal = () => {
-    const [tab, setTab] = useState('Cliente')
     const vndaModal = useSelector(state => state.vndaModal)
     const dispatch = useDispatch()
     let handleHide = ()=>{
