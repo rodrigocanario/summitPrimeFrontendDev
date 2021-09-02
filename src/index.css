@@ -1,162 +1,164 @@
 @font-face {
   font-family: fontSummit;
-  src: url('./Fonts/nexa-extrabold.ttf');
+  src: url("./Fonts/nexa-extrabold.ttf");
 }
 
 #body {
   align-items: flex-start;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: rgb(1,23,97);
-  background: linear-gradient(160deg, rgba(1,23,97,1) 0%, rgba(73,255,241,1) 100%);
+  background: rgb(1, 23, 97);
+  background: linear-gradient(
+    160deg,
+    rgba(1, 23, 97, 1) 0%,
+    rgba(73, 255, 241, 1) 100%
+  );
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-h1{
+h1 {
   color: white;
 }
-p{
+p {
   color: white;
 }
-span{
+span {
   color: white !important;
 }
-.icon{
- font-size: 35px; 
+.icon {
+  font-size: 35px;
 }
 
 /* --------------------login------------------- */
 
-#login-background{
+#login-background {
   background-color: #0000009e;
-    border-radius: 10px;
-    padding: 60px;
-    padding-top: 20px;
-
+  border-radius: 10px;
+  padding: 60px;
+  padding-top: 20px;
 }
-#login-titulo{
+#login-titulo {
   color: white;
   font-weight: 100;
   padding: 10px;
   margin-bottom: 45px;
 }
-.login-input{
+.login-input {
   background-color: transparent;
-    border-radius: 6px;
-    border: white solid 1px;
-    padding: 7px;
-    margin-bottom: 10px;
-    color: white;
-    text-align: center;
+  border-radius: 6px;
+  border: white solid 1px;
+  padding: 7px;
+  margin-bottom: 10px;
+  color: white;
+  text-align: center;
 }
 .login-input:focus::placeholder {
   color: transparent;
 }
-.login-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+.login-input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: rgba(255, 255, 255, 0.652);
   opacity: 1; /* Firefox */
 }
-#login-button{
+#login-button {
   background-color: #1c7098;
-    border-radius: 10px;
-    padding: 10px;
-    margin-top: 40px;
-    color: white;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 40px;
+  color: white;
 }
 
-#summit-titulo{
+#summit-titulo {
   text-align: center;
   color: white;
-  font-family: fontSummit
+  font-family: fontSummit;
 }
-#summit-img{
+#summit-img {
   text-align: center;
   max-width: 150px;
 }
 
 /* -------------------table---------------------- */
 
-table{
-  width:100% !important;
+table {
+  width: 100% !important;
   table-layout: fixed !important;
 }
 
-#table-header{
-  background-color: rgba(255,255,255,0.3);
- }
-#table-body{
-    height:665px;
-    overflow-x:auto;
-    margin-top: 0px;
-    border: 1px solid rgba(255,255,255,0.3);
+#table-header {
+  background-color: rgba(255, 255, 255, 0.3);
 }
-#th{
+#table-body {
+  height: 665px;
+  overflow-x: auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+#th {
   padding: 0px;
   text-align: center;
   font-size: 15px;
   color: #fff;
   text-transform: uppercase;
 }
-#td{
+#td {
   padding: 0px;
   text-align: center;
-  vertical-align:middle;
+  vertical-align: middle;
   font-weight: 300;
   font-size: 20px;
   font-weight: bold;
   color: #fff;
-  border-bottom: solid 1px rgba(255,255,255,0.5);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.5);
 }
-.tdNome
-#td-footer{
+.tdNome #td-footer {
   padding-top: 30px;
 }
-.tdIndex{
+.tdIndex {
   width: 70px;
 }
-.tdSku{
+.tdSku {
   width: 90px;
 }
-.tdCaixaMaster{
+.tdCaixaMaster {
   width: 108px;
 }
-.tdDescontoCaixaMaster{
+.tdDescontoCaixaMaster {
   width: 85px;
 }
-.tdValor{
+.tdValor {
   width: 105px;
 }
-.tdQuantidade{
+.tdQuantidade {
   width: 120px;
   padding: 2px 0px !important;
-
 }
-.tdPreco{
+.tdPreco {
   width: 130px;
 }
-.tdEstoque{
+.tdEstoque {
   width: 130px;
 }
-#tr{
+#tr {
   color: white;
 }
 
-.table-input{
+.table-input {
   width: 100%;
-  border: rgba(255,255,255,0.5) solid 1px;
-    border-radius: 10px;
-    background-color: transparent;
+  border: rgba(255, 255, 255, 0.5) solid 1px;
+  border-radius: 10px;
+  background-color: transparent;
   text-align: center;
   color: white;
 }
 
-.table-input:focus{
+.table-input:focus {
   outline: none !important;
   border: white solid 2px;
 }
@@ -168,7 +170,7 @@ table{
   background-color: #00000047;
   border-radius: 30px;
 }
-.quantity-input:focus{
+.quantity-input:focus {
   outline: none !important;
   border: white solid 2px;
 }
@@ -193,27 +195,27 @@ table{
   background-color: transparent;
   color: white;
 }
-.quantity-input__screen:focus{
+.quantity-input__screen:focus {
   outline: none !important;
   border: white solid 2px;
   border-radius: 3px;
 }
-.nome{
+.nome {
   font-size: 15px !important;
 }
 
 ::-webkit-scrollbar {
   width: 6px;
-} 
+}
 ::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-} 
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
 ::-webkit-scrollbar-thumb {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 /* ------------------------header------------------------ */
-.header{
+.header {
   font-size: 2rem;
   color: white;
   background-color: #00000070;
@@ -222,50 +224,52 @@ table{
   width: 100%;
   margin: 0px !important;
 }
-.h3Header:hover{
-cursor:pointer
+.h3Header:hover {
+  cursor: pointer;
 }
 /* -----------------------vnda----------------------- */
-.tdRowVnda{
+.tdRowVnda {
   padding: 10px 7px !important;
 }
-.tdRowVndaMain{
+.tdRowVndaMain {
   text-transform: capitalize;
 }
-.tdRowVndaMain:hover{
+.tdRowVndaMain:hover {
   box-shadow: inset white 0px 0px 20px 5px;
   color: black;
   cursor: pointer;
 }
-.input1{
+.input1 {
   width: 100%;
-    background-color: transparent;
-    border: white solid 1px;
-    margin: 0px 0px 30px 0px;
-    border-radius: 10px;
-    height: 5rem;
-    font-size: 4rem;
-    color: white;
-    text-align: center;
+  background-color: transparent;
+  border: white solid 1px;
+  margin: 0px 0px 30px 0px;
+  border-radius: 10px;
+  height: 5rem;
+  font-size: 4rem;
+  color: white;
+  text-align: center;
 }
-h2{color: white;}
+h2 {
+  color: white;
+}
 /* --------------------vndaModal------------------ */
-.modal-content{
+.modal-content {
   background-color: #0000007a !important;
   backdrop-filter: blur(20px);
 }
-.vndaModal{
+.vndaModal {
   backdrop-filter: blur(5px);
-    background-color: #ffffff00;
+  background-color: #ffffff00;
 }
-.vndaModalHeader{
+.vndaModalHeader {
   color: white;
   border-bottom: 1px solid #6c757d !important;
 }
-.vndaModalBody{
+.vndaModalBody {
   color: white;
 }
-.buttonModal{
+.buttonModal {
   background-color: transparent;
   color: white;
   border: solid 1px white;
@@ -273,7 +277,7 @@ h2{color: white;}
   padding: 10px;
   font-size: 20px;
 }
-.modalHeaderButtons{
+.modalHeaderButtons {
   padding: 10px 20px 20px 20px;
   font-size: 15px;
 }

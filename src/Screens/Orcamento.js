@@ -1,44 +1,35 @@
-import React from 'react'
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { login, logout, pedidoMin } from '../Redux/Actions';
-import { Login } from '../Screens/Login';
-import { Pages } from '../Screens/Pages';
-import { isAuth, pedidoMin as pedMin } from '../Utils/callBackend';
+import React from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout } from "../Redux/Actions";
+import { Login } from "../Screens/Login";
+import { Pages } from "../Screens/Pages";
+import {
+  getUserInfos,
+  isAuth,
+  pedidoMin as pedMin,
+} from "../Utils/callBackend";
 
 export const Orcamento = () => {
-    const dispatch = useDispatch()
-    const isAuthenticated = useSelector(state => state.login.isAuth)
-    const Infos = useSelector(state => state.orcamento)
-    const [loading, setLoading] = useState(true)
-    useEffect(() => {
-        isAuth()
-            .then((response) => {
-                if (response.isAuth) {
-                    dispatch(login(response))
-                    pedMin(response.UF)
-                        .then(response => {
-                            dispatch(pedidoMin(response.Estado, response.valor))
-                            setLoading(false)
-                        })
-                }
-                else {
-                    setLoading(false)
-                }
-            })
-            .catch(() => {
-                dispatch(logout())
-                window.location.reload()
-            })
-    }, [dispatch])
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.informacoes.isAuth);
+  const Infos = useSelector((state) => state.orcamento);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    getUserInfos().then((response) => {
+      dispatch(login(response));
+      setLoading(false);
+    });
+  }, [dispatch]);
 
-    useEffect(() => {
-        localStorage.setItem('orcamento', JSON.stringify(Infos))
-
-
-    }, [Infos])
-    return (
-        loading === true ? "" : (isAuthenticated === true ? <Pages /> : <Login />)
-
-    )
-}
+  useEffect(() => {
+    localStorage.setItem("orcamento", JSON.stringify(Infos));
+  }, [Infos]);
+  return loading === true ? (
+    ""
+  ) : isAuthenticated === true ? (
+    <Pages />
+  ) : (
+    <Login />
+  );
+};
