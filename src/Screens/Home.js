@@ -43,10 +43,19 @@ export const Home = () => {
               <br /> {login.razaoSocial}!
             </h1>
             <p>
-              *Pesquise nossos produtos na{" "}
-              <a target="_blank" rel="noreferrer" href="https://summit.com.br">
-                Plataforma Catalogo
+              *Acesse a{" "}
+              <a
+                target="_blank"
+                style={{ color: "white" }}
+                rel="noreferrer"
+                href="https://summit.com.br"
+              >
+                Plataforma Catálogo
               </a>
+              para iniciar o orçamento. Você pode abrir aqui os orçamentos
+              enviados pela Plataforma Catálogo. E por aqui, ajustar as
+              quantidades e os itens escolhidos. As alterações feitas aqui não
+              retornam para a Plataforma Catalogo.
             </p>
           </Row>
           <Row>

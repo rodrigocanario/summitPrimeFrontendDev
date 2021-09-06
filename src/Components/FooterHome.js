@@ -22,14 +22,14 @@ export const FooterHome = () => {
             <li>
               Respeitar o{" "}
               <span style={{ fontWeight: "bold" }}>
-                PEDIDO MINIMO DE R${login.valor}
+                PEDIDO MINIMO DE R${login.valor.toFixed(2)}
               </span>{" "}
             </li>
             <li>
               Previsao de entrega em{" "}
               <span style={{ fontWeight: "bold" }}>
                 {" "}
-                dias {login.previsaoEntrega} úteis
+                dias {login.previsaoEntrega} úteis após o faturamento.
               </span>
             </li>
             {login.creditoAprovado ? (
