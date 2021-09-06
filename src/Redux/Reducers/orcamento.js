@@ -27,22 +27,14 @@ const reducerOrcamento = (state = defaultState, action) => {
   let tot = 0;
   switch (action.type) {
     case "NOVOORCAMENTO":
-      const skus = action.skus;
-      let itens = [];
-      skus.forEach((sku) => {
-        itens.push({
-          sku,
-          nome: "",
-          valor: 0,
-          valorReal: 0,
-          quantidade: 0,
-          preco: 0,
-          multiplo: 0,
-          caixaMaster: 0,
-          estoque: "",
-        });
-      });
-      state = { pagamentoAntecipado: false, subTotal: 0, total: 0, itens };
+      state = {
+        pagamentoAntecipado: false,
+        subTotal: 0,
+        total: 0,
+        itens: action.itens,
+      };
+      let save = JSON.stringify(state);
+      localStorage.setItem("orcamento", save);
       return state;
     case "TROCARITEM":
       const info = action.payload;
@@ -105,10 +97,12 @@ const reducerOrcamento = (state = defaultState, action) => {
         ...state.itens[action.index],
         preco: precoTotal.toFixed(2),
       };
-
-      state.itens.forEach((element) => {
-        subtot = subtot + parseFloat(element.preco);
-      });
+      for (let i = 0; i < state.itens.length; i++) {
+        const element = state.itens[i];
+        if (parseFloat(element.preco)) {
+          subtot = subtot + parseFloat(element.preco);
+        }
+      }
       if (state.pagamentoAntecipado) {
         tot = subtot * 0.95;
       } else {
@@ -124,9 +118,12 @@ const reducerOrcamento = (state = defaultState, action) => {
       return state;
     case "PAGAMENTOANTECIPADO":
       state = { ...state, pagamentoAntecipado: action.isPA };
-      state.itens.forEach((element) => {
-        subtot = subtot + parseFloat(element.preco);
-      });
+      for (let i = 0; i < state.itens.length; i++) {
+        const element = state.itens[i];
+        if (parseFloat(element.preco)) {
+          subtot = subtot + parseFloat(element.preco);
+        }
+      }
       if (state.pagamentoAntecipado) {
         tot = subtot * 0.95;
       } else {

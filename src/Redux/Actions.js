@@ -97,9 +97,9 @@ export const addOrcamentos = (orcamentos) => {
     orcamentos,
   };
 };
-export const novoOrcamento = (skus) => {
+export const novoOrcamento = (itens) => {
   return {
     type: "NOVOORCAMENTO",
-    skus,
+    itens,
   };
 };

@@ -1,4 +1,5 @@
-import React from "react";
+import { render } from "@testing-library/react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { FooterHome } from "../Components/FooterHome";
@@ -7,6 +8,8 @@ import { Tabela } from "../Components/Tabela";
 export const Home = () => {
   const login = useSelector((state) => state.informacoes);
   const rows = useSelector((state) => state.orcamento.itens);
+  const page = useSelector((state) => state.pages);
+  const [rerender, setRerender] = useState(0);
   const headers = [
     "Item",
     "Referência",
@@ -18,6 +21,13 @@ export const Home = () => {
     "Valor",
     "Estoque",
   ];
+  useEffect(() => {
+    if (render === 0) {
+      setRerender(1);
+    } else {
+      setRerender(0);
+    }
+  }, [page]);
 
   return (
     <Container fluid>

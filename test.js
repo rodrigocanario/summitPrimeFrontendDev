@@ -1,40 +1,63 @@
-// var state = [{ sku: 0, nome: '', valor: 0, quantidade: 0, preco: 0, multiplo: 0 }]
+const axios = require("axios");
+const csv2json = require("csvjson-csv2json");
+const token =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVRiI6IlJTIiwicHJldmlzYW9FbnRyZWdhIjo3LCJyYXphb1NvY2lhbCI6IlNVTU1JVCBDT01FUkNJTyBJTVBPUlRBQ0FPIEUgRVhQT1JUQUNBTyBMVERBIiwiY25waiI6NzM4Mjc5ODIwMDAxNjMsInRhYmVsYSI6InBhZHJhbyIsImRlc2NvbnRvIjoiMjYiLCJjcmVkaXRvQXByb3ZhZG8iOjEwMDAsImlhdCI6MTYzMDU2MDUxMywiZXhwIjoxNjMwNjQ2OTEzfQ.topw5DpN2zZxrCYSYuzN7nq77kWpbHhcxg51CS5YRew";
+let csv =
+  '"Produtos","Quantidade","Referência","Nome do cliente","Email","Telefone","CNPJ","Estado","Cidade","Agentes","Código do agente","Link do agente"\n"Hidrocor Ponta Grossa Mega Hidro Color - 6 Cores - Tris","6","633725","tatiana suarez","ettati@gmail.com","(51) 98417-7884","73.827.982/0001-63","RS","Porto Alegre","Site","Site",""\n"Hidrocor Ponta Fina Mega Hidro Color - Tons Cosmos Glitter - 6 Cores - Tris","6","607108","tatiana suarez","ettati@gmail.com","(51) 98417-7884","73.827.982/0001-63","RS","Porto Alegre","Site","Site",""\n"Lápis De Cor Mega Soft Color - Tons Metálicos - 10 Cores - Tris","6","616636","tatiana suarez","ettati@gmail.com","(51) 98417-7884","73.827.982/0001-63","RS","Porto Alegre","Site","Site",""\n"Hidrocor Ponta Fina Classic Plus - 12 Cores - Tris","12","657714","tatiana suarez","ettati@gmail.com","(51) 98417-7884","73.827.982/0001-63","RS","Porto Alegre","Site","Site",""\n"Óleo Pastel Mega Pastel Color - Conjunto C/12 Cores - Tris","5","686684","tatiana suarez","ettati@gmail.com","(51) 98417-7884","73.827.982/0001-63","RS","Porto Alegre","Site","Site",""\n';
 
-// var Newstate = state.map((item, index) => {
-//     if (index === 1) {
-//         return {
-//             ...item,
-//             quantidade: 1
-//         }
-//     }
-// })
+let json = csv2json(csv);
 
-// Newstate[0].quantidade = 1
+let final = [];
 
-// console.log(state)
-// console.log(Newstate)
+const callBackend = async (endpoint, token, data) => {
+  let url =
+    "https://67omt0pnwh.execute-api.us-east-1.amazonaws.com/dev/telexpress";
+  let method = "post";
+  let headers = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  };
+  let resposta;
+  url = url + endpoint;
+  await axios({
+    url,
+    method,
+    headers,
+    data,
+  })
+    .then((response) => {
+      resposta = response.data;
+    })
+    .catch((err) => {
+      resposta = err;
+    });
+  return resposta;
+};
 
+json.forEach(async (element) => {
+  let { Referência: sku, Quantidade: quantidade } = element;
+  let data = { sku, tabela: "padrao" };
+  await callBackend("/getProduto", token, data).then((resp) => {
+    let valorReal = resp.valor;
+    if (quantidade % resp.caixaMaster === 0) {
+      valorReal = (resp.valor * 0.95).toFixed(2);
+    }
+    let preco = valorReal * quantidade;
+    final.push({ ...resp, quantidade, valorReal, preco });
+  });
+  console.log(final);
+});
 
-// const callBackend = require('./src/Utils/callBackend')
-
-
-// callBackend.callBackend('pedidoMinimo', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbnBqIjo3MzgyNzk4MjAwMDE2MywicmF6YW9Tb2NpYWwiOiJTVU1NSVQgQ09NRVJDSU8gSU1QT1JUQUNBTyBFIEVYUE9SVEFDQU8gTFREQSIsIlVGIjoiUlMiLCJpYXQiOjE2MjgxOTIzNjEsImV4cCI6MTYyODI3ODc2MX0.H2-LYfJjPXHZRK4Vs77E_UZcdp92Zkiw74WEsdrUc3Y', { "UF": "RS" })
-//     .then((response) => { console.log(response) })
-
-// callBackend.pedidoMin('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbnBqIjo3MzgyNzk4MjAwMDE2MywicmF6YW9Tb2NpYWwiOiJTVU1NSVQgQ09NRVJDSU8gSU1QT1JUQUNBTyBFIEVYUE9SVEFDQU8gTFREQSIsIlVGIjoiUlMiLCJpYXQiOjE2MjgxOTIzNjEsImV4cCI6MTYyODI3ODc2MX0.H2-LYfJjPXHZRK4Vs77E_UZcdp92Zkiw74WEsdrUc3Y', "RS").then((response) => { console.log(response) })
-
-// callBackend.isAuth('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbnBqIjo3MzgyNzk4MjAwMDE2MywicmF6YW9Tb2NpYWwiOiJTVU1NSVQgQ09NRVJDSU8gSU1QT1JUQUNBTyBFIEVYUE9SVEFDQU8gTFREQSIsIlVGIjoiUlMiLCJpYXQiOjE2MjgxOTIzNjEsImV4cCI6MTYyODI3ODc2MX0.H2-LYfJjPXHZRK4Vs77E_UZcdp92Zkiw74WEsdrUc3Y').then((response) => { console.log(response) })
-
-// callBackend.login({
-//     "cnpj": 73827982000163,
-//     "senha": "12345"
-// })
-//     .then((response) => { console.log(response) })
-// callBackend.getProduto({ "sku": 1, "UF": "RS" })
-//     .then((response) => { console.log(response) })
-
-
-// 610245
-
-console.log('228' % 228);
-
+// let final =[
+//     {
+//       sku: "",
+//       nome: "",
+//       valor: 0,
+//       valorReal: 0,
+//       quantidade: 0,
+//       preco: 0,
+//       multiplo: 0,
+//       caixaMaster: 0,
+//       estoque: "",
+//     },
+//   ],

@@ -1,22 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { CookiesProvider } from 'react-cookie';
-import { createStore } from 'redux';
-import allReducers from './Redux/Reducers'
-import { Provider } from 'react-redux';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { CookiesProvider } from "react-cookie";
+import { applyMiddleware, compose, createStore } from "redux";
+import allReducers from "./Redux/Reducers";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
 
-let store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+let store = createStore(
+  allReducers,
+  compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__())
+);
 
 ReactDOM.render(
   <Provider store={store}>
     <CookiesProvider>
       <App />
     </CookiesProvider>
-  </Provider>
-  ,
-  document.getElementById('root')
+  </Provider>,
+  document.getElementById("root")
 );
-

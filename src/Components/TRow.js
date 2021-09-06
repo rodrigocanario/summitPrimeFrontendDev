@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, trocarItem } from "../Redux/Actions";
+import { addItem, calcularTotal, trocarItem } from "../Redux/Actions";
 import { getProduto } from "../Utils/callBackend";
 import { Quantity } from "./Quantity";
 
@@ -61,6 +61,7 @@ export const TRow = (props) => {
         tabela: informacoes.tabela,
       }).then((response) => {
         dispatch(trocarItem(response, props.index, informacoes.desconto));
+        dispatch(calcularTotal(props.index));
       });
     } else {
       dispatch(
@@ -97,7 +98,7 @@ export const TRow = (props) => {
         {Infos.nome}
       </td>
       <td id="td" className="tdCaixaMaster">
-        {Infos.caixaMaster}UN
+        {Infos.caixaMaster ? Infos.caixaMaster + "UN" : ""}
       </td>
       <td id="td" className="tdDescontoCaixaMaster">
         {Infos.quantidade % Infos.caixaMaster === 0 && Infos.quantidade > 0
@@ -105,16 +106,22 @@ export const TRow = (props) => {
           : ""}
       </td>
       <td id="td" className="tdValor">
-        R${Infos.valorReal}
+        {Infos.valorReal && Infos.valorReal !== "NaN"
+          ? "R$" + parseFloat(Infos.valorReal).toFixed(2)
+          : ""}
       </td>
       <td id="td" className="tdQuantidade">
-        <Quantity index={props.index} />
+        {Infos.nome ? <Quantity index={props.index} /> : ""}
       </td>
       <td id="td" className="tdPreco">
-        R${Infos.preco}
+        {Infos.nome
+          ? Infos.preco
+            ? "R$" + parseFloat(Infos.preco).toFixed(2)
+            : "R$0.00"
+          : ""}
       </td>
       <td id="td" className="tdEstoque">
-        {Infos.estoque > 0 ? "Disponível" : "Indisponível"}
+        {Infos.nome ? (Infos.estoque > 0 ? "Disponível" : "Indisponível") : ""}
       </td>
     </tr>
   );

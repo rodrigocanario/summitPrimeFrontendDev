@@ -1,20 +1,35 @@
 import React from "react";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { changePage, novoOrcamento } from "../Redux/Actions";
+import { calcularTotal, changePage, novoOrcamento } from "../Redux/Actions";
+import { callBackend, getProduto } from "../Utils/callBackend";
 const csv2json = require("csvjson-csv2json");
 
 export const MeusOrcamentos = () => {
   const informacoes = useSelector((state) => state.informacoes);
+  const Orcamento = useSelector((state) => state.orcamento);
   const dispatch = useDispatch();
 
-  const novoOrc = (e) => {
-    let skus = [];
-    let produtos = csv2json(informacoes.orcamentos[e.target.value]["CSV"]);
-    produtos.forEach((produto) => {
-      skus.push(produto["Referência"]);
-    });
-    dispatch(novoOrcamento(skus));
+  const novoOrc = async (e) => {
+    let produtos = [];
+    let produtosRaw = csv2json(informacoes.orcamentos[e.target.value]["CSV"]);
+    for (let i = 0; i < produtosRaw.length; i++) {
+      const element = produtosRaw[i];
+      let { Referência: sku, Quantidade: quantidade } = element;
+      let data = { sku, tabela: informacoes.tabela };
+      await getProduto(data).then((resp) => {
+        let valorReal = resp.valor;
+        if (quantidade % resp.caixaMaster === 0) {
+          valorReal = (resp.valor * 0.95).toFixed(2);
+        }
+        let preco = valorReal * quantidade;
+        produtos.push({ ...resp, quantidade, valorReal, preco });
+      });
+    }
+    console.log(produtos);
+    dispatch(novoOrcamento(produtos));
+    dispatch(calcularTotal(0));
+    localStorage.setItem("orcamento", JSON.stringify(Orcamento));
     dispatch(changePage("home"));
   };
 
