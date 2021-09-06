@@ -8,32 +8,21 @@ import { enviarPedido } from "../Utils/callBackend";
 
 export const BotaoNext = () => {
   const dispatch = useDispatch();
-  const cnpj = useSelector((state) => state.informacoes.cnpj);
-  const produtos = useSelector((state) => state.itens);
+  const orcamento = useSelector((state) => state.orcamento);
+  const informacoes = useSelector((state) => state.informacoes);
   const [showModal, setShowModal] = useState(false);
 
   const handleOpen = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
 
   const handleNext = () => {
-    let produtosArr = [];
-    for (let i = 0; i < produtos.length; i++) {
-      if (produtos[i].quantidade > 0) {
-        produtosArr.push({
-          "Numero do Item": i + 1,
-          Referencia: produtos[i].sku,
-          Descricao: produtos[i].nome,
-          "Multiplo de Venda": produtos[i].multiplo,
-          Quantidade: produtos[i].quantidade,
-          "Valor Unitario": produtos[i].valor,
-          "Valor Total": produtos[i].quantidade * produtos[i].valor,
-        });
-      }
-    }
+    let id = Math.random().toString(36).slice(-8).toUpperCase();
     let data = {
-      cnpj,
-      produtos: produtosArr,
+      id,
+      informacoes,
+      orcamento,
     };
+    // console.log(data);
     enviarPedido(data);
     dispatch(changePage("obrigado"));
   };
@@ -41,7 +30,9 @@ export const BotaoNext = () => {
     <Fragment>
       <Modal show={showModal} animation={true} onHide={handleClose} centered>
         <Modal.Header className="align-items-center justify-content-center">
-          <Modal.Title>Enviar Orçamento?</Modal.Title>
+          <Modal.Title style={{ color: "white" }}>
+            Enviar Orçamento?
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Row className="justify-content-evenly">

@@ -21,7 +21,9 @@ export const Login = () => {
 
   const changeForm = (e) => {
     let { name, value } = e.target;
-    value = value.replace(/[^0-9]/g, "");
+    if (name === "cnpj") {
+      value = value.replace(/[^0-9]/g, "");
+    }
     setForm({ ...form, [name]: value });
   };
 
