@@ -51,11 +51,11 @@ export const Home = () => {
                 href="https://summit.com.br"
               >
                 Plataforma Catálogo
-              </a>
-              para iniciar o orçamento. Você pode abrir aqui os orçamentos
-              enviados pela Plataforma Catálogo. E por aqui, ajustar as
-              quantidades e os itens escolhidos. As alterações feitas aqui não
-              retornam para a Plataforma Catalogo.
+              </a>{" "}
+              para iniciar o orçamento. Você pode abrir em Meus Orçamentos os
+              orçamentos enviados pela Plataforma Catálogo. E por aqui, ajustar
+              as quantidades e os itens escolhidos. As alterações feitas aqui
+              não retornam para a Plataforma Catalogo.
             </p>
           </Row>
           <Row>
