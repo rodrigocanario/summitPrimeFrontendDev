@@ -1,36 +1,27 @@
-import React, { useEffect} from 'react'
-import { useDispatch } from 'react-redux';
-import { updateVndaPedidos } from '../../../Redux/Actions';
-import { VndaTableBody } from './VndaTableBody'
-import { VndaTableHeader } from './VndaTableHeader'
-import { VndaTableModal } from './VndaTableModal';
-var Airtable = require('airtable');
-var base = new Airtable({apiKey: 'keysF3r1wa1KybX8y'}).base('appqHN4JFZxWxuR4R');
-
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { updateVndaPedidos } from "../../../Redux/Actions";
+import { getVndaPedidos } from "../../../Utils/callBackend";
+import { VndaTableBody } from "./VndaTableBody";
+import { VndaTableHeader } from "./VndaTableHeader";
+import { VndaTableModal } from "./VndaTableModal";
 export const VndaTable = () => {
-  const dispatch = useDispatch()
-  const headers = ['ID','Nome do Cliente','CNPJ','Agente']
+  const dispatch = useDispatch();
+  const headers = ["ID", "Nome do Cliente", "CNPJ", "Agente"];
   useEffect(() => {
-    base('Pedidos').select({
-      maxRecords: 3,
-      view: "Lista de pedidos geral"
-  }).eachPage(function page(records, fetchNextPage) {
-      records.forEach((record)=>{
-        let pedido = {...record.fields, id:record.id}
-         dispatch(updateVndaPedidos(pedido))
-      })
-      // fetchNextPage();
-  
-  }, function done(err) {
-      if (err) { console.error(err); return; }
-  });
-  
-  }, [dispatch])
-    return (
-        <section>
-          <VndaTableHeader headers={headers}/>
-            <VndaTableBody/>
-          <VndaTableModal/>
-        </section>
-    )
-}
+    getVndaPedidos().then((r) => {
+      let array = r.sort(function (a, b) {
+        return parseInt(b.id) - parseInt(a.id);
+      });
+      console.log(array);
+      dispatch(updateVndaPedidos(array));
+    });
+  }, [dispatch]);
+  return (
+    <section>
+      <VndaTableHeader headers={headers} />
+      <VndaTableBody />
+      <VndaTableModal />
+    </section>
+  );
+};

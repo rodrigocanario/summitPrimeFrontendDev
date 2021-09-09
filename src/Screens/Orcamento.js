@@ -1,14 +1,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout } from "../Redux/Actions";
+import { login } from "../Redux/Actions";
 import { Login } from "../Screens/Login";
 import { Pages } from "../Screens/Pages";
-import {
-  getUserInfos,
-  isAuth,
-  pedidoMin as pedMin,
-} from "../Utils/callBackend";
+import { getUserInfos } from "../Utils/callBackend";
 
 export const Orcamento = () => {
   const dispatch = useDispatch();

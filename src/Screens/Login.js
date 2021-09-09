@@ -30,10 +30,16 @@ export const Login = () => {
   const submitForm = (e) => {
     e.preventDefault();
     setLoading(true);
-    callBackend.getUserInfos(form).then((response) => {
-      dispatch(login(response));
-      setLoading(false);
-    });
+    callBackend
+      .getUserInfos(form)
+      .then((response) => {
+        dispatch(login(response));
+        setLoading(false);
+      })
+      .catch((e) => {
+        setError(true);
+        setLoading(false);
+      });
   };
 
   return (

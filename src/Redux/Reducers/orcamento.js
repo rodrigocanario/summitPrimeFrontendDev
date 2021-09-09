@@ -54,8 +54,8 @@ const reducerOrcamento = (state = defaultState, action) => {
     case "INCREMENT":
       let caixaMaster = state.itens[action.index].caixaMaster;
       let quantidade =
-        state.itens[action.index].quantidade +
-        state.itens[action.index].multiplo;
+        parseFloat(state.itens[action.index].quantidade) +
+        parseFloat(state.itens[action.index].multiplo);
       let valor = state.itens[action.index].valor;
       if (quantidade % caixaMaster === 0) {
         valor = (valor * 0.95).toFixed(2);

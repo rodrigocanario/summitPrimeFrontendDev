@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { calcularTotal, changePage, novoOrcamento } from "../Redux/Actions";
-import { callBackend, getProduto } from "../Utils/callBackend";
+import { getProduto } from "../Utils/callBackend";
 const csv2json = require("csvjson-csv2json");
 
 export const MeusOrcamentos = () => {

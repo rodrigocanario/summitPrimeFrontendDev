@@ -1,5 +1,4 @@
-import { render } from "@testing-library/react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { FooterHome } from "../Components/FooterHome";
@@ -10,8 +9,6 @@ export const Home = () => {
   const dispatch = useDispatch();
   const login = useSelector((state) => state.informacoes);
   const rows = useSelector((state) => state.orcamento.itens);
-  const page = useSelector((state) => state.pages);
-  const [rerender, setRerender] = useState(0);
   const headers = [
     "Item",
     "Referência",
@@ -23,13 +20,6 @@ export const Home = () => {
     "Valor",
     "Estoque",
   ];
-  useEffect(() => {
-    if (render === 0) {
-      setRerender(1);
-    } else {
-      setRerender(0);
-    }
-  }, [page]);
 
   return (
     <Container fluid>
@@ -56,14 +46,20 @@ export const Home = () => {
                   Plataforma Catálogo
                 </a>{" "}
                 para iniciar o orçamento. Você pode abrir em{" "}
-                <a
-                  style={{ color: "white", textDecoration: "underline" }}
+                <button
+                  style={{
+                    color: "white",
+                    textDecoration: "underline",
+                    backgroundColor: "transparent",
+                    border: "none",
+                    padding: "0px",
+                  }}
                   onClick={() => {
                     dispatch(changePage("meusOrcamentos"));
                   }}
                 >
                   Meus Orcamentos
-                </a>{" "}
+                </button>{" "}
                 os orçamentos enviados pela Plataforma Catálogo. E por aqui,
                 ajustar as quantidades e os itens escolhidos. As alterações
                 feitas aqui não retornam para a Plataforma Catalogo.
