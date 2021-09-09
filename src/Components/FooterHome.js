@@ -57,11 +57,8 @@ export const FooterHome = () => {
               <li>
                 Toda e qualquer informação aqui disponibilizada deve ser tratada
                 somente como uma indicação, sendo sempre validada pelo seu
-                consultor de vendas. Qualquer informação encontrada aqui que for
-                conflitante com informações dadas pelo seu consultor de vendas
-                deve ser considerada equivocada e impertinente. O consultor de
-                vendas é absolutamente prioritário em qualquer caso de
-                divergência nas informações.
+                consultor de vendas. Sendo ele absolutamente prioritário em
+                qualquer caso de divergência nas informações.
               </li>
               <li>
                 Essa ferramenta trabalha com preço estimado. Valores serão
