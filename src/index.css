@@ -11,11 +11,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: rgb(1, 23, 97);
-  background: linear-gradient(
-    160deg,
-    rgba(1, 23, 97, 1) 0%,
-    rgba(73, 255, 241, 1) 100%
-  );
+  background: linear-gradient(160deg, rgb(0 15 64) 0%, rgb(73 188 255) 100%);
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -237,7 +233,7 @@ table {
 .tdRowVndaMain:hover {
   box-shadow: inset white 0px 0px 20px 5px;
   color: black;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 .input1 {
   width: 100%;

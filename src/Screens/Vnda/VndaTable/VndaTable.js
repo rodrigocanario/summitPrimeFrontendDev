@@ -7,15 +7,21 @@ import { VndaTableHeader } from "./VndaTableHeader";
 import { VndaTableModal } from "./VndaTableModal";
 export const VndaTable = () => {
   const dispatch = useDispatch();
-  const headers = ["ID", "Nome do Cliente", "CNPJ", "Agente"];
+  const headers = [
+    "ID",
+    "Nome do Cliente",
+    "CNPJ",
+    "Agente",
+    "Ordem do Pedido",
+    "Faturamento",
+  ];
   useEffect(() => {
     getVndaPedidos().then((r) => {
-      console.log(r);
       let array = r.sort(function (a, b) {
         return parseInt(b.id) - parseInt(a.id);
       });
-      console.log(array);
-      dispatch(updateVndaPedidos(array));
+      let pagina = array.slice(0, 50);
+      dispatch(updateVndaPedidos(pagina));
     });
   }, [dispatch]);
   return (

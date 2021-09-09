@@ -9,7 +9,7 @@ export const VndaTableRow = (props) => {
     dispatch(showVndaModal(pedido));
   };
   return (
-    <tr className="tdRowVndaMain" onClick={openVndaTableModal}>
+    <tr className="tdRowVndaMain">
       <td id="td" className="tdRowVnda ">
         {pedido["id"]}
       </td>
@@ -26,7 +26,7 @@ export const VndaTableRow = (props) => {
         <input
           className="table-input"
           autoComplete="off"
-          defaultValue={pedido[pedido]}
+          defaultValue={pedido["pedido"]}
           onClick={() => {}}
         />
       </td>
@@ -34,7 +34,7 @@ export const VndaTableRow = (props) => {
         <input
           className="table-input"
           autoComplete="off"
-          defaultValue={pedido[pedido]}
+          defaultValue={pedido["valor"]}
         />
       </td>
     </tr>

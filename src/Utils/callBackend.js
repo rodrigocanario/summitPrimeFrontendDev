@@ -254,7 +254,7 @@ export const getCarrinhoPerdido = async (id) => {
 };
 export const getVndaPedidos = async () => {
   let data, response;
-  let token = localStorage.getItem("token");
+  let token = localStorage.getItem("adminToken");
   if (token) {
     await callBackend("/vnda/getVndaTable", token, data).then(
       (r) => (response = r)
