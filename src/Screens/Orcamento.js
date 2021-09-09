@@ -12,10 +12,15 @@ export const Orcamento = () => {
   const Infos = useSelector((state) => state.orcamento);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    getUserInfos().then((response) => {
-      dispatch(login(response));
-      setLoading(false);
-    });
+    getUserInfos()
+      .then((response) => {
+        dispatch(login(response));
+        setLoading(false);
+      })
+      .catch((e) => {
+        localStorage.removeItem("token");
+        window.location.reload();
+      });
   }, [dispatch]);
 
   useEffect(() => {
