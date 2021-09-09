@@ -10,6 +10,7 @@ export const VndaTable = () => {
   const headers = ["ID", "Nome do Cliente", "CNPJ", "Agente"];
   useEffect(() => {
     getVndaPedidos().then((r) => {
+      console.log(r);
       let array = r.sort(function (a, b) {
         return parseInt(b.id) - parseInt(a.id);
       });
