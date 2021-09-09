@@ -1,5 +1,5 @@
 import React from "react";
-import { Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 // import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 // import { BiGlobe } from 'react-icons/bi';
 import { useSelector } from "react-redux";
@@ -17,52 +17,60 @@ export const FooterHome = () => {
           </svg>
         </a>
         <Row style={{ color: "white" }}>
-          <div>Observações: </div>
-          <ol style={{ paddingLeft: "2rem" }}>
-            <li>
-              Respeitar o{" "}
-              <span style={{ fontWeight: "bold" }}>
-                PEDIDO MINIMO DE R${login.valor.toFixed(2)}
-              </span>{" "}
-            </li>
-            <li>
-              Previsao de entrega em{" "}
-              <span style={{ fontWeight: "bold" }}>
-                {" "}
-                dias {login.previsaoEntrega} úteis após o faturamento.
-              </span>
-            </li>
-            {login.creditoAprovado ? (
+          <Col xs={6}>
+            <div>Observações: </div>
+            <ol style={{ paddingLeft: "2rem" }}>
               <li>
-                Seu crédito é de{" "}
+                Consultor de vendas responsável pela sua conta é "XXX" de
+                Whatsapp número "XXX" e e-mail "XXX".
+              </li>
+              <li>
+                Respeitar o{" "}
                 <span style={{ fontWeight: "bold" }}>
-                  R${login.creditoAprovado}
+                  PEDIDO MINIMO DE R${login.valor.toFixed(2)}
                 </span>{" "}
               </li>
-            ) : (
-              ""
-            )}
-            <li>
-              Condição de pagamento e crédito não validados pela ferramenta.
-              Entrar em contato com o vendedor.
-            </li>
-            <li>
-              Essa ferramenta trabalha com preço estimado. Valores serão
-              validados pelo consultor de vendas.
-            </li>
-          </ol>
+              <li>
+                Previsao de entrega de{" "}
+                <span style={{ fontWeight: "bold" }}>
+                  {" "}
+                  {login.previsaoEntrega} dias úteis após o faturamento.
+                </span>
+              </li>
+              {login.creditoAprovado ? (
+                <li>
+                  Crédito pré-aprovado estimado de{" "}
+                  <span style={{ fontWeight: "bold" }}>
+                    R${login.creditoAprovado}
+                  </span>{" "}
+                </li>
+              ) : (
+                ""
+              )}
+              <li>
+                As alterações feitas neste ambiente não retornam para a PC
+              </li>
+              <li>
+                A SUMMIT PRIME está em desenvolvimento portanto somente algumas
+                de suas funcionalidades estāo ativadas no momento.
+              </li>
+              <li>
+                Toda e qualquer informação aqui disponibilizada deve ser tratada
+                somente como uma indicação, sendo sempre validada pelo seu
+                consultor de vendas. Qualquer informação encontrada aqui que for
+                conflitante com informações dadas pelo seu consultor de vendas
+                deve ser considerada equivocada e impertinente. O consultor de
+                vendas é absolutamente prioritário em qualquer caso de
+                divergência nas informações.
+              </li>
+              <li>
+                Essa ferramenta trabalha com preço estimado. Valores serão
+                validados pelo consultor de vendas.
+              </li>
+            </ol>
+          </Col>
         </Row>
-        {/* 1- Respeitar o <span style={{ fontWeight: 'bold' }}>PEDIDO MINIMO DE  R${pedidoMinimo.valor}</span>  <br />
-                    2- Previsao de entrega em <span style={{ fontWeight: 'bold' }}> dias {login.previsao} úteis</span>  <br />
-                    3- Condição de pagamento e crédito não validados pela ferramenta. Entrar em contato com o vendedor.<br />
-                    4- Estoque disponível não validado.<br />
-                    5- Essa ferramenta trabalha com preço estimado. Valores serão validados pelo consultor de vendas.<br /> */}
       </div>
-      {/* <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
-                <li className="ms-3"><a className="text-muted" rel='noreferrer' href="https://www.summit.com.br/" target='_blank'></a><p className='icon'><BiGlobe /> </p></li>
-                <li className="ms-3"><a className="text-muted" href="#" rel='noreferrer' target='_blank'><p className='icon'><FaInstagram /> </p>  </a></li>
-                <li className="ms-3"><a className="text-muted" href="#" rel='noreferrer' target='_blank'><p className='icon'><FaWhatsapp /> </p>  </a></li>
-            </ul> */}
     </footer>
   );
 };

@@ -14,9 +14,7 @@ export const Tfooter = () => {
       <tr id="tr">
         <td id="td-footer" className="align-middle"></td>
         <td id="td-footer" className="align-middle"></td>
-        <td id="td-footer" className="align-middle">
-          <BotaoNext />
-        </td>
+        <td id="td-footer" className="align-middle"></td>
         <td id="td-footer" className="align-middle"></td>
         <td id="td-footer" className="align-middle">
           VALOR SUBTOTAL:
@@ -29,16 +27,21 @@ export const Tfooter = () => {
       <tr id="tr">
         <td id="td-footer" className="align-middle"></td>
         <td id="td-footer" className="align-middle"></td>
-        <td id="td-footer" className="align-middle"></td>
+        <td id="td-footer" className="align-middle">
+          <BotaoNext />
+        </td>
         <td id="td-footer" className="align-middle"></td>
         <td id="td-footer" className="align-middle">
-          <input
-            onChange={handleChange}
-            type="checkbox"
-            id="pagamentoAntecipado"
-            name="pagamentoAntecipado"
-          />
-          <label htmlFor="pagamentoAntecipado">PAGAMENTO ANTECIPADO</label>
+          <label htmlFor="pagamentoAntecipado">
+            <input
+              onChange={handleChange}
+              type="checkbox"
+              id="pagamentoAntecipado"
+              name="pagamentoAntecipado"
+              style={{ marginRight: "5px" }}
+            />
+            PAGAMENTO ANTECIPADO
+          </label>
         </td>
         <td id="td-footer" className="align-middle">
           (-R${(orcamento.subTotal * 0.05).toFixed(2)})

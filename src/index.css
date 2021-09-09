@@ -11,7 +11,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: rgb(1, 23, 97);
-  background: linear-gradient(160deg, rgb(0 15 64) 0%, rgb(73 188 255) 100%);
+  background: linear-gradient(160deg, rgb(0 15 64) 0%, #105f8d 100%);
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -277,3 +277,4 @@ h2 {
   padding: 10px 20px 20px 20px;
   font-size: 15px;
 }
+/* ------------------ checkBox--------------- */

@@ -12,7 +12,7 @@ export const Header = () => {
           className="h3Header"
           onClick={() => dispatch(changePage("meusOrcamentos"))}
         >
-          Meus Orcamentos
+          Consultar Listas Da Plataforma Catálogo
         </h3>
       </Col>
       <Col>

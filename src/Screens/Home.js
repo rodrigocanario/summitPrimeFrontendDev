@@ -36,16 +36,18 @@ export const Home = () => {
             </h1>
             <Col xs={6}>
               <p>
-                *Acesse a{" "}
+                Para facilitar o processo, recomendamos que primeiramente
+                escolha os itens e envie o pedido de orçamento pela nossa{" "}
                 <a
                   target="_blank"
                   style={{ color: "white" }}
                   rel="noreferrer"
                   href="https://summit.com.br"
                 >
-                  Plataforma Catálogo
+                  Plataforma Catálogo.
                 </a>{" "}
-                para iniciar o orçamento. Você pode abrir em{" "}
+                Pois assim você pode abrir aqui a lista completa dos itens já
+                escolhidos na PC ao clicar no botão de{" "}
                 <button
                   style={{
                     color: "white",
@@ -58,11 +60,8 @@ export const Home = () => {
                     dispatch(changePage("meusOrcamentos"));
                   }}
                 >
-                  Meus Orcamentos
+                  Consultar Listas da Plataforma Catálogo.
                 </button>{" "}
-                os orçamentos enviados pela Plataforma Catálogo. E por aqui,
-                ajustar as quantidades e os itens escolhidos. As alterações
-                feitas aqui não retornam para a Plataforma Catalogo.
               </p>
             </Col>
           </Row>
