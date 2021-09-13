@@ -3,6 +3,7 @@ if (localStorage.getItem("orcamento")) {
   defaultState = JSON.parse(localStorage.getItem("orcamento"));
 } else {
   defaultState = {
+    id: Math.random().toString(36).slice(-8),
     pagamentoAntecipado: false,
     subTotal: 0,
     total: 0,

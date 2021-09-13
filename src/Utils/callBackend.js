@@ -23,6 +23,7 @@ export const callBackend = async (endpoint, token, data) => {
       resposta = response.data;
     })
     .catch((err) => {
+      console.log(err);
       throw err;
     });
   return resposta;
@@ -75,7 +76,6 @@ export const getUserInfos = async (input) => {
         let p = new Promise((resolve, reject) => {
           base("Pedidos")
             .select({
-              view: "Lista de pedidos geral",
               filterByFormula: `({CNPJ} = '${cnpj}')`,
             })
             .eachPage(
@@ -262,4 +262,16 @@ export const getVndaPedidos = async () => {
     return response;
   }
   return;
+};
+
+export const putOrcamento = async (orcamento, cnpj) => {
+  let token = localStorage.getItem("token");
+  if (orcamento.id) {
+    let data = { orcamento: { ...orcamento, cnpj: `${cnpj}` } };
+    await callBackend("/telexpress/putOrcamento", token, data).catch((e) => {
+      console.log(e);
+    });
+  } else {
+    console.log("sem ID");
+  }
 };

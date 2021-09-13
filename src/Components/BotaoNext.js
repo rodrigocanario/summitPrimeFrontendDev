@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { changePage } from "../Redux/Actions";
-import { enviarPedido } from "../Utils/callBackend";
+import { enviarPedido, putOrcamento } from "../Utils/callBackend";
 
 export const BotaoNext = () => {
   const dispatch = useDispatch();
@@ -14,6 +14,10 @@ export const BotaoNext = () => {
 
   const handleOpen = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
+
+  const handleSave = () => {
+    putOrcamento(orcamento, informacoes.cnpj);
+  };
 
   const handleNext = () => {
     let id = Math.random().toString(36).slice(-8).toUpperCase();
@@ -30,27 +34,32 @@ export const BotaoNext = () => {
     <Fragment>
       <Modal show={showModal} animation={true} onHide={handleClose} centered>
         <Modal.Header className="align-items-center justify-content-center">
-          <Modal.Title style={{ color: "white" }}>
-            Enviar Orçamento?
+          <Modal.Title style={{ color: "white", textAlign: "center" }}>
+            ENVIAR E SALVAR <br /> ORÇAMENTO
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Row className="justify-content-evenly">
-            <Col xs={2}>
-              <Button variant="primary" onClick={handleNext}>
-                Sim
+            <Col xs={4} className="text-center">
+              <Button variant="success" onClick={handleSave}>
+                Salvar
               </Button>
             </Col>
-            <Col xs={2}>
+            <Col xs={4} className="text-center">
+              <Button variant="primary" onClick={handleNext}>
+                Salvar e Enviar
+              </Button>
+            </Col>
+            <Col xs={4} className="text-center">
               <Button variant="secondary" onClick={handleClose}>
-                Não
+                Cancelar
               </Button>
             </Col>
           </Row>
         </Modal.Body>
       </Modal>
       <Button variant="outline-light" onClick={handleOpen}>
-        Enviar Orçamento
+        Enviar / Salvar
       </Button>
     </Fragment>
   );
