@@ -10,6 +10,18 @@ export const VndaTableRow = (props) => {
       pedido: e.target.value,
     });
   };
+  let changeValor = (e) => {
+    updateVndaPedidos({
+      id: pedido["id"],
+      valor: e.target.value,
+    });
+  };
+  let changeCodCliente = (e) => {
+    updateVndaPedidos({
+      id: pedido["id"],
+      codCliente: e.target.value,
+    });
+  };
   return (
     <tr className="tdRowVndaMain">
       <td id="td" className="tdRowVnda ">
@@ -26,6 +38,7 @@ export const VndaTableRow = (props) => {
       </td>
       <td id="td" className="tdRowVnda">
         <input
+          onChange={changeCodCliente}
           className="table-input"
           autoComplete="off"
           defaultValue={pedido["codCliente"]}
@@ -41,6 +54,7 @@ export const VndaTableRow = (props) => {
       </td>
       <td id="td" className="tdRowVnda">
         <input
+          onChange={changeValor}
           className="table-input"
           autoComplete="off"
           defaultValue={pedido["valor"]}
