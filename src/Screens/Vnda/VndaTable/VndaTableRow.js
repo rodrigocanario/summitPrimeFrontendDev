@@ -1,8 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { updateVndaPedidos } from "../../../Utils/callBackend";
 
 export const VndaTableRow = (props) => {
   const pedido = useSelector((state) => state.vndaPedidos[props.index]);
+  let changePedido = (e) => {
+    updateVndaPedidos({
+      id: pedido["id"],
+      pedido: e.target.value,
+    });
+  };
   return (
     <tr className="tdRowVndaMain">
       <td id="td" className="tdRowVnda ">
@@ -21,8 +28,15 @@ export const VndaTableRow = (props) => {
         <input
           className="table-input"
           autoComplete="off"
+          defaultValue={pedido["codCliente"]}
+        />
+      </td>
+      <td id="td" className="tdRowVnda">
+        <input
+          onChange={changePedido}
+          className="table-input"
+          autoComplete="off"
           defaultValue={pedido["pedido"]}
-          onClick={() => {}}
         />
       </td>
       <td id="td" className="tdRowVnda">

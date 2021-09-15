@@ -256,12 +256,23 @@ export const getVndaPedidos = async () => {
   let data, response;
   let token = localStorage.getItem("adminToken");
   if (token) {
-    await callBackend("/vnda/getVndaTable", token, data).then(
+    await callBackend("/telexpress/getVndaTable", token, data).then(
       (r) => (response = r)
     );
     return response;
   }
   return;
+};
+export const updateVndaPedidos = async (data) => {
+  let token = localStorage.getItem("adminToken");
+  if (data) {
+    console.log(data);
+    await callBackend("/telexpress/postPedidosVnda", token, data).catch((e) => {
+      console.log(e);
+    });
+  } else {
+    console.log("errou");
+  }
 };
 
 export const putOrcamento = async (orcamento, cnpj) => {
