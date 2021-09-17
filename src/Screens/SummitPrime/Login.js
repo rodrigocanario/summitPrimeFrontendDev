@@ -1,23 +1,13 @@
 import React, { useState } from "react";
-import {
-  Col,
-  Container,
-  Row,
-  Button,
-  Form,
-  Image,
-  Spinner,
-} from "react-bootstrap";
+import { Col, Container, Row, Button, Form, Image } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { login } from "../Redux/Actions";
 import InputMask from "react-input-mask";
-const callBackend = require("../Utils/callBackend");
+import { authenticate } from "../../Redux/Actions/authenticate";
 
 export const Login = () => {
   const dispatch = useDispatch();
   const [form, setForm] = useState({ cnpj: "", senha: "" });
   const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const changeForm = (e) => {
     let { name, value } = e.target;
@@ -29,17 +19,7 @@ export const Login = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    setLoading(true);
-    callBackend
-      .getUserInfos(form)
-      .then((response) => {
-        dispatch(login(response));
-        setLoading(false);
-      })
-      .catch((e) => {
-        setError(true);
-        setLoading(false);
-      });
+    dispatch(authenticate(form));
   };
 
   return (
@@ -112,18 +92,14 @@ export const Login = () => {
                     style={{ minHeight: "83px" }}
                     className="align-items-center justify-content-center"
                   >
-                    {loading === true ? (
-                      <Spinner animation="border" style={{ color: "white" }} />
-                    ) : (
-                      <Button
-                        id="login-button"
-                        type="submit"
-                        variant="outline-dark"
-                        size="sm"
-                      >
-                        Login
-                      </Button>
-                    )}
+                    <Button
+                      id="login-button"
+                      type="submit"
+                      variant="outline-dark"
+                      size="sm"
+                    >
+                      Login
+                    </Button>
                   </Row>
                 </Form>
               </Row>

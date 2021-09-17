@@ -4,9 +4,9 @@ import { Col, Row } from "react-bootstrap";
 // import { BiGlobe } from 'react-icons/bi';
 import { useSelector } from "react-redux";
 export const FooterHome = () => {
-  const login = useSelector((state) => state.informacoes);
+  const info = useSelector((state) => state.informacoes);
   return (
-    <footer className="d-flex flex-wrap justify-content-between py-3 my-4 border-top">
+    <footer className="d-flex flex-wrap justify-content-between border-top">
       <div className="col d-flex align-items-center">
         <a
           href="/"
@@ -27,21 +27,21 @@ export const FooterHome = () => {
               <li>
                 Respeitar o{" "}
                 <span style={{ fontWeight: "bold" }}>
-                  PEDIDO MINIMO DE R${login.valor.toFixed(2)}
+                  PEDIDO MINIMO DE R${info.pedidoMinimo.toFixed(2)}
                 </span>{" "}
               </li>
               <li>
                 Previsao de entrega de{" "}
                 <span style={{ fontWeight: "bold" }}>
                   {" "}
-                  {login.previsaoEntrega} dias úteis após o faturamento.
+                  {info.previsaoEntrega} dias úteis após o faturamento.
                 </span>
               </li>
-              {login.creditoAprovado ? (
+              {info.creditoAprovado ? (
                 <li>
                   Crédito pré-aprovado estimado de{" "}
                   <span style={{ fontWeight: "bold" }}>
-                    R${login.creditoAprovado}
+                    R${info.creditoAprovado}
                   </span>{" "}
                 </li>
               ) : (

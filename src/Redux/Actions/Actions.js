@@ -103,3 +103,10 @@ export const novoOrcamento = (itens) => {
     itens,
   };
 };
+
+export const loading = (loading) => {
+  return {
+    type: "LOADING",
+    loading,
+  };
+};

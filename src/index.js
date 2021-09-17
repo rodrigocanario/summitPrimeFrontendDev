@@ -4,13 +4,17 @@ import "./index.css";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { CookiesProvider } from "react-cookie";
-import { createStore } from "redux";
+import { applyMiddleware, compose, createStore } from "redux";
 import allReducers from "./Redux/Reducers";
 import { Provider } from "react-redux";
+import thunk from "redux-thunk";
 
 let store = createStore(
   allReducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
 );
 
 ReactDOM.render(

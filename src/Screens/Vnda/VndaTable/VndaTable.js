@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { updateVndaPedidos } from "../../../Redux/Actions";
+import { updateVndaPedidos } from "../../../Redux/Actions/Actions";
 import { getVndaPedidos } from "../../../Utils/callBackend";
 import { VndaTableBody } from "./VndaTableBody";
 import { VndaTableHeader } from "./VndaTableHeader";

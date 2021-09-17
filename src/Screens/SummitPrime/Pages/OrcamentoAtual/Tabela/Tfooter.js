@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { pagamentoAntecipado } from "../Redux/Actions";
-import { BotaoNext } from "./BotaoNext";
+import { pagamentoAntecipado } from "../../../../../Redux/Actions/Actions";
+import { BotaoNext } from "../BotaoNext";
 
 export const Tfooter = () => {
   const orcamento = useSelector((state) => state.orcamento);

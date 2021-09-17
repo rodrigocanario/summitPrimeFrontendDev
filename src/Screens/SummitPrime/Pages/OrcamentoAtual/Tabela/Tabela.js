@@ -63,7 +63,10 @@ export const Tabela = (props) => {
       </div>
       {props.tfooter ? (
         <div id="table-footer">
-          <table border="0" style={{ marginTop: "1.5rem" }}>
+          <table
+            border="0"
+            style={{ marginTop: "1.5rem", marginBottom: "1.5rem" }}
+          >
             <Tfooter />
           </table>
         </div>

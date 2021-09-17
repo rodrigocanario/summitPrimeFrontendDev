@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { changePage } from "../Redux/Actions";
+import { changePage } from "../../Redux/Actions/Actions";
 
 export const Header = () => {
   const dispatch = useDispatch();

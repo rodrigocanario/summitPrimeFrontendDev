@@ -1,47 +1,49 @@
-
-import React from 'react'
-import {Col, Modal, Row} from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
-import { hideVndaModal } from '../../../Redux/Actions'
-import { BsPersonBoundingBox} from 'react-icons/bs';
-import {SiRedhat} from 'react-icons/si'
-
+import React from "react";
+import { Col, Modal, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { BsPersonBoundingBox } from "react-icons/bs";
+import { SiRedhat } from "react-icons/si";
+import { hideVndaModal } from "../../../Redux/Actions/Actions";
 
 export const VndaTableModal = () => {
-    const vndaModal = useSelector(state => state.vndaModal)
-    const dispatch = useDispatch()
-    let handleHide = ()=>{
-        dispatch(hideVndaModal())
-    }
+  const vndaModal = useSelector((state) => state.vndaModal);
+  const dispatch = useDispatch();
+  let handleHide = () => {
+    dispatch(hideVndaModal());
+  };
 
-    return (
-        <Modal className='vndaModal' show={vndaModal.show} animation={true} onHide={handleHide} centered>
-                <Modal.Header className=' vndaModalHeader align-items-cente justify-content-left'>
-                    <Modal.Title>
-                        PEDIDO {vndaModal.pedido['ID do Orçamento']}
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body className='vndaModalBody'>
-                    <Row>
-                        <Col xs={6}>
-                            <Row className='modalHeaderButtons'>
-                                INFORMAÇÕES GERAIS
-                            </Row>
-                            <Row style={{padding:'0px 20px 10px 20px'}}>
-                                <button className='buttonModal'><BsPersonBoundingBox/>  Info cliente</button>
-                            </Row>
-                            <Row style={{padding:'0px 20px 10px 20px'}}>
-                                <button className='buttonModal'><SiRedhat/>  Info Agente</button>
-                            </Row>
-                            <Row style={{padding:'0px 20px 10px 20px'}}>
-                                <button className='buttonModal'>$  Info Pedido</button>
-                            </Row>
-                        </Col>
-                        <Col xs={6}>
-                            Area 2
-                        </Col>
-                    </Row>
-                    {/* <Tabs 
+  return (
+    <Modal
+      className="vndaModal"
+      show={vndaModal.show}
+      animation={true}
+      onHide={handleHide}
+      centered
+    >
+      <Modal.Header className=" vndaModalHeader align-items-cente justify-content-left">
+        <Modal.Title>PEDIDO {vndaModal.pedido["ID do Orçamento"]}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body className="vndaModalBody">
+        <Row>
+          <Col xs={6}>
+            <Row className="modalHeaderButtons">INFORMAÇÕES GERAIS</Row>
+            <Row style={{ padding: "0px 20px 10px 20px" }}>
+              <button className="buttonModal">
+                <BsPersonBoundingBox /> Info cliente
+              </button>
+            </Row>
+            <Row style={{ padding: "0px 20px 10px 20px" }}>
+              <button className="buttonModal">
+                <SiRedhat /> Info Agente
+              </button>
+            </Row>
+            <Row style={{ padding: "0px 20px 10px 20px" }}>
+              <button className="buttonModal">$ Info Pedido</button>
+            </Row>
+          </Col>
+          <Col xs={6}>Area 2</Col>
+        </Row>
+        {/* <Tabs 
                         id="controlled-tab-example"
                         activeKey={tab}
                         onSelect={(k) => setTab(k)}
@@ -67,12 +69,12 @@ export const VndaTableModal = () => {
                             <VndaTableModalProdutos/>
                         </Tab>
                     </Tabs> */}
-                </Modal.Body>
-                {/* <Modal.Footer>
+      </Modal.Body>
+      {/* <Modal.Footer>
                     <Button onClick={handleHide}>
                         Salvar e Enviar Email
                     </Button>
                 </Modal.Footer> */}
-            </Modal>
-    )
-}
+    </Modal>
+  );
+};

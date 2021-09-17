@@ -1,9 +1,9 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { FooterHome } from "../Components/FooterHome";
-import { Tabela } from "../Components/Tabela";
-import { changePage } from "../Redux/Actions";
+import { Tabela } from "./Tabela/Tabela";
+import { changePage } from "../../../../Redux/Actions/Actions";
+import { FooterHome } from "./FooterHome";
 
 export const Home = () => {
   const dispatch = useDispatch();
