@@ -69,6 +69,12 @@ export const updateVndaPedidos = (pedido) => {
     pedido,
   };
 };
+export const updateOrcamentos = (input) => {
+  return {
+    type: "UPDATEORCAMENTOS",
+    input,
+  };
+};
 export const clearVndaPedidos = () => {
   return {
     type: "CLEARVNDAPEDIDOS",

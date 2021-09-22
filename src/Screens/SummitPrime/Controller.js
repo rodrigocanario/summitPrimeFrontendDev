@@ -2,13 +2,14 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Header } from "./Header";
-import { authenticate } from "../../Redux/Actions/authenticate";
+import { authenticate } from "../../Redux/Actions/Authenticate";
 import { Login } from "./Login";
 import { Error } from "./Error";
 import { Home } from "./Pages/OrcamentoAtual/Home";
 import { Loading } from "./Loading";
-import { MeusOrcamentos } from "./Pages/MeusOrcamentos/MeusOrcamentos";
+import { OrcamentosVnda } from "./Pages/OrcamentosVnda/OrcamentosVnda";
 import { Obrigado } from "./Obrigado";
+import { OrcamentosSalvos } from "./Pages/OrcamentosSalvos/OrcamentosSalvos";
 
 export const Orcamento = () => {
   const dispatch = useDispatch();
@@ -42,8 +43,10 @@ export const Orcamento = () => {
             return <Home />;
           case "obrigado":
             return <Obrigado />;
-          case "meusOrcamentos":
-            return <MeusOrcamentos />;
+          case "orcamentosVnda":
+            return <OrcamentosVnda />;
+          case "orcamentosSalvos":
+            return <OrcamentosSalvos />;
           default:
             return <Error />;
         }

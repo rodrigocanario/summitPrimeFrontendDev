@@ -12,7 +12,9 @@ export const authenticate = (form) => {
           dispatch(loading(false));
         })
         .catch((err) => {
-          console.log({ "deu erro": err });
+          window.localStorage.removeItem("token");
+          dispatch(loading(false));
+          window.location.reload();
         });
     } else if (typeof form === "object" && form !== null) {
       dispatch(loading(true));

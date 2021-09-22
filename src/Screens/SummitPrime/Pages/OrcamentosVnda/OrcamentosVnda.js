@@ -9,14 +9,24 @@ import {
 import { getProduto } from "../../../../Utils/callBackend";
 const csv2json = require("csvjson-csv2json");
 
-export const MeusOrcamentos = () => {
+export const OrcamentosVnda = () => {
   const informacoes = useSelector((state) => state.informacoes);
-  const Orcamento = useSelector((state) => state.orcamento);
+  const orcamentosVnda = useSelector((state) => state.orcamentos.vnda);
+  const orcamento = useSelector((state) => state.orcamento);
   const dispatch = useDispatch();
+
+  const parseDatee = (date) => {
+    let dia = date.substring(8, 10);
+    let mes = date.substring(5, 7);
+    let ano = date.substring(0, 4);
+    let hora = date.substring(11, 19);
+    let data = `${dia}/${mes}/${ano} ${hora}`;
+    return data;
+  };
 
   const novoOrc = async (e) => {
     let produtos = [];
-    let produtosRaw = csv2json(informacoes.orcamentos[e.target.value]["CSV"]);
+    let produtosRaw = csv2json(orcamentosVnda[e.target.value]["CSV"]);
     for (let i = 0; i < produtosRaw.length; i++) {
       const element = produtosRaw[i];
       let { Referência: sku, Quantidade: quantidade } = element;
@@ -33,7 +43,7 @@ export const MeusOrcamentos = () => {
     console.log(produtos);
     dispatch(novoOrcamento(produtos));
     dispatch(calcularTotal(0));
-    localStorage.setItem("orcamento", JSON.stringify(Orcamento));
+    localStorage.setItem("orcamento", JSON.stringify(orcamento));
     dispatch(changePage("home"));
   };
 
@@ -54,23 +64,25 @@ export const MeusOrcamentos = () => {
           >
             <thead>
               <tr>
-                <th style={{ width: "50px" }}>ID</th>
-                <th style={{ width: "110px" }}>Nome</th>
-                <th style={{ width: "225px" }}> Data</th>
+                <th style={{ width: "225px" }}> Data e Hora</th>
                 <th>Produtos</th>
                 <th style={{ width: "125px" }}>Abrir</th>
               </tr>
             </thead>
             <tbody>
-              {informacoes.orcamentos.map((orcamento, index) => {
+              {orcamentosVnda.map((orcamento, index) => {
                 let produtos = csv2json(orcamento["CSV"]);
                 return (
                   <tr key={index}>
-                    <td>{orcamento["ID do Orçamento"]}</td>
-                    <td>Rascunho {index}</td>
-                    <td>{orcamento["Data de criação"]}</td>
+                    <td>{parseDatee(orcamento["Data de criação"])}</td>
                     <td>
-                      <ol>
+                      <ol
+                        style={{
+                          overflowY: "scroll",
+                          maxHeight: "65px",
+                          marginBottom: "0px",
+                        }}
+                      >
                         {produtos.map((produto, index) => {
                           return <li key={index}>{produto["Produtos"]}</li>;
                         })}

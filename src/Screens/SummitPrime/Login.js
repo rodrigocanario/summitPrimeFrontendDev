@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Col, Container, Row, Button, Form, Image } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import InputMask from "react-input-mask";
-import { authenticate } from "../../Redux/Actions/authenticate";
+import { authenticate } from "../../Redux/Actions/Authenticate";
 
 export const Login = () => {
   const dispatch = useDispatch();
