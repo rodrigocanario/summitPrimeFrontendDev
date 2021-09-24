@@ -37,21 +37,21 @@ const reducerOrcamento = (state = defaultState, action) => {
       let save = JSON.stringify(state);
       localStorage.setItem("orcamento", save);
       return state;
-    case "TROCARITEM":
-      const info = action.payload;
-      const index = action.index;
-      let preco = (parseFloat(info.valor) * parseInt(action.desconto)) / 100;
-      state.itens[index] = {
-        sku: info.sku,
-        nome: info.nome,
-        valor: preco.toFixed(2),
-        valorReal: preco.toFixed(2),
-        multiplo: info.multiplo,
-        quantidade: 0,
-        caixaMaster: info.caixaMaster,
-        estoque: info.estoque,
-      };
-      return state;
+    // case "TROCARITEM":
+    //   const info = action.payload;
+    //   const index = action.index;
+    //   let preco = (parseFloat(info.valor) * parseInt(action.desconto)) / 100;
+    //   state.itens[index] = {
+    //     sku: info.sku,
+    //     nome: info.nome,
+    //     valor: preco.toFixed(2),
+    //     valorReal: preco.toFixed(2),
+    //     multiplo: info.multiplo,
+    //     quantidade: 0,
+    //     caixaMaster: info.caixaMaster,
+    //     estoque: info.estoque,
+    //   };
+    //   return state;
     case "INCREMENT":
       let caixaMaster = state.itens[action.index].caixaMaster;
       let quantidade =
@@ -111,12 +111,12 @@ const reducerOrcamento = (state = defaultState, action) => {
       }
       state = { ...state, subTotal: subtot, total: tot.toFixed(2) };
       return state;
-    case "ADDITEM":
-      state.itens = [
-        ...state.itens,
-        { sku: "", nome: "", valor: 0, quantidade: 0, preco: 0, multiplo: 0 },
-      ];
-      return state;
+    // case "ADDITEM":
+    //   state.itens = [
+    //     ...state.itens,
+    //     { sku: "", nome: "", valor: 0, quantidade: 0, preco: 0, multiplo: 0 },
+    //   ];
+    //   return state;
     case "PAGAMENTOANTECIPADO":
       state = { ...state, pagamentoAntecipado: action.isPA };
       for (let i = 0; i < state.itens.length; i++) {

@@ -250,10 +250,7 @@ h2 {
   color: white;
 }
 /* --------------------vndaModal------------------ */
-.modal-content {
-  background-color: #0000007a !important;
-  backdrop-filter: blur(20px);
-}
+
 .vndaModal {
   backdrop-filter: blur(5px);
   background-color: #ffffff00;
@@ -278,3 +275,30 @@ h2 {
   font-size: 15px;
 }
 /* ------------------ checkBox--------------- */
+.selectionCard {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: #6c757d 0px 0px 8px 3px;
+  margin: 15px;
+  padding: 15px;
+}
+.iconLarge {
+  font-size: 160px;
+}
+.buttonLarge {
+  width: 100%;
+  background-color: transparent;
+  height: 100%;
+  border: none;
+}
+#novoOrcamento {
+  background-color: transparent;
+  border: white 1px solid;
+  border-radius: 25px;
+  margin: 10px;
+  font-size: 12px;
+}
+#coluna {
+  width: 125px;
+  padding: 0px;
+}

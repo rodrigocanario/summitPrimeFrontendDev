@@ -4,8 +4,8 @@ import reducerInformacoes from "./informacoes";
 import reducerPages from "./pages";
 import reducerAdminLogin from "./adminLogin";
 import reducerVndaPedidos from "./vndaPedidos";
-import reducerVndaModal from "./vndaModal";
 import reducerOrcamentos from "./orcamentos";
+import reducerModals from "./modals";
 
 const allReducers = combineReducers({
   orcamento: reducerOrcamento,
@@ -13,7 +13,7 @@ const allReducers = combineReducers({
   pages: reducerPages,
   adminLogin: reducerAdminLogin,
   vndaPedidos: reducerVndaPedidos,
-  vndaModal: reducerVndaModal,
+  modals: reducerModals,
   orcamentos: reducerOrcamentos,
 });
 export default allReducers;

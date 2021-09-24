@@ -1,21 +1,18 @@
-export const increment = (index) => {
+export const changeQuantidade = (str, index, indexOrcamento) => {
   return {
-    type: "INCREMENT",
+    type: "CHANGEQUANTIDADE",
+    str,
     index,
-  };
-};
-export const decrement = (index) => {
-  return {
-    type: "DECREMENT",
-    index,
+    indexOrcamento,
   };
 };
 
-export const trocarItem = (infos, index, desconto) => {
+export const trocarItem = (infos, index, indexOrcamento, desconto) => {
   return {
     type: "TROCARITEM",
-    payload: infos,
-    index: index,
+    infos,
+    index,
+    indexOrcamento,
     desconto,
   };
 };
@@ -27,9 +24,10 @@ export const calcularTotal = (index) => {
   };
 };
 
-export const addItem = () => {
+export const addItem = (indexOrcamento) => {
   return {
     type: "ADDITEM",
+    indexOrcamento,
   };
 };
 
@@ -89,6 +87,16 @@ export const showVndaModal = (pedido) => {
 export const hideVndaModal = () => {
   return {
     type: "HIDEVNDAMODAL",
+  };
+};
+export const showSalvosModal = () => {
+  return {
+    type: "SHOWSALVOSMODAL",
+  };
+};
+export const hideSalvosModal = () => {
+  return {
+    type: "HIDESALVOSMODAL",
   };
 };
 export const pagamentoAntecipado = (isPA) => {

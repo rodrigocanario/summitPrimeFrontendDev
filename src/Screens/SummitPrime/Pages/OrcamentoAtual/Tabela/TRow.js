@@ -5,12 +5,15 @@ import {
   calcularTotal,
   trocarItem,
 } from "../../../../../Redux/Actions/Actions";
+import { ChangeProduto } from "../../../../../Redux/Actions/TabelaActions/ChangeProduto";
 import { getProduto } from "../../../../../Utils/callBackend";
 import { Quantity } from "./Quantity";
 
 export const TRow = (props) => {
   const dispatch = useDispatch();
-  const Infos = useSelector((state) => state.orcamento.itens[props.index]);
+  const Itens = useSelector(
+    (state) => state.orcamentos.salvos[props.indexOrcamento].itens[props.index]
+  );
   const informacoes = useSelector((state) => state.informacoes);
 
   const handleEnter = (e) => {
@@ -59,28 +62,15 @@ export const TRow = (props) => {
   };
 
   const handleChange = (e) => {
-    if (e.target.value) {
-      getProduto({
-        sku: e.target.value,
-        tabela: informacoes.tabela,
-      }).then((response) => {
-        dispatch(trocarItem(response, props.index, informacoes.desconto));
-        dispatch(calcularTotal(props.index));
-      });
-    } else {
-      dispatch(
-        trocarItem(
-          {
-            valor: "",
-            uf: "",
-            nome: "",
-            sku: 0,
-            multiplo: 0,
-          },
-          props.index
-        )
-      );
-    }
+    dispatch(
+      ChangeProduto(
+        props.index,
+        props.indexOrcamento,
+        e.target.value,
+        informacoes.tabela,
+        informacoes.desconto
+      )
+    );
   };
 
   return (
@@ -93,39 +83,43 @@ export const TRow = (props) => {
           className="table-input"
           autoComplete="off"
           name={"input-" + props.index}
-          defaultValue={Infos.sku}
+          defaultValue={Itens.sku}
           onChange={handleChange}
           onKeyDown={handleEnter}
         />
       </td>
       <td id="td" className="nome">
-        {Infos.nome}
+        {Itens.nome}
       </td>
       <td id="td" className="tdCaixaMaster">
-        {Infos.caixaMaster ? Infos.caixaMaster + "UN" : ""}
+        {Itens.caixaMaster ? Itens.caixaMaster + "UN" : ""}
       </td>
       <td id="td" className="tdDescontoCaixaMaster">
-        {Infos.quantidade % Infos.caixaMaster === 0 && Infos.quantidade > 0
+        {Itens.quantidade % Itens.caixaMaster === 0 && Itens.quantidade > 0
           ? "5%"
           : ""}
       </td>
       <td id="td" className="tdValor">
-        {Infos.valorReal && Infos.valorReal !== "NaN"
-          ? "R$" + parseFloat(Infos.valorReal).toFixed(2)
+        {Itens.valorReal && Itens.valorReal !== "NaN"
+          ? "R$" + parseFloat(Itens.valorReal).toFixed(2)
           : ""}
       </td>
       <td id="td" className="tdQuantidade">
-        {Infos.nome ? <Quantity index={props.index} /> : ""}
+        {Itens.nome ? (
+          <Quantity index={props.index} indexOrcamento={props.indexOrcamento} />
+        ) : (
+          ""
+        )}
       </td>
       <td id="td" className="tdPreco">
-        {Infos.nome
-          ? Infos.preco
-            ? "R$" + parseFloat(Infos.preco).toFixed(2)
+        {Itens.nome
+          ? Itens.preco
+            ? "R$" + parseFloat(Itens.preco).toFixed(2)
             : "R$0.00"
           : ""}
       </td>
       <td id="td" className="tdEstoque">
-        {Infos.nome ? (Infos.estoque > 0 ? "Disponível" : "Indisponível") : ""}
+        {Itens.nome ? (Itens.estoque > 0 ? "Disponível" : "Indisponível") : ""}
       </td>
     </tr>
   );

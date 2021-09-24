@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
+import { Col, Image, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { changePage } from "../../Redux/Actions/Actions";
 import { GetOrcamentos } from "../../Redux/Actions/GetOrcamentos";
@@ -17,15 +17,20 @@ export const Header = () => {
           Consultar Listas Da Plataforma Catálogo
         </h3>
       </Col>
-      <Col>
+      <Col className="h-100">
+        <Image className="h-100" src="./logoSummit.png" />
+      </Col>
+      {/* <Col>
         <h3 className="h3Header" onClick={() => dispatch(changePage("home"))}>
           Orcamento Atual
         </h3>
-      </Col>
+      </Col> */}
       <Col>
         <h3
           className="h3Header"
-          onClick={() => dispatch(GetOrcamentos("salvos", informacoes.cnpj))}
+          onClick={() => {
+            dispatch(GetOrcamentos("salvos", informacoes.cnpj));
+          }}
         >
           Orcamentos Salvos
         </h3>

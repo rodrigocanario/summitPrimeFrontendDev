@@ -1,25 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addItem,
-  calcularTotal,
-  decrement,
-  increment,
-} from "../../../../../Redux/Actions/Actions";
+import { addItem, calcularTotal } from "../../../../../Redux/Actions/Actions";
 import { BiMinus, BiPlus } from "react-icons/bi";
+import { ChangeQuantidade } from "../../../../../Redux/Actions/TabelaActions/ChangeQuantidade";
 
 export const Quantity = (props) => {
   const dispatch = useDispatch();
-  const Infos = useSelector((state) => state.orcamento.itens[props.index]);
-  const multiplo = useSelector(
-    (state) => state.orcamento.itens[props.index].multiplo
-  );
+  const orcamentos = useSelector((state) => state.orcamentos);
   const incrementar = () => {
-    dispatch(increment(props.index, multiplo));
+    dispatch(ChangeQuantidade("inc", props.index, props.indexOrcamento));
     dispatch(calcularTotal(props.index));
   };
 
   const decrementar = () => {
-    dispatch(decrement(props.index, multiplo));
+    dispatch(ChangeQuantidade("dec", props.index, props.indexOrcamento));
     dispatch(calcularTotal(props.index));
   };
 
@@ -60,7 +53,10 @@ export const Quantity = (props) => {
           name={`input-quantity-${props.index}`}
           className="quantity-input__screen"
           type="text"
-          value={Infos.quantidade}
+          value={
+            orcamentos.salvos[props.indexOrcamento].itens[props.index]
+              .quantidade
+          }
           readOnly
           onKeyDown={handleKey}
         />

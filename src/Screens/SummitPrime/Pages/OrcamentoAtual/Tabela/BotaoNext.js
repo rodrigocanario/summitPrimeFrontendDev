@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { Fragment } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { changePage } from "../../../../Redux/Actions/Actions";
-import { enviarPedido, putOrcamento } from "../../../../Utils/callBackend";
+import { changePage } from "../../../../../Redux/Actions/Actions";
+import { enviarPedido, putOrcamento } from "../../../../../Utils/callBackend";
 
 export const BotaoNext = () => {
   const dispatch = useDispatch();

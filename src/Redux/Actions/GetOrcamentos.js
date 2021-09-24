@@ -1,7 +1,7 @@
 import { changePage, loading, updateOrcamentos } from "./Actions";
 import callBackend from "./CallBackend";
 
-export const GetOrcamentos = (type, cnpj) => {
+export const GetOrcamentos = (type, cnpj, changePagee = true) => {
   let url, variavelCnpj, nextPage;
   if (type === "vnda") {
     url = "/getVndaTable";
@@ -27,7 +27,9 @@ export const GetOrcamentos = (type, cnpj) => {
           }
         }
         dispatch(updateOrcamentos({ [type]: orcamentos }));
-        dispatch(changePage(nextPage));
+        if (changePagee) {
+          dispatch(changePage("orcamentosSalvos"));
+        }
         dispatch(loading(false));
       });
     }

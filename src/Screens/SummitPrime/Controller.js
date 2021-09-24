@@ -41,12 +41,12 @@ export const Orcamento = () => {
         switch (pages.name) {
           case "home":
             return <Home />;
-          case "obrigado":
-            return <Obrigado />;
           case "orcamentosVnda":
             return <OrcamentosVnda />;
           case "orcamentosSalvos":
             return <OrcamentosSalvos />;
+          case "obrigado":
+            return <Obrigado />;
           default:
             return <Error />;
         }
