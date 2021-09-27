@@ -12,11 +12,11 @@ export const GetOrcamentos = (type, cnpj, changePagee = true) => {
     variavelCnpj = "cnpj";
     nextPage = "orcamentosSalvos";
   }
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(loading(true));
     let token = localStorage.getItem("token");
     if (token) {
-      callBackend(url, token).then((r) => {
+      await callBackend(url, token).then((r) => {
         let orcamentos = [];
         for (let i = 0; i < r.length; i++) {
           if (
@@ -28,9 +28,10 @@ export const GetOrcamentos = (type, cnpj, changePagee = true) => {
         }
         dispatch(updateOrcamentos({ [type]: orcamentos }));
         if (changePagee) {
-          dispatch(changePage("orcamentosSalvos"));
+          dispatch(changePage(nextPage));
         }
         dispatch(loading(false));
+        return Promise.resolve();
       });
     }
   };

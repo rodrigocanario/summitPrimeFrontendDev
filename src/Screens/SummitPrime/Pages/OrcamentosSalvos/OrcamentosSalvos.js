@@ -14,7 +14,6 @@ export const OrcamentosSalvos = () => {
   const dispatch = useDispatch();
 
   const handleAbrirOrcamento = (e) => {
-    console.log(e.target.value);
     let id = orcamentosSalvos[e.target.value].id;
     dispatch(updateOrcamentos({ atual: id }));
     dispatch(hideSalvosModal());
@@ -61,19 +60,9 @@ export const OrcamentosSalvos = () => {
                   return (
                     <tr key={index}>
                       <td> {orcamento.titulo}</td>
-                      <td>
-                        <ol
-                          style={{
-                            overflowY: "scroll",
-                            maxHeight: "65px",
-                            marginBottom: "0px",
-                          }}
-                        >
-                          {orcamento.itens.map((produto, index) => {
-                            return <li key={index}>{produto.nome}</li>;
-                          })}
-                        </ol>
-                      </td>
+                      <td>{orcamento.itens.length}</td>
+                      <td>{orcamento.total}</td>
+                      <td>{orcamento.ultimaModificacao}</td>
                       <td>
                         <Button
                           onClick={handleAbrirOrcamento}

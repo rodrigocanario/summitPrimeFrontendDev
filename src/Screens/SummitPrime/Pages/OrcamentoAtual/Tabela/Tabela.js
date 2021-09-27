@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../../../../Redux/Actions/Actions";
@@ -8,12 +8,24 @@ import { TRow } from "./TRow";
 export const Tabela = () => {
   const dispatch = useDispatch();
   const orcamentos = useSelector((state) => state.orcamentos);
-  const indexOrcamento = orcamentos.salvos.findIndex(
-    (orcamento) => orcamento.id === orcamentos.atual
+  const [indexOrcamento, setIndexOrcamento] = useState(
+    orcamentos.salvos.findIndex(
+      (orcamento) => orcamento.id === orcamentos.atual
+    )
   );
-  const orcamentoAtual = orcamentos.salvos.find(
-    (orcamento) => orcamento.id === orcamentos.atual
+  const [orcamentoAtual, setOrcamentoAtual] = useState(
+    orcamentos.salvos.find((orcamento) => orcamento.id === orcamentos.atual)
   );
+  useEffect(() => {
+    setIndexOrcamento(
+      orcamentos.salvos.findIndex(
+        (orcamento) => orcamento.id === orcamentos.atual
+      )
+    );
+    setOrcamentoAtual(
+      orcamentos.salvos.find((orcamento) => orcamento.id === orcamentos.atual)
+    );
+  }, []);
   return (
     <Row>
       <section>
@@ -90,7 +102,7 @@ export const Tabela = () => {
             border="0"
             style={{ marginTop: "1.5rem", marginBottom: "1.5rem" }}
           >
-            <Tfooter />
+            <Tfooter indexOrcamento={indexOrcamento} />
           </table>
         </div>
       </section>

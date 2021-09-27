@@ -10,10 +10,9 @@ export const Home = () => {
   const [orcamentoAtual, setOrcamentoAtual] = useState({});
   useEffect(() => {
     if (orcamentos.atual) {
-      let lol = orcamentos.salvos.find(
-        (orcamento) => orcamento.id === orcamentos.atual
+      setOrcamentoAtual(
+        orcamentos.salvos.find((orcamento) => orcamento.id === orcamentos.atual)
       );
-      setOrcamentoAtual(lol);
     }
   }, [orcamentos]);
 

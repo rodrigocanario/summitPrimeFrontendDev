@@ -8,12 +8,10 @@ export const Quantity = (props) => {
   const orcamentos = useSelector((state) => state.orcamentos);
   const incrementar = () => {
     dispatch(ChangeQuantidade("inc", props.index, props.indexOrcamento));
-    dispatch(calcularTotal(props.index));
   };
 
   const decrementar = () => {
     dispatch(ChangeQuantidade("dec", props.index, props.indexOrcamento));
-    dispatch(calcularTotal(props.index));
   };
 
   const handleKey = (e) => {

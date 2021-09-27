@@ -17,17 +17,37 @@ export const trocarItem = (infos, index, indexOrcamento, desconto) => {
   };
 };
 
-export const calcularTotal = (index) => {
-  return {
-    type: "TOTALPRODUTO",
-    index: index,
-  };
-};
-
 export const addItem = (indexOrcamento) => {
   return {
     type: "ADDITEM",
     indexOrcamento,
+  };
+};
+export const updateOrcamentos = (input) => {
+  return {
+    type: "UPDATEORCAMENTOS",
+    input,
+  };
+};
+
+export const updatePrecos = (indexOrcamento, orcamento) => {
+  return {
+    type: "UPDATEPRECOS",
+    indexOrcamento,
+    orcamento,
+  };
+};
+export const pagamentoAntecipado = (indexOrcamento) => {
+  return {
+    type: "PAGAMENTOANTECIPADO",
+    indexOrcamento,
+  };
+};
+// --------------------------
+export const calcularTotal = (index) => {
+  return {
+    type: "TOTALPRODUTO",
+    index: index,
   };
 };
 
@@ -67,12 +87,6 @@ export const updateVndaPedidos = (pedido) => {
     pedido,
   };
 };
-export const updateOrcamentos = (input) => {
-  return {
-    type: "UPDATEORCAMENTOS",
-    input,
-  };
-};
 export const clearVndaPedidos = () => {
   return {
     type: "CLEARVNDAPEDIDOS",
@@ -97,12 +111,6 @@ export const showSalvosModal = () => {
 export const hideSalvosModal = () => {
   return {
     type: "HIDESALVOSMODAL",
-  };
-};
-export const pagamentoAntecipado = (isPA) => {
-  return {
-    type: "PAGAMENTOANTECIPADO",
-    isPA,
   };
 };
 export const addOrcamentos = (orcamentos) => {

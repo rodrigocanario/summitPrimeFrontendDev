@@ -117,21 +117,21 @@ const reducerOrcamento = (state = defaultState, action) => {
     //     { sku: "", nome: "", valor: 0, quantidade: 0, preco: 0, multiplo: 0 },
     //   ];
     //   return state;
-    case "PAGAMENTOANTECIPADO":
-      state = { ...state, pagamentoAntecipado: action.isPA };
-      for (let i = 0; i < state.itens.length; i++) {
-        const element = state.itens[i];
-        if (parseFloat(element.preco)) {
-          subtot = subtot + parseFloat(element.preco);
-        }
-      }
-      if (state.pagamentoAntecipado) {
-        tot = subtot * 0.95;
-      } else {
-        tot = subtot;
-      }
-      state = { ...state, subTotal: subtot, total: tot.toFixed(2) };
-      return state;
+    // case "PAGAMENTOANTECIPADO":
+    //   state = { ...state, pagamentoAntecipado: action.isPA };
+    //   for (let i = 0; i < state.itens.length; i++) {
+    //     const element = state.itens[i];
+    //     if (parseFloat(element.preco)) {
+    //       subtot = subtot + parseFloat(element.preco);
+    //     }
+    //   }
+    //   if (state.pagamentoAntecipado) {
+    //     tot = subtot * 0.95;
+    //   } else {
+    //     tot = subtot;
+    //   }
+    //   state = { ...state, subTotal: subtot, total: tot.toFixed(2) };
+    // return state;
     default:
       return state;
   }

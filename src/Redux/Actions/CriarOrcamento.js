@@ -3,7 +3,7 @@ import callBackend from "./CallBackend";
 import { GetOrcamentos } from "./GetOrcamentos";
 
 export const criarOrcamento = (infos) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     let token = localStorage.getItem("token");
     let id = Math.random().toString(36).slice(-8).toUpperCase();
     let orcamentoPadrao = {
@@ -14,12 +14,14 @@ export const criarOrcamento = (infos) => {
       total: "0",
       pagamentoAntecipado: false,
       itens: [],
+      ultimaModificacao: new Date(),
     };
     let orcamento = { ...orcamentoPadrao, ...infos };
-    callBackend("/putOrcamento", token, { orcamento });
-    dispatch(updateOrcamentos({ atual: id }));
-    dispatch(GetOrcamentos("salvos", parseInt(infos.cnpj), false));
-    dispatch(hideSalvosModal());
-    dispatch(changePage("home"));
+    await callBackend("/putOrcamento", token, { orcamento }).then(async (r) => {
+      await dispatch(GetOrcamentos("salvos", parseInt(infos.cnpj), false));
+      dispatch(updateOrcamentos({ atual: id }));
+      dispatch(hideSalvosModal());
+      dispatch(changePage("home"));
+    });
   };
 };

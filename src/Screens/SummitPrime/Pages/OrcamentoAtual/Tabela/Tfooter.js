@@ -1,13 +1,18 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { pagamentoAntecipado } from "../../../../../Redux/Actions/Actions";
+import { ChangeValores } from "../../../../../Redux/Actions/TabelaActions/ChangeValores";
 import { BotaoNext } from "./BotaoNext";
 
-export const Tfooter = () => {
-  const orcamento = useSelector((state) => state.orcamento);
+export const Tfooter = (props) => {
+  const orcamento = useSelector(
+    (state) => state.orcamentos.salvos[props.indexOrcamento]
+  );
   const dispatch = useDispatch();
   const handleChange = (e) => {
-    dispatch(pagamentoAntecipado(e.target.checked));
+    let lol;
+    dispatch(pagamentoAntecipado(props.indexOrcamento));
+    dispatch(ChangeValores(lol, props.indexOrcamento));
   };
   return (
     <tfoot>
