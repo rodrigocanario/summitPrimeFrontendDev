@@ -7,6 +7,7 @@ import { Selection } from "./Selection";
 
 export const Home = () => {
   const orcamentos = useSelector((state) => state.orcamentos);
+  const pages = useSelector((state) => state.pages);
   const [orcamentoAtual, setOrcamentoAtual] = useState({});
   useEffect(() => {
     if (orcamentos.atual) {
@@ -32,6 +33,7 @@ export const Home = () => {
           </Row>
           {orcamentos.atual ? (
             <>
+              {pages.savingOrcamento ? "saving orcamento" : ""}
               <Tabela />
             </>
           ) : (

@@ -43,6 +43,18 @@ export const pagamentoAntecipado = (indexOrcamento) => {
     indexOrcamento,
   };
 };
+export const loading = (loading) => {
+  return {
+    type: "LOADING",
+    loading,
+  };
+};
+export const savingOrcamento = (savingOrcamento) => {
+  return {
+    type: "SAVINGORCAMENTO",
+    savingOrcamento,
+  };
+};
 // --------------------------
 export const calcularTotal = (index) => {
   return {
@@ -123,12 +135,5 @@ export const novoOrcamento = (itens) => {
   return {
     type: "NOVOORCAMENTO",
     itens,
-  };
-};
-
-export const loading = (loading) => {
-  return {
-    type: "LOADING",
-    loading,
   };
 };

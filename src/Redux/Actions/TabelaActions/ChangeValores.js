@@ -19,16 +19,23 @@ export const ChangeValores = (index, indexOrcamento) => {
             (100 - parseInt(desconto))) /
           100;
       }
-      orcamento.subTotal = 0;
       orcamento.itens[index].preco =
         orcamento.itens[index].quantidade * orcamento.itens[index].valorReal;
-      for (let i = 0; i < orcamento.itens.length; i++) {
-        orcamento.subTotal = orcamento.subTotal + orcamento.itens[i].preco;
+    }
+    orcamento.subTotal = 0;
+    orcamento.subTotalDisponivel = 0;
+    for (let i = 0; i < orcamento.itens.length; i++) {
+      orcamento.subTotal = orcamento.subTotal + orcamento.itens[i].preco;
+      if (orcamento.itens[i].estoque > 0) {
+        orcamento.subTotalDisponivel =
+          orcamento.subTotalDisponivel + orcamento.itens[i].preco;
       }
     }
     orcamento.total = orcamento.subTotal;
+    orcamento.totalDisponivel = orcamento.subTotalDisponivel;
     if (orcamento.pagamentoAntecipado) {
       orcamento.total = orcamento.subTotal * 0.95;
+      orcamento.totalDisponivel = orcamento.subTotalDisponivel * 0.95;
     }
     dispatch(updatePrecos(indexOrcamento, orcamento));
   };

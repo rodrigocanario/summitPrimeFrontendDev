@@ -64,6 +64,21 @@ export const Tfooter = (props) => {
           R${orcamento.total ? parseFloat(orcamento.total).toFixed(2) : 0.0}
         </td>
       </tr>
+      <tr id="tr">
+        <td id="td-footer" className="align-middle"></td>
+        <td id="td-footer" className="align-middle"></td>
+        <td id="td-footer" className="align-middle"></td>
+        <td id="td-footer" className="align-middle"></td>
+        <td id="td-footer" className="align-middle">
+          VALOR TOTAL DISPONIVEL:
+        </td>
+        <td id="td-footer" className="align-middle">
+          R$
+          {orcamento.totalDisponivel
+            ? parseFloat(orcamento.totalDisponivel).toFixed(2)
+            : 0.0}
+        </td>
+      </tr>
     </tfoot>
   );
 };

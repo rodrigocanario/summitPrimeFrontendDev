@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../../../../Redux/Actions/Actions";
+import { saveOrcamento } from "../../../../../Redux/Actions/SaveOrcamento";
 import { Tfooter } from "./Tfooter";
 import { TRow } from "./TRow";
 
@@ -25,7 +26,8 @@ export const Tabela = () => {
     setOrcamentoAtual(
       orcamentos.salvos.find((orcamento) => orcamento.id === orcamentos.atual)
     );
-  }, []);
+    dispatch(saveOrcamento(orcamentos.salvos[indexOrcamento]));
+  }, [orcamentos]);
   return (
     <Row>
       <section>
