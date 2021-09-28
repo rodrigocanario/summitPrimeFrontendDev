@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, calcularTotal } from "../../../../../Redux/Actions/Actions";
+import { addItem } from "../../../../../Redux/Actions/Actions";
 import { BiMinus, BiPlus } from "react-icons/bi";
 import { ChangeQuantidade } from "../../../../../Redux/Actions/TabelaActions/ChangeQuantidade";
 

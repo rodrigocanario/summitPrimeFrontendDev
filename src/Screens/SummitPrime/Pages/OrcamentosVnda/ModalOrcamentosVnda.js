@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  hideSalvosModal,
-  hideVndaModal,
-} from "../../../../Redux/Actions/Actions";
-import { criarOrcamento } from "../../../../Redux/Actions/CriarOrcamento";
+import { hideVndaModal } from "../../../../Redux/Actions/Actions";
 import { criarOrcamentoVnda } from "../../../../Redux/Actions/CriarOrcamentoVnda";
 
 export const ModalOrcamentosVnda = () => {

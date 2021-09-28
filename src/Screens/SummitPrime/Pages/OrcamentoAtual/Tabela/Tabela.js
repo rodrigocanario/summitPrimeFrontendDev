@@ -27,7 +27,7 @@ export const Tabela = () => {
       orcamentos.salvos.find((orcamento) => orcamento.id === orcamentos.atual)
     );
     dispatch(saveOrcamento(orcamentos.salvos[indexOrcamento]));
-  }, [orcamentos]);
+  }, [orcamentos, dispatch, indexOrcamento]);
   return (
     <Row>
       <section>

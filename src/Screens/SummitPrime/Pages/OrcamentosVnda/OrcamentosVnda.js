@@ -1,21 +1,12 @@
 import React from "react";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  calcularTotal,
-  changePage,
-  novoOrcamento,
-  showVndaModal,
-} from "../../../../Redux/Actions/Actions";
-import { criarOrcamentoVnda } from "../../../../Redux/Actions/CriarOrcamentoVnda";
-import { getProduto } from "../../../../Utils/callBackend";
+import { showVndaModal } from "../../../../Redux/Actions/Actions";
 import { ModalOrcamentosVnda } from "./ModalOrcamentosVnda";
 const csv2json = require("csvjson-csv2json");
 
 export const OrcamentosVnda = () => {
-  const informacoes = useSelector((state) => state.informacoes);
   const orcamentosVnda = useSelector((state) => state.orcamentos.vnda);
-  const orcamento = useSelector((state) => state.orcamento);
   const dispatch = useDispatch();
 
   const parseDatee = (date) => {

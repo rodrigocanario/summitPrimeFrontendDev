@@ -1,12 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addItem,
-  calcularTotal,
-  trocarItem,
-} from "../../../../../Redux/Actions/Actions";
+import { addItem } from "../../../../../Redux/Actions/Actions";
 import { ChangeProduto } from "../../../../../Redux/Actions/TabelaActions/ChangeProduto";
-import { getProduto } from "../../../../../Utils/callBackend";
 import { Quantity } from "./Quantity";
 
 export const TRow = (props) => {
