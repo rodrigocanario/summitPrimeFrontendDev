@@ -55,6 +55,27 @@ export const savingOrcamento = (savingOrcamento) => {
     savingOrcamento,
   };
 };
+export const showVndaModal = (value) => {
+  return {
+    type: "SHOWVNDAMODAL",
+    value,
+  };
+};
+export const hideVndaModal = () => {
+  return {
+    type: "HIDEVNDAMODAL",
+  };
+};
+export const showSalvosModal = () => {
+  return {
+    type: "SHOWSALVOSMODAL",
+  };
+};
+export const hideSalvosModal = () => {
+  return {
+    type: "HIDESALVOSMODAL",
+  };
+};
 // --------------------------
 export const calcularTotal = (index) => {
   return {
@@ -102,27 +123,6 @@ export const updateVndaPedidos = (pedido) => {
 export const clearVndaPedidos = () => {
   return {
     type: "CLEARVNDAPEDIDOS",
-  };
-};
-export const showVndaModal = (pedido) => {
-  return {
-    type: "SHOWVNDAMODAL",
-    pedido,
-  };
-};
-export const hideVndaModal = () => {
-  return {
-    type: "HIDEVNDAMODAL",
-  };
-};
-export const showSalvosModal = () => {
-  return {
-    type: "SHOWSALVOSMODAL",
-  };
-};
-export const hideSalvosModal = () => {
-  return {
-    type: "HIDESALVOSMODAL",
   };
 };
 export const addOrcamentos = (orcamentos) => {

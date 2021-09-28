@@ -1,4 +1,4 @@
-import { changePage, updateOrcamentos } from "./Actions";
+import { changePage, hideVndaModal, updateOrcamentos } from "./Actions";
 import callBackend from "./CallBackend";
 import { criarOrcamento } from "./CriarOrcamento";
 import { saveOrcamento } from "./SaveOrcamento";
@@ -6,7 +6,7 @@ import { ChangeValores } from "./TabelaActions/ChangeValores";
 
 const csv2json = require("csvjson-csv2json");
 
-export const criarOrcamentoVnda = (indexVnda) => {
+export const criarOrcamentoVnda = (indexVnda, titulo) => {
   return async (dispatch, getState) => {
     let informacoes = getState().informacoes;
     let orcamento = getState().orcamentos.vnda[indexVnda];
@@ -30,13 +30,19 @@ export const criarOrcamentoVnda = (indexVnda) => {
     let id = Math.random().toString(36).slice(-8).toUpperCase();
     let index;
     await dispatch(
-      criarOrcamento({ itens: produtos, id, cnpj: `${informacoes.cnpj}` })
+      criarOrcamento({
+        itens: produtos,
+        id,
+        cnpj: `${informacoes.cnpj}`,
+        titulo,
+      })
     );
     let indexOrcamento = getState().orcamentos.salvos.findIndex(
       (orcamento) => orcamento.id === id
     );
     dispatch(ChangeValores(index, indexOrcamento));
     dispatch(updateOrcamentos({ atual: id }));
+    dispatch(hideVndaModal());
     dispatch(changePage("home"));
   };
 };

@@ -1,23 +1,27 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { hideSalvosModal } from "../../../../Redux/Actions/Actions";
+import {
+  hideSalvosModal,
+  hideVndaModal,
+} from "../../../../Redux/Actions/Actions";
 import { criarOrcamento } from "../../../../Redux/Actions/CriarOrcamento";
+import { criarOrcamentoVnda } from "../../../../Redux/Actions/CriarOrcamentoVnda";
 
 export const ModalOrcamentosVnda = () => {
   const [titulo, setTitulo] = useState("Novo Orcamento");
-  const informacoes = useSelector((state) => state.informacoes);
   const modals = useSelector((state) => state.modals);
   const dispatch = useDispatch();
+
   const handleCriar = () => {
-    dispatch(criarOrcamento({ cnpj: `${informacoes.cnpj}`, titulo }));
+    dispatch(criarOrcamentoVnda(modals.vnda.value, titulo));
   };
 
   return (
     <Modal
-      onHide={() => dispatch(hideSalvosModal())}
+      onHide={() => dispatch(hideVndaModal())}
       className=""
-      show={modals.salvos.show}
+      show={modals.vnda.show}
       animation={true}
       centered
     >

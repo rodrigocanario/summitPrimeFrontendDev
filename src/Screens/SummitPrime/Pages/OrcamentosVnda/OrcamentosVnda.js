@@ -5,6 +5,7 @@ import {
   calcularTotal,
   changePage,
   novoOrcamento,
+  showVndaModal,
 } from "../../../../Redux/Actions/Actions";
 import { criarOrcamentoVnda } from "../../../../Redux/Actions/CriarOrcamentoVnda";
 import { getProduto } from "../../../../Utils/callBackend";
@@ -27,27 +28,7 @@ export const OrcamentosVnda = () => {
   };
 
   const novoOrc = async (e) => {
-    // let produtos = [];
-    // let produtosRaw = csv2json(orcamentosVnda[e.target.value]["CSV"]);
-    // for (let i = 0; i < produtosRaw.length; i++) {
-    //   const element = produtosRaw[i];
-    //   let { Referência: sku, Quantidade: quantidade } = element;
-    //   let data = { sku, tabela: informacoes.tabela };
-    //   await getProduto(data).then((resp) => {
-    //     let valorReal = resp.valor;
-    //     if (quantidade % resp.caixaMaster === 0) {
-    //       valorReal = (resp.valor * 0.95).toFixed(2);
-    //     }
-    //     let preco = valorReal * quantidade;
-    //     produtos.push({ ...resp, quantidade, valorReal, preco });
-    //   });
-    // }
-    // console.log(produtos);
-    // dispatch(novoOrcamento(produtos));
-    // dispatch(calcularTotal(0));
-    // localStorage.setItem("orcamento", JSON.stringify(orcamento));
-    // dispatch(changePage("home"));
-    dispatch(criarOrcamentoVnda(e.target.value));
+    dispatch(showVndaModal(e.target.value));
   };
 
   return (
