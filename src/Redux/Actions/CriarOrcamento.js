@@ -20,13 +20,12 @@ export const criarOrcamento = (infos, changePagina) => {
       ultimaModificacao: new Date(),
     };
     let orcamento = { ...orcamentoPadrao, ...infos };
-    console.log(orcamento);
     await callBackend("/putOrcamento", token, { orcamento }).then(async (r) => {
       await dispatch(GetOrcamentos("salvos", parseInt(infos.cnpj), false));
       dispatch(updateOrcamentos({ atual: id }));
       dispatch(hideSalvosModal());
       if (changePagina) {
-        dispatch(changePage("home"));
+        dispatch(changePage("orcamentoAtual"));
       }
       Promise.resolve();
     });

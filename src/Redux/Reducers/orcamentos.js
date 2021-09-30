@@ -66,7 +66,6 @@ const reducerOrcamentos = (state = defaultState, action) => {
       state.salvos[action.indexOrcamento] = action.orcamento;
       return { ...state };
     case "PAGAMENTOANTECIPADO":
-      console.log(action.indexOrcamento);
       state.salvos[action.indexOrcamento].pagamentoAntecipado =
         !state.salvos[action.indexOrcamento].pagamentoAntecipado;
       return { ...state };

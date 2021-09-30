@@ -10,7 +10,7 @@ export const ModalOrcamentosSalvos = () => {
   const modals = useSelector((state) => state.modals);
   const dispatch = useDispatch();
   const handleCriar = () => {
-    dispatch(criarOrcamento({ cnpj: `${informacoes.cnpj}`, titulo }));
+    dispatch(criarOrcamento({ cnpj: `${informacoes.cnpj}`, titulo }, true));
   };
   const focusInput = () => {
     document.getElementById("inputOrcamentosSalvos").focus();

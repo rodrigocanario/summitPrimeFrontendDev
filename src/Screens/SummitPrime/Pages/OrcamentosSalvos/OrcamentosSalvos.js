@@ -58,8 +58,8 @@ export const OrcamentosSalvos = () => {
                 <tr>
                   <th style={{ width: "225px" }}> Nome</th>
                   <th>Quantidade de Itens</th>
-                  <th>Valor total</th>
-                  <th>Data ultima modificacao</th>
+                  <th>Valor Total</th>
+                  <th>Última Modificação</th>
                 </tr>
               </thead>
               <tbody>

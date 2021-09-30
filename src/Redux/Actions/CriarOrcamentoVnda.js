@@ -15,8 +15,10 @@ export const criarOrcamentoVnda = (indexVnda, titulo) => {
     for (let i = 0; i < produtosRaw.length; i++) {
       const element = produtosRaw[i];
       let { Referência: sku, Quantidade: quantidade } = element;
+      quantidade = parseInt(quantidade);
       let data = { sku, tabela: informacoes.tabela };
       await callBackend("/getProduto", token, data).then((resp) => {
+        resp.valor = parseFloat(resp.valor);
         let valorReal = resp.valor * ((100 - informacoes.desconto) / 100);
         if (quantidade % resp.caixaMaster === 0) {
           valorReal = resp.valor * ((95 - informacoes.desconto) / 100);
@@ -25,7 +27,6 @@ export const criarOrcamentoVnda = (indexVnda, titulo) => {
         produtos.push({ ...resp, quantidade, valorReal, preco });
       });
     }
-    console.log(produtos);
     let id = Math.random().toString(36).slice(-8).toUpperCase();
     let index;
     await dispatch(
@@ -42,29 +43,6 @@ export const criarOrcamentoVnda = (indexVnda, titulo) => {
     dispatch(ChangeValores(index, indexOrcamento));
     dispatch(updateOrcamentos({ atual: id }));
     dispatch(hideVndaModal());
-    dispatch(changePage("home"));
+    dispatch(changePage("orcamentoAtual"));
   };
 };
-
-// const novoOrc = async (e) => {
-//     let produtos = [];
-//     let produtosRaw = csv2json(orcamentosVnda[e.target.value]["CSV"]);
-//     for (let i = 0; i < produtosRaw.length; i++) {
-//       const element = produtosRaw[i];
-//       let { Referência: sku, Quantidade: quantidade } = element;
-//       let data = { sku, tabela: informacoes.tabela };
-//       await getProduto(data).then((resp) => {
-//         let valorReal = resp.valor;
-//         if (quantidade % resp.caixaMaster === 0) {
-//           valorReal = (resp.valor * 0.95).toFixed(2);
-//         }
-//         let preco = valorReal * quantidade;
-//         produtos.push({ ...resp, quantidade, valorReal, preco });
-//       });
-//     }
-//     console.log(produtos);
-//     dispatch(novoOrcamento(produtos));
-//     dispatch(calcularTotal(0));
-//     localStorage.setItem("orcamento", JSON.stringify(orcamento));
-//     dispatch(changePage("home"));
-//   };

@@ -56,6 +56,7 @@ export const OrcamentosVnda = () => {
                     <td>{parseDatee(orcamento["Data de criação"])}</td>
                     <td>
                       <ol
+                        id={index}
                         style={{
                           overflowY: "scroll",
                           maxHeight: "70px",

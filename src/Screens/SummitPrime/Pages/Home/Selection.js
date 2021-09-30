@@ -10,14 +10,17 @@ export const Selection = () => {
   const informacoes = useSelector((state) => state.informacoes);
   return (
     <>
-      <Row className="align-items-center justify-content-center">
+      <Row
+        className="align-items-center justify-content-center"
+        style={{ marginBottom: "60px" }}
+      >
         <Col xs={4} className="selectionCard">
           <button
             className="buttonLarge"
             onClick={() => dispatch(GetOrcamentos("vnda", informacoes.cnpj))}
           >
             <BiCart className="iconLarge" />
-            <div>Consultar lista da plataforma Catalogo</div>
+            <div>Consultar lista da Plataforma Catálogo</div>
           </button>
         </Col>
         <Col xs={4} className="selectionCard">
@@ -27,7 +30,7 @@ export const Selection = () => {
           >
             {/* <BiFileBlank className="iconLarge" /> */}
             <BiFolder className="iconLarge" />
-            <div>Orcamentos Salvos</div>
+            <div>Orçamentos Salvos</div>
           </button>
         </Col>
       </Row>

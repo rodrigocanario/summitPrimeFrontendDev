@@ -7,7 +7,10 @@ export const HeaderHome = () => {
   const dispatch = useDispatch();
   const login = useSelector((state) => state.informacoes);
   return (
-    <Row className="justify-content-center text-center">
+    <Row
+      className="justify-content-center text-center"
+      style={{ margin: "60px 0px 60px 0px" }}
+    >
       <h1>
         Bem Vindo à{" "}
         <span style={{ fontFamily: "fontSummit" }}>Summit Prime&reg;</span>{" "}
@@ -26,7 +29,7 @@ export const HeaderHome = () => {
             Plataforma Catálogo.
           </a>{" "}
           Pois assim você pode abrir aqui a lista completa dos itens já
-          escolhidos na PC ao clicar no botão de{" "}
+          escolhidos na Plataforma Catálogo ao clicar no botão de{" "}
           <button
             style={{
               color: "white",

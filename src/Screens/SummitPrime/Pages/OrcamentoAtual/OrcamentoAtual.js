@@ -58,6 +58,7 @@ export const OrcamentoAtual = () => {
           </>
         </Col>
       </Row>
+      <FooterHome />
     </Container>
   );
 };

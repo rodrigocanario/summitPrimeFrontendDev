@@ -16,23 +16,29 @@ export const GetOrcamentos = (type, cnpj, changePagee = true) => {
     dispatch(loading(true));
     let token = localStorage.getItem("token");
     if (token) {
-      await callBackend(url, token).then((r) => {
-        let orcamentos = [];
-        for (let i = 0; i < r.length; i++) {
-          if (
-            r[i][variavelCnpj] &&
-            parseInt(r[i][variavelCnpj].replace(/\D+/g, "")) === cnpj
-          ) {
-            orcamentos.push(r[i]);
+      await callBackend(url, token)
+        .then((r) => {
+          let orcamentos = [];
+          for (let i = 0; i < r.length; i++) {
+            if (
+              r[i][variavelCnpj] &&
+              parseInt(r[i][variavelCnpj].replace(/\D+/g, "")) === cnpj
+            ) {
+              orcamentos.push(r[i]);
+            }
           }
-        }
-        dispatch(updateOrcamentos({ [type]: orcamentos }));
-        if (changePagee) {
-          dispatch(changePage(nextPage));
-        }
-        dispatch(loading(false));
-        return Promise.resolve();
-      });
+          dispatch(updateOrcamentos({ [type]: orcamentos }));
+          if (changePagee) {
+            dispatch(changePage(nextPage));
+          }
+          dispatch(loading(false));
+          return Promise.resolve();
+        })
+        .catch((e) => {
+          console.log("erro no callBackend");
+          dispatch(loading(false));
+          return Promise.resolve();
+        });
     }
   };
 };

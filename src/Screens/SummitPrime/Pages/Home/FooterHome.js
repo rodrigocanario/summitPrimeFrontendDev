@@ -39,11 +39,11 @@ export const FooterHome = () => {
               <li>
                 Respeitar o{" "}
                 <span style={{ fontWeight: "bold" }}>
-                  PEDIDO MINIMO DE R${info.pedidoMinimo.toFixed(2)}
+                  PEDIDO MÍNIMO DE R${info.pedidoMinimo.toFixed(2)}
                 </span>{" "}
               </li>
               <li>
-                Previsao de entrega de{" "}
+                Previsão de entrega de{" "}
                 <span style={{ fontWeight: "bold" }}>
                   {" "}
                   {info.previsaoEntrega} dias úteis após o faturamento.
@@ -55,16 +55,18 @@ export const FooterHome = () => {
                   <span style={{ fontWeight: "bold" }}>
                     R${info.creditoAprovado}
                   </span>{" "}
+                  .
                 </li>
               ) : (
                 ""
               )}
               <li>
-                As alterações feitas neste ambiente não retornam para a PC
+                As alterações feitas neste ambiente não retornam para a
+                Plataforma Catálogo.
               </li>
               <li>
                 A SUMMIT PRIME está em desenvolvimento portanto somente algumas
-                de suas funcionalidades estāo ativadas no momento.
+                de suas funcionalidades estāo ativas no momento.
               </li>
               <li>
                 Toda e qualquer informação aqui disponibilizada deve ser tratada

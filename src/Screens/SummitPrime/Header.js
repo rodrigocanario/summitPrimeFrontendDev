@@ -36,7 +36,7 @@ export const Header = () => {
             dispatch(GetOrcamentos("salvos", informacoes.cnpj));
           }}
         >
-          Orcamentos Salvos
+          Orçamentos Salvos
         </h3>
       </Col>
       {/* <Col>

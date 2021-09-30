@@ -3,7 +3,6 @@ import callBackend from "./CallBackend";
 
 export const saveOrcamento = (infos) => {
   return (dispatch) => {
-    console.log(infos);
     dispatch(savingOrcamento(true));
     let token = localStorage.getItem("token");
     let orcamento = { ...infos, ultimaModificacao: new Date() };
