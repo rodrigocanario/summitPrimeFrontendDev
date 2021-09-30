@@ -7,7 +7,6 @@ import { authenticate } from "../../Redux/Actions/Authenticate";
 export const Login = () => {
   const dispatch = useDispatch();
   const [form, setForm] = useState({ cnpj: "", senha: "" });
-  const [error, setError] = useState(false);
 
   const changeForm = (e) => {
     let { name, value } = e.target;
@@ -82,7 +81,7 @@ export const Login = () => {
                     />
                   </Row>
                   <Row>
-                    {error === true ? (
+                    {false === true ? (
                       <p style={{ color: "red" }}>Usuário ou Senha Inválido</p>
                     ) : (
                       <p style={{ color: "transparent" }}>.</p>

@@ -21,6 +21,7 @@ export const authenticate = (form) => {
         .then((resp) => {
           if (resp && resp.token) {
             localStorage.setItem("token", resp.token);
+            resp.isAuth = true;
             dispatch(login(resp));
             dispatch(loading(false));
           }

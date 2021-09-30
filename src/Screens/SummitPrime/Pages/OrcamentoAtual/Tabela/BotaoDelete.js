@@ -2,10 +2,7 @@ import Modal from "react-bootstrap/Modal";
 import React, { useState } from "react";
 import { Fragment } from "react";
 import { Button, Col, Row } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { changePage } from "../../../../../Redux/Actions/Actions";
-import { enviarPedido, putOrcamento } from "../../../../../Utils/callBackend";
-import { sendOrcamento } from "../../../../../Redux/Actions/SendOrcamento";
+import { useDispatch } from "react-redux";
 import { DeleteOrcamento } from "../../../../../Redux/Actions/DeleteOrcamento";
 
 export const BotaoDelete = () => {

@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { pagamentoAntecipado } from "../../../../../Redux/Actions/Actions";
 import { ChangeValores } from "../../../../../Redux/Actions/TabelaActions/ChangeValores";
