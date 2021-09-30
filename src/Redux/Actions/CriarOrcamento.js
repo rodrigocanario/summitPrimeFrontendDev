@@ -6,9 +6,6 @@ export const criarOrcamento = (infos, changePagina) => {
   return async (dispatch) => {
     let token = localStorage.getItem("token");
     let id = Math.random().toString(36).slice(-8).toUpperCase();
-    let date = new Date();
-    let offset = date.getTimezoneOffset();
-    date = date - offset * 60000;
     let orcamentoPadrao = {
       id,
       titulo: "",
@@ -19,8 +16,8 @@ export const criarOrcamento = (infos, changePagina) => {
       totalDisponivel: 0,
       pagamentoAntecipado: false,
       itens: [],
-      criadoEm: new Date(date),
-      ultimaModificacao: new Date(date),
+      criadoEm: new Date(),
+      ultimaModificacao: new Date(),
     };
     let orcamento = { ...orcamentoPadrao, ...infos };
     console.log(orcamento);

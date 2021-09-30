@@ -6,44 +6,43 @@ import { useDispatch, useSelector } from "react-redux";
 import { changePage } from "../../../../../Redux/Actions/Actions";
 import { enviarPedido, putOrcamento } from "../../../../../Utils/callBackend";
 import { sendOrcamento } from "../../../../../Redux/Actions/SendOrcamento";
+import { DeleteOrcamento } from "../../../../../Redux/Actions/DeleteOrcamento";
 
-export const BotaoNext = () => {
+export const BotaoDelete = () => {
   const dispatch = useDispatch();
-  const orcamento = useSelector((state) => state.orcamento);
-  const informacoes = useSelector((state) => state.informacoes);
   const [showModal, setShowModal] = useState(false);
 
   const handleOpen = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
 
-  const handleNext = () => {
-    dispatch(sendOrcamento());
+  const handleDelete = () => {
+    dispatch(DeleteOrcamento());
   };
   return (
     <Fragment>
       <Modal show={showModal} animation={true} onHide={handleClose} centered>
         <Modal.Header className="align-items-center justify-content-center">
           <Modal.Title style={{ color: "black", textAlign: "center" }}>
-            ENVIAR ORÇAMENTO
+            TEM CERTEZA QUE DESEJA DELETAR?
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Row className="justify-content-evenly">
             <Col xs={4} className="text-center">
               <Button variant="secondary" onClick={handleClose}>
-                Cancelar
+                NAO
               </Button>
             </Col>
             <Col xs={4} className="text-center">
-              <Button variant="primary" onClick={handleNext}>
-                Enviar
+              <Button variant="danger" onClick={handleDelete}>
+                SIM
               </Button>
             </Col>
           </Row>
         </Modal.Body>
       </Modal>
-      <Button variant="outline-light" onClick={handleOpen}>
-        Enviar
+      <Button onClick={handleOpen} variant="outline-danger">
+        Deletar Orcamento
       </Button>
     </Fragment>
   );

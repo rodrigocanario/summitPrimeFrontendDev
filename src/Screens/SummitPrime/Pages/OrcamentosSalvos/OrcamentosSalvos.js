@@ -14,10 +14,18 @@ export const OrcamentosSalvos = () => {
   const dispatch = useDispatch();
 
   const handleAbrirOrcamento = (e) => {
-    let id = orcamentosSalvos[e.target.value].id;
+    let id = orcamentosSalvos[e.target.parentElement.id].id;
     dispatch(updateOrcamentos({ atual: id }));
     dispatch(hideSalvosModal());
-    dispatch(changePage("home"));
+    dispatch(changePage("orcamentoAtual"));
+  };
+  const parseDatee = (date) => {
+    let dia = date.substring(8, 10);
+    let mes = date.substring(5, 7);
+    let ano = date.substring(0, 4);
+    let hora = date.substring(11, 19);
+    let data = `${dia}/${mes}/${ano} ${hora}`;
+    return data;
   };
 
   return (
@@ -52,27 +60,21 @@ export const OrcamentosSalvos = () => {
                   <th>Quantidade de Itens</th>
                   <th>Valor total</th>
                   <th>Data ultima modificacao</th>
-                  <th style={{ width: "125px" }}>Abrir</th>
                 </tr>
               </thead>
               <tbody>
                 {orcamentosSalvos.map((orcamento, index) => {
                   return (
-                    <tr key={index}>
+                    <tr
+                      className="trOrcamentosSalvos"
+                      onClick={handleAbrirOrcamento}
+                      id={index}
+                      key={index}
+                    >
                       <td> {orcamento.titulo}</td>
                       <td>{orcamento.itens.length}</td>
-                      <td>{orcamento.total}</td>
-                      <td>{orcamento.ultimaModificacao}</td>
-                      <td>
-                        <Button
-                          onClick={handleAbrirOrcamento}
-                          value={index}
-                          variant="outline-light"
-                        >
-                          {" "}
-                          Abrir Orcamento
-                        </Button>
-                      </td>
+                      <td>R${parseFloat(orcamento.total).toFixed(2)}</td>
+                      <td>{parseDatee(orcamento.ultimaModificacao)}</td>
                     </tr>
                   );
                 })}

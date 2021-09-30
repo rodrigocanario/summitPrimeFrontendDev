@@ -7,6 +7,7 @@ const callBackend = (endpoint, token, data) => {
     let method = "post";
     let headers = {
       "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
       Authorization: `Bearer ${token}`,
     };
     url = url + endpoint;

@@ -21,8 +21,20 @@ export const FooterHome = () => {
             <div>Observações: </div>
             <ol style={{ paddingLeft: "2rem" }}>
               <li>
-                Consultor de vendas responsável pela sua conta é "XXX" de
-                Whatsapp número "XXX" e e-mail "XXX".
+                Consultor de vendas responsável pela sua conta é{" "}
+                <span style={{ fontWeight: "bold" }}>
+                  {info.consultor.nome}{" "}
+                </span>{" "}
+                de Whatsapp número{" "}
+                <span style={{ fontWeight: "bold" }}>
+                  {info.consultor.telefone}{" "}
+                </span>{" "}
+                e e-mail{" "}
+                <span style={{ fontWeight: "bold" }}>
+                  {" "}
+                  {info.consultor.email}{" "}
+                </span>
+                .
               </li>
               <li>
                 Respeitar o{" "}

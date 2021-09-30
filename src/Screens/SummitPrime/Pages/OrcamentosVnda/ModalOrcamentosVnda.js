@@ -5,33 +5,47 @@ import { hideVndaModal } from "../../../../Redux/Actions/Actions";
 import { criarOrcamentoVnda } from "../../../../Redux/Actions/CriarOrcamentoVnda";
 
 export const ModalOrcamentosVnda = () => {
-  const [titulo, setTitulo] = useState("Novo Orcamento");
+  const [titulo, setTitulo] = useState("Orçamento sem nome");
   const modals = useSelector((state) => state.modals);
   const dispatch = useDispatch();
 
   const handleCriar = () => {
     dispatch(criarOrcamentoVnda(modals.vnda.value, titulo));
   };
+  const focusInput = () => {
+    document.getElementById("inputOrcamentosSalvos").focus();
+    document.getElementById("inputOrcamentosSalvos").select();
+  };
 
   return (
     <Modal
       onHide={() => dispatch(hideVndaModal())}
+      onEntered={focusInput}
       className=""
       show={modals.vnda.show}
       animation={true}
       centered
     >
-      <Modal.Header className=" align-items-center justify-content-center">
-        <Modal.Title>NOVO ORCAMENTO</Modal.Title>
-      </Modal.Header>
       <Modal.Body className="vndaModalBody" style={{ color: "black" }}>
-        <h1 style={{ color: "black", fontSize: "30px" }}>Titulo:</h1>
+        <h1 style={{ color: "black", fontSize: "30px" }}>
+          Copiar e Salvar Orçamento:
+        </h1>
         <input
+          id="inputOrcamentosSalvos"
           defaultValue={titulo}
           onChange={(e) => setTitulo(e.target.value)}
+          style={{ margin: "10px", marginLeft: "0px", width: "100%" }}
         />
         <br />
-        <Button onClick={handleCriar}>Criar</Button>
+        <div style={{ textAlign: "end" }}>
+          <button
+            style={{ border: "none", backgroundColor: "transparent" }}
+            onClick={() => dispatch(hideVndaModal())}
+          >
+            Cancelar
+          </button>
+          <Button onClick={handleCriar}>Criar</Button>
+        </div>
       </Modal.Body>
     </Modal>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import { Col, Image, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { changePage } from "../../Redux/Actions/Actions";
 import { GetOrcamentos } from "../../Redux/Actions/GetOrcamentos";
 
 export const Header = () => {
@@ -17,7 +18,11 @@ export const Header = () => {
         </h3>
       </Col>
       <Col className="h-100">
-        <Image className="h-100" src="./logoSummit.png" />
+        <Image
+          onClick={() => dispatch(changePage("home"))}
+          className="h-100 imageHeader"
+          src="./logoSummit.png"
+        />
       </Col>
       {/* <Col>
         <h3 className="h3Header" onClick={() => dispatch(changePage("home"))}>

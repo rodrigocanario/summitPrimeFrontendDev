@@ -10,9 +10,6 @@ export const Selection = () => {
   const informacoes = useSelector((state) => state.informacoes);
   return (
     <>
-      <Row>
-        <HeaderHome />
-      </Row>
       <Row className="align-items-center justify-content-center">
         <Col xs={4} className="selectionCard">
           <button

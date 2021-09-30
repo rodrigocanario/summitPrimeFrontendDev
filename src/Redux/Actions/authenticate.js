@@ -2,11 +2,11 @@ import { loading, login } from "./Actions";
 import CallBackend from "./CallBackend";
 
 export const authenticate = (form) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     let token = localStorage.getItem("token");
+    dispatch(loading(true));
     if (token) {
-      dispatch(loading(true));
-      CallBackend("/isAuth", token)
+      await CallBackend("/isAuth", token)
         .then((r) => {
           dispatch(login(r));
           dispatch(loading(false));
@@ -17,8 +17,7 @@ export const authenticate = (form) => {
           window.location.reload();
         });
     } else if (typeof form === "object" && form !== null) {
-      dispatch(loading(true));
-      CallBackend("/login", "", form)
+      await CallBackend("/login", "", form)
         .then((resp) => {
           if (resp && resp.token) {
             localStorage.setItem("token", resp.token);
@@ -29,6 +28,8 @@ export const authenticate = (form) => {
         .catch((e) => {
           throw e;
         });
+    } else {
+      dispatch(loading(false));
     }
   };
 };

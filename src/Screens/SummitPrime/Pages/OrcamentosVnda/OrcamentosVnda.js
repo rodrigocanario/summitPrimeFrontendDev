@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Col, Container, Row, Table } from "react-bootstrap";
+import { Col, Container, Row, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { showVndaModal } from "../../../../Redux/Actions/Actions";
 import { ModalOrcamentosVnda } from "./ModalOrcamentosVnda";
@@ -19,7 +19,7 @@ export const OrcamentosVnda = () => {
   };
 
   const novoOrc = async (e) => {
-    dispatch(showVndaModal(e.target.value));
+    dispatch(showVndaModal(e.target.parentElement.id));
   };
 
   return (
@@ -41,20 +41,24 @@ export const OrcamentosVnda = () => {
               <tr>
                 <th style={{ width: "225px" }}> Data e Hora</th>
                 <th>Produtos</th>
-                <th style={{ width: "125px" }}>Abrir</th>
               </tr>
             </thead>
             <tbody>
               {orcamentosVnda.map((orcamento, index) => {
                 let produtos = csv2json(orcamento["CSV"]);
                 return (
-                  <tr key={index}>
+                  <tr
+                    className="trOrcamentosSalvos"
+                    id={index}
+                    onClick={novoOrc}
+                    key={index}
+                  >
                     <td>{parseDatee(orcamento["Data de criação"])}</td>
                     <td>
                       <ol
                         style={{
                           overflowY: "scroll",
-                          maxHeight: "65px",
+                          maxHeight: "70px",
                           marginBottom: "0px",
                         }}
                       >
@@ -62,16 +66,6 @@ export const OrcamentosVnda = () => {
                           return <li key={index}>{produto["Produtos"]}</li>;
                         })}
                       </ol>
-                    </td>
-                    <td>
-                      <Button
-                        value={index}
-                        onClick={novoOrc}
-                        variant="outline-light"
-                      >
-                        {" "}
-                        Abrir Orcamento
-                      </Button>
                     </td>
                   </tr>
                 );

@@ -10,8 +10,8 @@ export const HeaderHome = () => {
     <Row className="justify-content-center text-center">
       <h1>
         Bem Vindo à{" "}
-        <span style={{ fontFamily: "fontSummit" }}>Summit Prime</span> <br />{" "}
-        {login.razaoSocial}!
+        <span style={{ fontFamily: "fontSummit" }}>Summit Prime&reg;</span>{" "}
+        <br /> {login.razaoSocial}!
       </h1>
       <Col xs={6}>
         <p>
@@ -21,7 +21,7 @@ export const HeaderHome = () => {
             target="_blank"
             style={{ color: "white" }}
             rel="noreferrer"
-            href="https://summit.com.br"
+            href={`https://summit.com.br/?agent=${login.consultor.agente}`}
           >
             Plataforma Catálogo.
           </a>{" "}

@@ -5,9 +5,7 @@
 
 #body {
   align-items: flex-start;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: fontSummit !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: rgb(1, 23, 97);
@@ -281,6 +279,7 @@ h2 {
   box-shadow: #6c757d 0px 0px 8px 3px;
   margin: 15px;
   padding: 15px;
+  height: 340px;
 }
 .iconLarge {
   font-size: 160px;
@@ -301,4 +300,22 @@ h2 {
 #coluna {
   width: 125px;
   padding: 0px;
+}
+
+.trOrcamentosSalvos:hover {
+  cursor: pointer;
+  box-shadow: inset #ffffff9e 0px 0px 20px 0px;
+}
+.inputHomeTitulo {
+  font-family: fontSummit;
+  background-color: transparent;
+  border: none;
+  color: white;
+  text-align: center;
+}
+.inputHomeTitulo:focus {
+  outline: none !important;
+}
+.imageHeader:hover {
+  cursor: pointer;
 }

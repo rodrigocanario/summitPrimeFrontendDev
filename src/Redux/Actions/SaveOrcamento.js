@@ -3,12 +3,10 @@ import callBackend from "./CallBackend";
 
 export const saveOrcamento = (infos) => {
   return (dispatch) => {
+    console.log(infos);
     dispatch(savingOrcamento(true));
     let token = localStorage.getItem("token");
-    let date = new Date();
-    let offset = date.getTimezoneOffset();
-    date = date - offset * 60000;
-    let orcamento = { ...infos, ultimaModificacao: new Date(date) };
+    let orcamento = { ...infos, ultimaModificacao: new Date() };
     callBackend("/putOrcamento", token, { orcamento }).then((r) => {
       dispatch(savingOrcamento(false));
     });

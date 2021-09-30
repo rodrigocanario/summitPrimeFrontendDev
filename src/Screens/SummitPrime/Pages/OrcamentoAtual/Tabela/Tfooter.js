@@ -1,7 +1,9 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { pagamentoAntecipado } from "../../../../../Redux/Actions/Actions";
 import { ChangeValores } from "../../../../../Redux/Actions/TabelaActions/ChangeValores";
+import { BotaoDelete } from "./BotaoDelete";
 import { BotaoNext } from "./BotaoNext";
 
 export const Tfooter = (props) => {
@@ -30,7 +32,9 @@ export const Tfooter = (props) => {
       </tr>
 
       <tr id="tr">
-        <td id="td-footer" className="align-middle"></td>
+        <td id="td-footer" className="align-middle">
+          <BotaoDelete />
+        </td>
         <td id="td-footer" className="align-middle"></td>
         <td id="td-footer" className="align-middle">
           <BotaoNext />
