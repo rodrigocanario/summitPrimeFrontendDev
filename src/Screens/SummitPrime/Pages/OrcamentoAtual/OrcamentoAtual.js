@@ -6,6 +6,7 @@ import { FooterHome } from "../Home/FooterHome";
 import { AiOutlineCheck } from "react-icons/ai";
 import { VscLoading } from "react-icons/vsc";
 import { saveOrcamento } from "../../../../Redux/Actions/SaveOrcamento";
+import { calcularValores } from "../../../../Redux/Actions/TabelaActions/CalcularValores";
 
 export const OrcamentoAtual = () => {
   const orcamentos = useSelector((state) => state.orcamentos);

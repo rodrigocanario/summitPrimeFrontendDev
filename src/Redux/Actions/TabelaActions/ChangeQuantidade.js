@@ -1,9 +1,9 @@
 import { changeQuantidade } from "../Actions";
-import { ChangeValores } from "./ChangeValores";
+import { calcularValores } from "./CalcularValores";
 
 export const ChangeQuantidade = (str, index, indexOrcamento) => {
   return (dispatch) => {
     dispatch(changeQuantidade(str, index, indexOrcamento));
-    dispatch(ChangeValores(index, indexOrcamento));
+    dispatch(calcularValores(index, indexOrcamento));
   };
 };

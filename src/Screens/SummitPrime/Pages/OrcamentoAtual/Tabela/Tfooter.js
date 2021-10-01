@@ -1,7 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { pagamentoAntecipado } from "../../../../../Redux/Actions/Actions";
-import { ChangeValores } from "../../../../../Redux/Actions/TabelaActions/ChangeValores";
+import { calcularValores } from "../../../../../Redux/Actions/TabelaActions/CalcularValores";
+import { PagamentoAntecipado } from "../../../../../Redux/Actions/TabelaActions/PagamentoAntecipado";
 import { BotaoDelete } from "./BotaoDelete";
 import { BotaoNext } from "./BotaoNext";
 
@@ -11,9 +12,7 @@ export const Tfooter = (props) => {
   );
   const dispatch = useDispatch();
   const handleChange = (e) => {
-    let lol;
-    dispatch(pagamentoAntecipado(props.indexOrcamento));
-    dispatch(ChangeValores(lol, props.indexOrcamento));
+    dispatch(PagamentoAntecipado(e.target.checked));
   };
   return (
     <tfoot>

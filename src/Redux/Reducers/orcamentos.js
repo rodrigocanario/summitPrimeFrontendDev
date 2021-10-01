@@ -13,8 +13,6 @@ const reducerOrcamentos = (state = defaultState, action) => {
   switch (action.type) {
     case "UPDATEORCAMENTOS":
       return { ...state, ...action.input };
-    default:
-      return state;
     case "ADDITEM":
       let salvos = [...state.salvos];
       salvos[action.indexOrcamento].itens.push({
@@ -30,24 +28,12 @@ const reducerOrcamentos = (state = defaultState, action) => {
       });
       return { ...state, salvos };
     case "TROCARITEM":
-      const info = action.infos;
-      let preco = info.valor;
-      if (info.nome.search("ARTOOLS") === -1) {
-        preco =
-          (parseFloat(info.valor) * (100 - parseInt(action.desconto))) / 100;
-      }
-
       state.salvos[action.indexOrcamento].itens[index] = {
         ...state.salvos[action.indexOrcamento].itens[index],
-        sku: info.sku,
-        nome: info.nome,
-        caixaMaster: info.caixaMaster,
-        valor: info.valor.toFixed(2),
-        valorReal: preco,
-        multiplo: info.multiplo,
-        estoque: info.estoque,
+        ...action.infos,
+        valorReal: 0,
       };
-      return state;
+      return { ...state };
 
     case "CHANGEQUANTIDADE":
       if (action.str === "inc") {
@@ -67,8 +53,10 @@ const reducerOrcamentos = (state = defaultState, action) => {
       return { ...state };
     case "PAGAMENTOANTECIPADO":
       state.salvos[action.indexOrcamento].pagamentoAntecipado =
-        !state.salvos[action.indexOrcamento].pagamentoAntecipado;
+        action.isAntecipado;
       return { ...state };
+    default:
+      return state;
   }
 };
 

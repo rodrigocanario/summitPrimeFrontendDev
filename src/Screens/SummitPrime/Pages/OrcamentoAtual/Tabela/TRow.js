@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../../../../Redux/Actions/Actions";
+import { calcularValores } from "../../../../../Redux/Actions/TabelaActions/CalcularValores";
 import { ChangeProduto } from "../../../../../Redux/Actions/TabelaActions/ChangeProduto";
 import { Quantity } from "./Quantity";
 

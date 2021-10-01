@@ -7,13 +7,12 @@ export const changeQuantidade = (str, index, indexOrcamento) => {
   };
 };
 
-export const trocarItem = (infos, index, indexOrcamento, desconto) => {
+export const trocarItem = (infos, index, indexOrcamento) => {
   return {
     type: "TROCARITEM",
     infos,
     index,
     indexOrcamento,
-    desconto,
   };
 };
 
@@ -37,10 +36,11 @@ export const updatePrecos = (indexOrcamento, orcamento) => {
     orcamento,
   };
 };
-export const pagamentoAntecipado = (indexOrcamento) => {
+export const pagamentoAntecipado = (indexOrcamento, isAntecipado) => {
   return {
     type: "PAGAMENTOANTECIPADO",
     indexOrcamento,
+    isAntecipado,
   };
 };
 export const loading = (loading) => {

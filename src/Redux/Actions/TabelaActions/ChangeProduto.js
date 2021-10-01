@@ -1,5 +1,6 @@
 import { trocarItem } from "../Actions";
 import callBackend from "../CallBackend";
+import { calcularValores } from "./CalcularValores";
 
 export const ChangeProduto = (index, indexOrcamento, sku) => {
   let token = localStorage.getItem("token");
@@ -9,8 +10,9 @@ export const ChangeProduto = (index, indexOrcamento, sku) => {
       callBackend("/getProduto", token, {
         sku,
         tabela: informacoes.tabela,
-      }).then((r) => {
-        dispatch(trocarItem(r, index, indexOrcamento, informacoes.desconto));
+      }).then(async (r) => {
+        await dispatch(trocarItem(r, index, indexOrcamento));
+        await dispatch(calcularValores());
       });
     }
   };
