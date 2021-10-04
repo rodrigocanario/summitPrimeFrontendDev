@@ -17,10 +17,15 @@ export const Tfooter = (props) => {
   };
   return (
     <tfoot>
-      <tr id="tr">
+      <tr id="trFooter">
+        <td id="td-footer" className="align-middle">
+          {" "}
+          <BotaoDelete />
+        </td>
         <td id="td-footer" className="align-middle"></td>
-        <td id="td-footer" className="align-middle"></td>
-        <td id="td-footer" className="align-middle"></td>
+        <td id="td-footer" className="align-middle">
+          <BotaoNext indexOrcamento={props.indexOrcamento} />
+        </td>
         <td id="td-footer" className="align-middle"></td>
         <td id="td-footer" className="align-middle">
           VALOR SUBTOTAL:
@@ -30,14 +35,10 @@ export const Tfooter = (props) => {
         </td>
       </tr>
 
-      <tr id="tr">
-        <td id="td-footer" className="align-middle">
-          <BotaoDelete />
-        </td>
+      <tr id="trFooter">
         <td id="td-footer" className="align-middle"></td>
-        <td id="td-footer" className="align-middle">
-          <BotaoNext indexOrcamento={props.indexOrcamento} />
-        </td>
+        <td id="td-footer" className="align-middle"></td>
+        <td id="td-footer" className="align-middle"></td>
         <td id="td-footer" className="align-middle"></td>
         <td id="td-footer" className="align-middle">
           <label htmlFor="pagamentoAntecipado">
@@ -55,7 +56,7 @@ export const Tfooter = (props) => {
           (-R${(orcamento.subTotal * 0.05).toFixed(2)})
         </td>
       </tr>
-      <tr id="tr">
+      <tr id="trFooter">
         <td id="td-footer" className="align-middle"></td>
         <td id="td-footer" className="align-middle"></td>
         <td id="td-footer" className="align-middle"></td>
@@ -67,7 +68,7 @@ export const Tfooter = (props) => {
           R${orcamento.total ? parseFloat(orcamento.total).toFixed(2) : 0.0}
         </td>
       </tr>
-      <tr id="tr">
+      <tr id="trFooter">
         <td id="td-footer" className="align-middle"></td>
         <td id="td-footer" className="align-middle"></td>
         <td id="td-footer" className="align-middle"></td>

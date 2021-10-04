@@ -30,10 +30,7 @@ export const OrcamentoAtual = () => {
 
   return (
     <Container fluid>
-      <Row
-        style={{ height: "100%", minHeight: "100vh" }}
-        className="justify-content-center text-center align-items-start"
-      >
+      <Row className="justify-content-center text-center align-items-start">
         <Col className="text-center">
           <>
             <Row className="justify-content-center text-center">

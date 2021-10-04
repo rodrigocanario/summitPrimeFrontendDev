@@ -84,11 +84,9 @@ export const TRow = (props) => {
           onKeyDown={handleEnter}
         />
       </td>
-      <td id="td" className="nome">
-        {Itens.nome}
-      </td>
+      <td id="td">{Itens.nome}</td>
       <td id="td" className="tdCaixaMaster">
-        {Itens.caixaMaster ? Itens.caixaMaster + "UN" : ""}
+        {Itens.caixaMaster ? Itens.caixaMaster + " un" : ""}
       </td>
       <td id="td" className="tdDescontoCaixaMaster">
         {Itens.quantidade % Itens.caixaMaster === 0 && Itens.quantidade > 0
@@ -108,11 +106,7 @@ export const TRow = (props) => {
         )}
       </td>
       <td id="td" className="tdPreco">
-        {Itens.nome
-          ? Itens.preco
-            ? "R$" + parseFloat(Itens.preco).toFixed(2)
-            : "R$0.00"
-          : ""}
+        {Itens.nome ? "R$" + parseFloat(Itens.preco).toFixed(2) : ""}
       </td>
       <td id="td" className="tdEstoque">
         {Itens.nome ? (Itens.estoque > 0 ? "Disponível" : "Indisponível") : ""}

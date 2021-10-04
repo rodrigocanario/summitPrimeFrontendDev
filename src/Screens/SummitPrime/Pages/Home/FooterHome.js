@@ -7,7 +7,7 @@ export const FooterHome = () => {
   const info = useSelector((state) => state.informacoes);
   const errors = useSelector((state) => state.errors);
   return (
-    <footer className="d-flex flex-wrap justify-content-between border-top">
+    <footer className="d-flex flex-wrap justify-content-between border-topp">
       <div className="col d-flex align-items-center">
         <a
           href="/"
@@ -18,7 +18,7 @@ export const FooterHome = () => {
           </svg>
         </a>
         <Row style={{ color: "white" }}>
-          <Col xs={6}>
+          <Col xs={12}>
             <div>Observações: </div>
             <ol style={{ paddingLeft: "2rem" }}>
               <li>
