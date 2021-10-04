@@ -5,6 +5,7 @@ import { Col, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 export const FooterHome = () => {
   const info = useSelector((state) => state.informacoes);
+  const errors = useSelector((state) => state.errors);
   return (
     <footer className="d-flex flex-wrap justify-content-between border-top">
       <div className="col d-flex align-items-center">
@@ -38,9 +39,15 @@ export const FooterHome = () => {
               </li>
               <li>
                 Respeitar o{" "}
-                <span style={{ fontWeight: "bold" }}>
-                  PEDIDO MÍNIMO DE R${info.pedidoMinimo.toFixed(2)}
-                </span>{" "}
+                {errors.pedidoMinimo ? (
+                  <span style={{ fontWeight: "bold", color: "red" }}>
+                    PEDIDO MÍNIMO DE R${info.pedidoMinimo.toFixed(2)}
+                  </span>
+                ) : (
+                  <span style={{ fontWeight: "bold" }}>
+                    PEDIDO MÍNIMO DE R${info.pedidoMinimo.toFixed(2)}
+                  </span>
+                )}
               </li>
               <li>
                 Previsão de entrega de{" "}

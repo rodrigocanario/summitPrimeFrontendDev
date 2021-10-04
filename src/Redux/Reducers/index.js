@@ -6,6 +6,7 @@ import reducerAdminLogin from "./adminLogin";
 import reducerVndaPedidos from "./vndaPedidos";
 import reducerOrcamentos from "./orcamentos";
 import reducerModals from "./modals";
+import reducerErrors from "./errors";
 
 const allReducers = combineReducers({
   orcamento: reducerOrcamento,
@@ -15,5 +16,6 @@ const allReducers = combineReducers({
   vndaPedidos: reducerVndaPedidos,
   modals: reducerModals,
   orcamentos: reducerOrcamentos,
+  errors: reducerErrors,
 });
 export default allReducers;

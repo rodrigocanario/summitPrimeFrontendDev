@@ -1,7 +1,7 @@
 import React from "react";
-import { Col, Image, Row } from "react-bootstrap";
+import { Button, Col, Image, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { changePage } from "../../Redux/Actions/Actions";
+import { changePage, logout } from "../../Redux/Actions/Actions";
 import { GetOrcamentos } from "../../Redux/Actions/GetOrcamentos";
 
 export const Header = () => {
@@ -9,6 +9,10 @@ export const Header = () => {
   const informacoes = useSelector((state) => state.informacoes);
   return (
     <Row className="justify-content-center align-items-center text-center header">
+      <Button onClick={() => dispatch(logout())} id="buttonLogout">
+        {" "}
+        Logout{" "}
+      </Button>
       <Col>
         <h3
           className="h3Header"

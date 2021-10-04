@@ -10,6 +10,7 @@ export const Tfooter = (props) => {
   const orcamento = useSelector(
     (state) => state.orcamentos.salvos[props.indexOrcamento]
   );
+  const errors = useSelector((state) => state.errors);
   const dispatch = useDispatch();
   const handleChange = (e) => {
     dispatch(PagamentoAntecipado(e.target.checked));
@@ -35,7 +36,7 @@ export const Tfooter = (props) => {
         </td>
         <td id="td-footer" className="align-middle"></td>
         <td id="td-footer" className="align-middle">
-          <BotaoNext />
+          <BotaoNext indexOrcamento={props.indexOrcamento} />
         </td>
         <td id="td-footer" className="align-middle"></td>
         <td id="td-footer" className="align-middle">
@@ -74,12 +75,21 @@ export const Tfooter = (props) => {
         <td id="td-footer" className="align-middle">
           VALOR TOTAL DISPONIVEL:
         </td>
-        <td id="td-footer" className="align-middle">
-          R$
-          {orcamento.totalDisponivel
-            ? parseFloat(orcamento.totalDisponivel).toFixed(2)
-            : 0.0}
-        </td>
+        {errors.pedidoMinimo ? (
+          <td id="td-footer" style={{ color: "red" }} className="align-middle">
+            R$
+            {orcamento.totalDisponivel
+              ? parseFloat(orcamento.totalDisponivel).toFixed(2)
+              : 0.0}
+          </td>
+        ) : (
+          <td id="td-footer" className="align-middle">
+            R$
+            {orcamento.totalDisponivel
+              ? parseFloat(orcamento.totalDisponivel).toFixed(2)
+              : 0.0}
+          </td>
+        )}
       </tr>
     </tfoot>
   );

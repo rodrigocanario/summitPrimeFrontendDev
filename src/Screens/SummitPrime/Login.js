@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Col, Container, Row, Button, Form, Image } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import InputMask from "react-input-mask";
 import { authenticate } from "../../Redux/Actions/Authenticate";
 
 export const Login = () => {
   const dispatch = useDispatch();
+  const errors = useSelector((state) => state.errors);
   const [form, setForm] = useState({ cnpj: "", senha: "" });
 
   const changeForm = (e) => {
@@ -81,7 +82,7 @@ export const Login = () => {
                     />
                   </Row>
                   <Row>
-                    {false === true ? (
+                    {errors.login === true ? (
                       <p style={{ color: "red" }}>Usuário ou Senha Inválido</p>
                     ) : (
                       <p style={{ color: "transparent" }}>.</p>

@@ -76,6 +76,14 @@ export const hideSalvosModal = () => {
     type: "HIDESALVOSMODAL",
   };
 };
+
+export const setError = (key, value) => {
+  return {
+    type: "SETERROR",
+    key,
+    value,
+  };
+};
 // --------------------------
 export const calcularTotal = (index) => {
   return {

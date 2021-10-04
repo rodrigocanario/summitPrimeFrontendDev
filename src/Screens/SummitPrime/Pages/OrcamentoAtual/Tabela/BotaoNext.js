@@ -2,19 +2,32 @@ import Modal from "react-bootstrap/Modal";
 import React, { useState } from "react";
 import { Fragment } from "react";
 import { Button, Col, Row } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { sendOrcamento } from "../../../../../Redux/Actions/SendOrcamento";
-import { changePage } from "../../../../../Redux/Actions/Actions";
+import { changePage, setError } from "../../../../../Redux/Actions/Actions";
 
-export const BotaoNext = () => {
+export const BotaoNext = (props) => {
   const dispatch = useDispatch();
+  const pedidoMinimo = useSelector((state) => state.informacoes.pedidoMinimo);
+  const total = useSelector(
+    (state) => state.orcamentos.salvos[props.indexOrcamento].total
+  );
+  const errors = useSelector((state) => state.errors);
   const [showModal, setShowModal] = useState(false);
   const [enviado, setEnviado] = useState(false);
 
-  const handleOpen = () => setShowModal(true);
+  const handleNext = () => {
+    if (pedidoMinimo > total) {
+      dispatch(setError("pedidoMinimo", true));
+      window.scrollTo(0, document.body.scrollHeight);
+    } else {
+      dispatch(setError("pedidoMinimo", false));
+      setShowModal(true);
+    }
+  };
   const handleClose = () => setShowModal(false);
 
-  const handleNext = () => {
+  const handleSend = () => {
     dispatch(sendOrcamento());
     setEnviado(true);
   };
@@ -57,7 +70,7 @@ export const BotaoNext = () => {
                 </Button>
               </Col>
               <Col xs={4} className="text-center">
-                <Button variant="primary" onClick={handleNext}>
+                <Button variant="primary" onClick={handleSend}>
                   Enviar
                 </Button>
               </Col>
@@ -66,7 +79,7 @@ export const BotaoNext = () => {
         </Modal>
       )}
 
-      <Button variant="outline-light" onClick={handleOpen}>
+      <Button variant="outline-light" onClick={handleNext}>
         Enviar
       </Button>
     </Fragment>

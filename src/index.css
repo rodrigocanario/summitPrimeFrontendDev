@@ -23,7 +23,7 @@ p {
   color: white;
 }
 span {
-  color: white !important;
+  color: white;
 }
 .icon {
   font-size: 35px;
@@ -318,4 +318,13 @@ h2 {
 }
 .imageHeader:hover {
   cursor: pointer;
+}
+#buttonLogout {
+  position: absolute;
+  right: 0px;
+  top: 100px;
+  width: auto;
+  padding: 3px;
+  font-size: 15px;
+  margin: 5px;
 }

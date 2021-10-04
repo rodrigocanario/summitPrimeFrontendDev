@@ -1,4 +1,4 @@
-import { loading, login } from "./Actions";
+import { loading, login, setError } from "./Actions";
 import CallBackend from "./CallBackend";
 
 export const authenticate = (form) => {
@@ -23,11 +23,14 @@ export const authenticate = (form) => {
             localStorage.setItem("token", resp.token);
             resp.isAuth = true;
             dispatch(login(resp));
+            dispatch(setError("login", false));
             dispatch(loading(false));
           }
         })
         .catch((e) => {
-          throw e;
+          console.log(e);
+          dispatch(setError("login", true));
+          dispatch(loading(false));
         });
     } else {
       dispatch(loading(false));

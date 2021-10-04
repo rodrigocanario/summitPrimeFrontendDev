@@ -21,8 +21,6 @@ const callBackend = (endpoint, token, data) => {
         resolve(response.data);
       })
       .catch((err) => {
-        // localStorage.removeItem("token");
-        // window.location.reload();
         console.log(err);
         reject(err);
       });
