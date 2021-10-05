@@ -18,18 +18,28 @@ export const HeaderHome = () => {
       </h1>
       <Col xs={6}>
         <p>
-          Para facilitar o processo, recomendamos que primeiramente escolha os
-          itens e envie o pedido de orçamento pela nossa{" "}
+          Recomendamos que pesquise os produtos e busque as referências na{" "}
           <a
             target="_blank"
             style={{ color: "white" }}
             rel="noreferrer"
             href={`https://summit.com.br/?agent=${login.consultor.agente}`}
           >
-            Plataforma Catálogo.
+            Plataforma Catálogo
           </a>{" "}
-          Pois assim você pode abrir aqui a lista completa dos itens já
-          escolhidos na Plataforma Catálogo ao clicar no botão de{" "}
+          pois não temos neste ambiente uma forma de escolher as referências.{" "}
+          <br /> <br />
+          Se quiser enviar um orçamento pela{" "}
+          <a
+            target="_blank"
+            style={{ color: "white" }}
+            rel="noreferrer"
+            href={`https://summit.com.br/?agent=${login.consultor.agente}`}
+          >
+            Plataforma Catálogo
+          </a>{" "}
+          , podes verificar preço e disponibilidade dos itens escolhidos por lá
+          clicando no botão de{" "}
           <button
             style={{
               color: "white",
