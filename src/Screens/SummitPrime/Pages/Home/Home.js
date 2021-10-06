@@ -1,6 +1,7 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import { FooterHome } from "./FooterHome";
+import { ModalOrcamentosSalvos } from "../OrcamentosSalvos/ModalOrcamentosSalvos";
+import { FooterHome } from "../OrcamentoAtual/FooterAtual";
 import { HeaderHome } from "./HeaderHome";
 import { Selection } from "./Selection";
 
@@ -10,6 +11,7 @@ export const Home = () => {
       <HeaderHome />
       <Selection />
       <FooterHome />
+      <ModalOrcamentosSalvos />
     </Container>
   );
 };

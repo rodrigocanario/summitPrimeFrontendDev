@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Tabela } from "./Tabela/Tabela";
-import { FooterHome } from "../Home/FooterHome";
+import { FooterHome } from "./FooterAtual";
 import { AiOutlineCheck } from "react-icons/ai";
 import { VscLoading } from "react-icons/vsc";
 import { saveOrcamento } from "../../../../Redux/Actions/SaveOrcamento";

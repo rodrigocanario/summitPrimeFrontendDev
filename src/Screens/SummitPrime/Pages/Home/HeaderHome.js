@@ -18,6 +18,7 @@ export const HeaderHome = () => {
       </h1>
       <Col xs={6}>
         <p>
+          <br />
           Recomendamos que pesquise os produtos e busque as referências na{" "}
           <a
             target="_blank"

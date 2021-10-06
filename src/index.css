@@ -8,8 +8,7 @@
   font-family: fontSummit !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: rgb(1, 23, 97);
-  background: linear-gradient(160deg, rgb(0 15 64) 0%, #105f8d 100%);
+  background: linear-gradient(160deg, rgb(0 15 64) 0%, #002985 100%);
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -75,7 +74,7 @@ span {
 }
 #summit-img {
   text-align: center;
-  max-width: 150px;
+  max-width: 85px;
 }
 
 /* -------------------table---------------------- */
@@ -83,6 +82,7 @@ span {
 table {
   width: 100% !important;
   table-layout: fixed !important;
+  background-color: #00175abf;
 }
 
 #table-header {
@@ -216,9 +216,9 @@ table {
   color: white;
   background-color: #00000070;
   height: 100px;
-  margin-bottom: 25px;
   width: 100%;
-  margin: 0px !important;
+  margin: 0px 0px 60px 0px !important;
+  box-shadow: rgb(0 7 237 / 29%) 0px 0px 50px 50px;
 }
 .h3Header:hover {
   cursor: pointer;

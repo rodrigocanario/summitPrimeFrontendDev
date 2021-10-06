@@ -32,7 +32,6 @@ export const OrcamentosVnda = () => {
           <Table
             style={{
               color: "white",
-              backgroundColor: "transparent",
               borderColor: "white",
             }}
             bordered
