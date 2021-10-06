@@ -18,10 +18,28 @@ export const Quantity = (props) => {
     e.preventDefault();
     switch (e.key) {
       case "ArrowUp":
-        incrementar();
+        if (e.shiftKey) {
+          let SiblingDown = document.querySelector(
+            `input[name=input-quantity-${props.index - 1}]`
+          );
+          if (SiblingDown) {
+            SiblingDown.focus();
+          }
+        } else {
+          incrementar();
+        }
         break;
       case "ArrowDown":
-        decrementar();
+        if (e.shiftKey) {
+          let SiblingDown = document.querySelector(
+            `input[name=input-quantity-${props.index + 1}]`
+          );
+          if (SiblingDown) {
+            SiblingDown.focus();
+          }
+        } else {
+          decrementar();
+        }
         break;
       case "ArrowLeft":
         let Sibling = document.querySelector(

@@ -34,7 +34,10 @@ export const TRow = (props) => {
         let SiblingRight = document.querySelector(
           `input[name=input-quantity-${props.index}]`
         );
-        SiblingRight.focus();
+        if (e.shiftKey) {
+          SiblingRight.focus();
+        }
+
         break;
       case "ArrowUp":
         let SiblingUp = document.querySelector(
