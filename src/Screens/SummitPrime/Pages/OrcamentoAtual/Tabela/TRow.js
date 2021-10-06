@@ -94,9 +94,15 @@ export const TRow = (props) => {
           : ""}
       </td>
       <td id="td" className="tdValor">
-        {Itens.valorReal && Itens.valorReal !== "NaN"
-          ? "R$" + parseFloat(Itens.valorReal).toFixed(2)
-          : ""}
+        {Itens.valorReal && Itens.valorReal !== "NaN" ? (
+          <>
+            {" "}
+            <span>R$</span>{" "}
+            <span> {parseFloat(Itens.valorReal).toFixed(2)} </span>{" "}
+          </>
+        ) : (
+          ""
+        )}
       </td>
       <td id="td" className="tdQuantidade">
         {Itens.nome ? (
