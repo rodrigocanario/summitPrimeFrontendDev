@@ -1,4 +1,9 @@
-import { changePage, hideVndaModal, updateOrcamentos } from "./Actions";
+import {
+  changePage,
+  hideVndaModal,
+  loading,
+  updateOrcamentos,
+} from "./Actions";
 import callBackend from "./CallBackend";
 import { criarOrcamento } from "./CriarOrcamento";
 import { calcularValores } from "./TabelaActions/CalcularValores";
@@ -7,6 +12,7 @@ const csv2json = require("csvjson-csv2json");
 
 export const criarOrcamentoVnda = (indexVnda, titulo) => {
   return async (dispatch, getState) => {
+    dispatch(loading(true));
     let informacoes = getState().informacoes;
     let orcamento = getState().orcamentos.vnda[indexVnda];
     let token = localStorage.getItem("token");
@@ -35,5 +41,6 @@ export const criarOrcamentoVnda = (indexVnda, titulo) => {
     await dispatch(calcularValores());
     await dispatch(hideVndaModal());
     await dispatch(changePage("orcamentoAtual"));
+    dispatch(loading(false));
   };
 };

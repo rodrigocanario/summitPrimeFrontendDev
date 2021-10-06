@@ -11,6 +11,7 @@ export const Loading = () => {
         textAlign: "center",
         backgroundColor: "#00000063",
         margin: "0px",
+        zIndex: "1056",
       }}
       className="justify-content-center align-content-center"
     >
