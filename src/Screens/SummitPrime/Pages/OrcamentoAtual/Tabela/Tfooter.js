@@ -1,7 +1,5 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { pagamentoAntecipado } from "../../../../../Redux/Actions/Actions";
-import { calcularValores } from "../../../../../Redux/Actions/TabelaActions/CalcularValores";
 import { PagamentoAntecipado } from "../../../../../Redux/Actions/TabelaActions/PagamentoAntecipado";
 import { BotaoDelete } from "./BotaoDelete";
 import { BotaoNext } from "./BotaoNext";

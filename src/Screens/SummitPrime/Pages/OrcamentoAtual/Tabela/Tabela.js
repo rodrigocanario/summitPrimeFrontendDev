@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Row } from "react-bootstrap";
+import { BsTrash } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../../../../Redux/Actions/Actions";
 import { saveOrcamento } from "../../../../../Redux/Actions/SaveOrcamento";
@@ -59,6 +60,9 @@ export const Tabela = () => {
                 </th>
                 <th id="th" className="tdEstoque">
                   ESTOQUE
+                </th>
+                <th id="th" className="tdTrash">
+                  <BsTrash style={{ fontSize: "25px" }} />
                 </th>
               </tr>
             </thead>

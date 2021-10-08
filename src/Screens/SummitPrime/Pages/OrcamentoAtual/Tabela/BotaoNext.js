@@ -12,7 +12,6 @@ export const BotaoNext = (props) => {
   const total = useSelector(
     (state) => state.orcamentos.salvos[props.indexOrcamento].total
   );
-  const errors = useSelector((state) => state.errors);
   const [showModal, setShowModal] = useState(false);
   const [enviado, setEnviado] = useState(false);
 

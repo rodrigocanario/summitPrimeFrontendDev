@@ -22,6 +22,13 @@ export const addItem = (indexOrcamento) => {
     indexOrcamento,
   };
 };
+export const deleteItem = (index, indexOrcamento) => {
+  return {
+    type: "DELETEITEM",
+    indexOrcamento,
+    index,
+  };
+};
 export const updateOrcamentos = (input) => {
   return {
     type: "UPDATEORCAMENTOS",

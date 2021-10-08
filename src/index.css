@@ -82,7 +82,7 @@ span {
 table {
   width: 100% !important;
   table-layout: fixed !important;
-  background-color: #00175abf;
+  /* background-color: #00175abf; */
 }
 
 #table-header {
@@ -138,7 +138,10 @@ table {
   width: 130px;
 }
 .tdEstoque {
-  width: 130px;
+  width: 115px;
+}
+.tdTrash {
+  width: 45px;
 }
 #tr {
   color: white;

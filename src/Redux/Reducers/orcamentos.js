@@ -27,6 +27,9 @@ const reducerOrcamentos = (state = defaultState, action) => {
         estoque: 0,
       });
       return { ...state, salvos };
+    case "DELETEITEM":
+      state.salvos[action.indexOrcamento].itens.splice(index, 1);
+      return { ...state };
     case "TROCARITEM":
       state.salvos[action.indexOrcamento].itens[index] = {
         ...state.salvos[action.indexOrcamento].itens[index],

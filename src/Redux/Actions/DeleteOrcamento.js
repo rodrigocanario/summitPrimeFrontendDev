@@ -9,7 +9,7 @@ export const DeleteOrcamento = () => {
     let cnpj = getState().informacoes.cnpj;
     await callBackend("/deleteOrcamentoTable", token, {
       id,
-      cnpj: `${cnpj}`,
+      cnpj,
     }).then(async (r) => {
       dispatch(changePage("orcamentosSalvos"));
       await dispatch(GetOrcamentos("salvos", cnpj, false));

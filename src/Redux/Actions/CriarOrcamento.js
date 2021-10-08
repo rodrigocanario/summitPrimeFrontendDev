@@ -37,16 +37,22 @@ export const criarOrcamento = (infos, changePagina) => {
       criadoEm: new Date(),
       ultimaModificacao: new Date(),
     };
-    let orcamento = { ...orcamentoPadrao, ...infos };
-    await callBackend("/putOrcamento", token, { orcamento }).then(async (r) => {
-      await dispatch(GetOrcamentos("salvos", parseInt(infos.cnpj), false));
-      dispatch(updateOrcamentos({ atual: id }));
-      dispatch(hideSalvosModal());
-      dispatch(loading(false));
-      if (changePagina) {
-        dispatch(changePage("orcamentoAtual"));
-      }
-      Promise.resolve();
-    });
+    let orcamento = { ...orcamentoPadrao, ...infos, cnpj: infos.cnpj };
+    console.log({ orcamento });
+    await callBackend("/putOrcamento", token, { orcamento })
+      .then(async (r) => {
+        await dispatch(GetOrcamentos("salvos", parseInt(infos.cnpj), false));
+        dispatch(updateOrcamentos({ atual: id }));
+        dispatch(hideSalvosModal());
+        dispatch(loading(false));
+        if (changePagina) {
+          dispatch(changePage("orcamentoAtual"));
+        }
+        Promise.resolve();
+      })
+      .catch((e) => {
+        console.log(e);
+        dispatch(loading(false));
+      });
   };
 };

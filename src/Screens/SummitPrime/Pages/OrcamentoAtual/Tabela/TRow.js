@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "../../../../../Redux/Actions/Actions";
-import { calcularValores } from "../../../../../Redux/Actions/TabelaActions/CalcularValores";
+import { addItem, deleteItem } from "../../../../../Redux/Actions/Actions";
 import { ChangeProduto } from "../../../../../Redux/Actions/TabelaActions/ChangeProduto";
 import { Quantity } from "./Quantity";
+import { BsTrash } from "react-icons/bs";
 
 export const TRow = (props) => {
   const dispatch = useDispatch();
@@ -119,6 +119,20 @@ export const TRow = (props) => {
       </td>
       <td id="td" className="tdEstoque">
         {Itens.nome ? (Itens.estoque > 0 ? "Disponível" : "Indisponível") : ""}
+      </td>
+      <td id="td" className="tdTrash">
+        <button
+          onClick={() =>
+            dispatch(deleteItem(props.index, props.indexOrcamento))
+          }
+          style={{
+            border: "none",
+            backgroundColor: "transparent",
+            color: "white",
+          }}
+        >
+          <BsTrash />
+        </button>
       </td>
     </tr>
   );

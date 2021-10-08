@@ -71,7 +71,9 @@ export const Quantity = (props) => {
           type="text"
           value={
             orcamentos.salvos[props.indexOrcamento].itens[props.index]
-              .quantidade
+              ? orcamentos.salvos[props.indexOrcamento].itens[props.index]
+                  .quantidade
+              : 0
           }
           readOnly
           onKeyDown={handleKey}
