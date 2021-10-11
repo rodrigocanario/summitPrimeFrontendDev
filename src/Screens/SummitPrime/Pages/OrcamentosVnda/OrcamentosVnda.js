@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Container, Row, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { showVndaModal } from "../../../../Redux/Actions/Actions";
+import { ModalOrcamentosSalvos } from "../OrcamentosSalvos/ModalOrcamentosSalvos";
 import { ModalOrcamentosVnda } from "./ModalOrcamentosVnda";
 const csv2json = require("csvjson-csv2json");
 
@@ -75,6 +76,7 @@ export const OrcamentosVnda = () => {
         </Col>
       </Row>
       <ModalOrcamentosVnda />
+      <ModalOrcamentosSalvos />
     </Container>
   );
 };

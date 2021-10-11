@@ -22,10 +22,11 @@ export const Header = () => {
 
   const popover = (
     <Popover id="popover-basic">
-      <Popover.Header as="h3">Popover right</Popover.Header>
+      <Popover.Header as="h3">Summit Prime - Beta 0.3.1</Popover.Header>
       <Popover.Body>
-        And here's some <strong>amazing</strong> content. It's very engaging.
-        right?
+        Esta plataforma está ainda em desenvolvimento. Somente nossos principais
+        clientes possuem acesso à mesma. Agradecemos se puder nos avisar ao
+        encontrar qualquer erro nos mecanismos. Obrigado.
       </Popover.Body>
     </Popover>
   );
@@ -42,7 +43,7 @@ export const Header = () => {
       >
         <Button id="warningLogout">
           <ImWarning style={{ marginBottom: "5px" }} />
-          Versão Beta
+          Versão Beta 0.3.1
         </Button>
       </OverlayTrigger>
 
