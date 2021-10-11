@@ -40,7 +40,7 @@ export const Selection = () => {
             onClick={() => dispatch(GetOrcamentos("vnda", informacoes.cnpj))}
           >
             <BiCart className="iconLarge" />
-            <div>Consultar lista da Plataforma Catálogo</div>
+            <div>Consultar Lista da Plataforma Catálogo</div>
           </button>
         </Col>
       </Row>

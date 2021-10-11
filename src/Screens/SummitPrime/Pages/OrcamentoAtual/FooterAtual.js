@@ -49,13 +49,18 @@ export const FooterHome = () => {
                   </span>
                 )}
               </li>
-              <li>
-                Previsão de entrega de{" "}
-                <span style={{ fontWeight: "bold" }}>
-                  {" "}
-                  {info.previsaoEntrega} dias úteis após o faturamento.
-                </span>
-              </li>
+              {info.previsaoEntrega ? (
+                <li>
+                  Previsão de entrega de{" "}
+                  <span style={{ fontWeight: "bold" }}>
+                    {" "}
+                    {info.previsaoEntrega} dias úteis após o faturamento.
+                  </span>
+                </li>
+              ) : (
+                ""
+              )}
+
               {info.creditoAprovado ? (
                 <li>
                   Crédito pré-aprovado estimado de{" "}

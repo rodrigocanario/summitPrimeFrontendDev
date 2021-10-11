@@ -19,7 +19,13 @@ export const HeaderHome = () => {
       <Col xs={6}>
         <p>
           <br />
-          Recomendamos que pesquise os produtos e busque as referências na{" "}
+          Para verificar preço e disponibilidade de estoque, é só inserir o
+          código do produto em um Novo Orçamento.
+          <br />
+          <br />
+          Aqui na Summit Prime você não consegue escolher ou descobrir quais os
+          produtos desejas comprar. Portanto utilize seu catálogo impresso ou
+          nosso site da{" "}
           <a
             target="_blank"
             style={{ color: "white" }}
@@ -28,20 +34,9 @@ export const HeaderHome = () => {
           >
             Plataforma Catálogo
           </a>{" "}
-          pois não temos neste ambiente uma forma de escolher as referências.{" "}
-          <br /> <br />
-          Se quiser enviar um orçamento pela{" "}
-          <a
-            target="_blank"
-            style={{ color: "white" }}
-            rel="noreferrer"
-            href={`https://summit.com.br/?agent=${login.consultor.agente}`}
-          >
-            Plataforma Catálogo
-          </a>{" "}
-          , podes verificar preço e disponibilidade dos itens escolhidos por lá
-          clicando no botão de{" "}
-          <button
+          para procurar o código do produto.
+          {/* -------------------- */}
+          {/* <button
             style={{
               color: "white",
               textDecoration: "underline",
@@ -54,7 +49,7 @@ export const HeaderHome = () => {
             }}
           >
             Consultar Listas da Plataforma Catálogo.
-          </button>{" "}
+          </button> */}
         </p>
       </Col>
     </Row>
