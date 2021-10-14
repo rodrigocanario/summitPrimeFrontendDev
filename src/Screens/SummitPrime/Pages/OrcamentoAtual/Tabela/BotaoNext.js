@@ -9,14 +9,14 @@ import { changePage, setError } from "../../../../../Redux/Actions/Actions";
 export const BotaoNext = (props) => {
   const dispatch = useDispatch();
   const pedidoMinimo = useSelector((state) => state.informacoes.pedidoMinimo);
-  const total = useSelector(
-    (state) => state.orcamentos.salvos[props.indexOrcamento].total
+  const totalDisponivel = useSelector(
+    (state) => state.orcamentos.salvos[props.indexOrcamento].totalDisponivel
   );
   const [showModal, setShowModal] = useState(false);
   const [enviado, setEnviado] = useState(false);
 
   const handleNext = () => {
-    if (pedidoMinimo > total) {
+    if (pedidoMinimo && pedidoMinimo > totalDisponivel) {
       dispatch(setError("pedidoMinimo", true));
       window.scrollTo(0, document.body.scrollHeight);
     } else {

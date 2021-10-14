@@ -7,7 +7,7 @@ export const GetOrcamentos = (type, cnpj, changePagee = true) => {
     url = "/getVndaTableByCnpj";
     nextPage = "orcamentosVnda";
   } else if (type === "salvos") {
-    url = "/getOrcamentoTable";
+    url = "/getOrcamentoTableByCnpj";
     nextPage = "orcamentosSalvos";
   }
   return async (dispatch) => {
