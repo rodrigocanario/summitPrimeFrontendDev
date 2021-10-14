@@ -10,6 +10,7 @@ export const ChangeProduto = (index, indexOrcamento, sku) => {
       callBackend("/getProduto", token, {
         sku,
         tabela: informacoes.tabela,
+        UF: informacoes.UF,
       })
         .then(async (r) => {
           await dispatch(trocarItem(r, index, indexOrcamento));

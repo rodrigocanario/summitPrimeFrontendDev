@@ -10,8 +10,9 @@ export const GetOrcamentos = (type, cnpj, changePagee = true) => {
     url = "/getOrcamentoTableByCnpj";
     nextPage = "orcamentosSalvos";
   }
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch(loading(true));
+    let cnpj = getState().informacoes.cnpj;
     let token = localStorage.getItem("token");
     if (token) {
       await callBackend(url, token, { cnpj })

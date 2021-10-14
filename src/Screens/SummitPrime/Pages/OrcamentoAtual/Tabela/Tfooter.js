@@ -29,7 +29,7 @@ export const Tfooter = (props) => {
           VALOR SUBTOTAL:
         </td>
         <td id="td-footer" className="align-middle">
-          R${orcamento.subTotal.toFixed(2)}
+          R${orcamento.subTotal ? orcamento.subTotal.toFixed(2) : ""}
         </td>
       </tr>
 
