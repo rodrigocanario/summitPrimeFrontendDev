@@ -34,7 +34,7 @@ export const Header = () => {
   return (
     <Row
       className="justify-content-center align-items-center text-center header"
-      style={{ boxShadow: "0px 0px 50px 50px #0007ed4a" }}
+      // style={{ boxShadow: "0px 0px 50px 50px #0007ed4a" }}
     >
       <OverlayTrigger
         trigger="click"
