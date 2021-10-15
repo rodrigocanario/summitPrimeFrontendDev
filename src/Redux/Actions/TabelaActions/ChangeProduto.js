@@ -7,11 +7,13 @@ export const ChangeProduto = (index, indexOrcamento, sku) => {
   return (dispatch, getState) => {
     let informacoes = getState().informacoes;
     if (sku) {
-      callBackend("/getProduto", token, {
+      let data = {
         sku,
         tabela: informacoes.tabela,
         UF: informacoes.UF,
-      })
+      };
+      console.log(data);
+      callBackend("/getProduto", token, data)
         .then(async (r) => {
           await dispatch(trocarItem(r, index, indexOrcamento));
           await dispatch(calcularValores());

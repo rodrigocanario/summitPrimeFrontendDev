@@ -12,10 +12,10 @@ export const calcularValores = () => {
 
     for (let i = 0; i < orcamentoAtivo.itens.length; i++) {
       let item = orcamentoAtivo.itens[i];
-      console.log(item.valor);
+      console.log("valor: " + item.valor);
       item.valorReal = item.valor;
 
-      if (item.nome.search("ARTOOLS") === -1) {
+      if (item.marca != "ARTOOLS") {
         let desconto = (100 - informacoes.desconto) / 100;
         item.valorReal *= desconto;
 
@@ -23,7 +23,10 @@ export const calcularValores = () => {
           item.valorReal *= 0.95;
         }
       }
-      item.valorReal *= 1 + item.imposto;
+      console.log("valor sem imposto: " + item.valorReal);
+      console.log("imposto: " + item.imposto);
+      item.valorReal *= item.imposto;
+      console.log("valor com imposto: " + item.valorReal);
 
       item.preco = item.valorReal * item.quantidade;
       orcamentoAtivo.total += item.preco;
