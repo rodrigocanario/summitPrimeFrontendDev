@@ -6,6 +6,7 @@ import { FooterHome } from "./FooterAtual";
 import { AiOutlineCheck } from "react-icons/ai";
 import { VscLoading } from "react-icons/vsc";
 import { saveOrcamento } from "../../../../Redux/Actions/SaveOrcamento";
+import { ChangeAllProdutos } from "../../../../Redux/Actions/TabelaActions/ChangeAllProdutos";
 
 export const OrcamentoAtual = () => {
   const orcamentos = useSelector((state) => state.orcamentos);
@@ -18,6 +19,15 @@ export const OrcamentoAtual = () => {
 
     dispatch(saveOrcamento(infos));
   };
+  useEffect(() => {
+    dispatch(
+      ChangeAllProdutos(
+        orcamentos.salvos.findIndex(
+          (orcamento) => orcamento.id === orcamentos.atual
+        )
+      )
+    );
+  }, []);
 
   useEffect(() => {
     if (orcamentos.atual) {

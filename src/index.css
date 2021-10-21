@@ -218,12 +218,12 @@ table {
 .header {
   font-size: 2rem;
   color: white;
-  background-color: #00000070;
+  background-color: #040048;
   height: 100px;
   width: 100%;
   margin: 0px !important;
+  box-shadow: 0 0 50px 20px #0024d5;
   /* margin: 0px 0px 60px 0px !important; */
-  /* box-shadow: rgb(0 7 237 / 29%) 0px 0px 50px 50px; */
 }
 .h3Header:hover {
   cursor: pointer;
@@ -287,6 +287,7 @@ h2 {
   margin: 15px;
   padding: 15px;
   height: 350px;
+  border: 1px solid white;
 }
 .iconLarge {
   font-size: 160px;
@@ -356,7 +357,10 @@ h2 {
   box-shadow: none;
 }
 .border-topp {
-  border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-top: 1px solid white !important;
+  box-shadow: 0 0 50px 20px #0024d5;
+  background-color: #011483;
+  padding-top: 15px;
 }
 #warningHeader {
   height: 42px;
@@ -369,6 +373,12 @@ h2 {
   align-items: center;
 }
 .container-fluid {
-  padding-top: 100px;
+  padding-top: 1px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
   box-shadow: inset rgb(0 7 237 / 40%) 0px 0px 100px 20px;
+}
+.row {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
 }

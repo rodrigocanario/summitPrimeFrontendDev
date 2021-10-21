@@ -26,7 +26,7 @@ export const OrcamentosVnda = () => {
   return (
     <Container fluid>
       <Row
-        style={{ height: "100%", minHeight: "100vh", paddingTop: "20px" }}
+        style={{ height: "100%", minHeight: "100vh", paddingTop: "60px" }}
         className="justify-content-center align-content-start"
       >
         <Col xs={11}>
