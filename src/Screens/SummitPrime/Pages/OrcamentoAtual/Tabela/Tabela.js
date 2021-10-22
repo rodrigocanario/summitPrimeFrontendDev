@@ -32,42 +32,42 @@ export const Tabela = () => {
   return (
     <Row>
       <section>
-        <div id="table-header">
-          <table border="0">
-            <thead>
-              <tr>
-                <th id="th" className="tdIndex">
-                  ITEM
-                </th>
-                <th id="th" className="tdSku">
-                  REFERÊNCIA
-                </th>
-                <th id="th">NOME</th>
-                <th id="th" className="tdCaixaMaster">
-                  MÚLTIPLO CAIXA MASTER
-                </th>
-                <th id="th" className="tdDescontoCaixaMaster">
-                  DESCONTO CAIXA MASTER
-                </th>
-                <th id="th" className="tdValor">
-                  VALOR UNITÁRIO
-                </th>
-                <th id="th" className="tdQuantidade">
-                  QUANTIDADE
-                </th>
-                <th id="th" className="tdPreco">
-                  VALOR
-                </th>
-                <th id="th" className="tdEstoque">
-                  ESTOQUE
-                </th>
-                <th id="th" className="tdTrash">
-                  <BsTrash style={{ fontSize: "25px" }} />
-                </th>
-              </tr>
-            </thead>
-          </table>
-        </div>
+        {/* <div id="table-header"> */}
+        <table border="0">
+          <thead>
+            <tr>
+              <th id="th" className="tdIndex">
+                ITEM
+              </th>
+              <th id="th" className="tdSku">
+                REFERÊNCIA
+              </th>
+              <th id="th">NOME</th>
+              <th id="th" className="tdCaixaMaster">
+                MÚLTIPLO CAIXA MASTER
+              </th>
+              <th id="th" className="tdDescontoCaixaMaster">
+                DESCONTO CAIXA MASTER
+              </th>
+              <th id="th" className="tdValor">
+                VALOR UNITÁRIO
+              </th>
+              <th id="th" className="tdQuantidade">
+                QUANTIDADE
+              </th>
+              <th id="th" className="tdPreco">
+                VALOR
+              </th>
+              <th id="th" className="tdEstoque">
+                ESTOQUE
+              </th>
+              <th id="th" className="tdTrash">
+                <BsTrash style={{ fontSize: "25px" }} />
+              </th>
+            </tr>
+          </thead>
+        </table>
+        {/* </div> */}
         <div id="table-body">
           <table border="0">
             <tbody>
@@ -103,14 +103,11 @@ export const Tabela = () => {
           </table>
         </div>
 
-        <div id="table-footer">
-          <table
-            border="0"
-            style={{ marginTop: "1.5rem", marginBottom: "1.5rem" }}
-          >
-            <Tfooter indexOrcamento={indexOrcamento} />
-          </table>
-        </div>
+        {/* <div id="table-footer"> */}
+        <table id="table-footer" border="0">
+          <Tfooter indexOrcamento={indexOrcamento} />
+        </table>
+        {/* </div> */}
       </section>
     </Row>
   );

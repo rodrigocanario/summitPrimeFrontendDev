@@ -2,6 +2,8 @@ const reducerModals = (
   state = {
     salvos: { show: false },
     vnda: { show: false, value: "" },
+    sidebar: { show: false },
+    atual: { show: false },
   },
   action
 ) => {
@@ -14,6 +16,10 @@ const reducerModals = (
       return { ...state, salvos: { show: true } };
     case "HIDESALVOSMODAL":
       return { ...state, salvos: { show: false } };
+    case "TOGGLESIDEBAR":
+      return { ...state, sidebar: { show: action.show } };
+    case "TOGGLEMODAL":
+      return { ...state, [action.modal]: { show: action.show } };
     default:
       return state;
   }

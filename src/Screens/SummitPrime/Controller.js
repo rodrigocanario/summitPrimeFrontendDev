@@ -11,6 +11,10 @@ import { Obrigado } from "./Obrigado";
 import { OrcamentosSalvos } from "./Pages/OrcamentosSalvos/OrcamentosSalvos";
 import { Home } from "./Pages/Home/Home";
 import { OrcamentoAtual } from "./Pages/OrcamentoAtual/OrcamentoAtual";
+import { SideBar } from "./SideBar";
+import { Container } from "react-bootstrap";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 export const Orcamento = () => {
   const dispatch = useDispatch();
@@ -26,29 +30,34 @@ export const Orcamento = () => {
       <>
         {pages.loading ? <Loading /> : ""}
         <Login />
+        <ToastContainer />
       </>
     );
   }
   return (
     <>
       {pages.loading ? <Loading /> : ""}
-      <Header />
-      {(() => {
-        switch (pages.name) {
-          case "home":
-            return <Home />;
-          case "orcamentoAtual":
-            return <OrcamentoAtual />;
-          case "orcamentosVnda":
-            return <OrcamentosVnda />;
-          case "orcamentosSalvos":
-            return <OrcamentosSalvos />;
-          case "obrigado":
-            return <Obrigado />;
-          default:
-            return <Error />;
-        }
-      })()}
+      <Container fluid>
+        <SideBar />
+        <Header />
+        {(() => {
+          switch (pages.name) {
+            case "home":
+              return <Home />;
+            case "orcamentoAtual":
+              return <OrcamentoAtual />;
+            case "orcamentosVnda":
+              return <OrcamentosVnda />;
+            case "orcamentosSalvos":
+              return <OrcamentosSalvos />;
+            case "obrigado":
+              return <Obrigado />;
+            default:
+              return <Error />;
+          }
+        })()}
+      </Container>
+      <ToastContainer />
     </>
   );
 };

@@ -9,15 +9,16 @@ export const HeaderHome = () => {
   return (
     <Row
       className="justify-content-center text-center"
-      style={{ margin: "60px 0px 60px 0px" }}
+      // style={{ margin: "60px 0px 60px 0px" }}
     >
-      <h1>
-        Bem Vindo à{" "}
+      <h1 style={{ fontSize: "4rem" }}>
+        Bem Vindo ao{" "}
         <span style={{ fontFamily: "fontSummit" }}>Summit Prime&reg;</span>{" "}
-        <br /> {login.razaoSocial}!
+        {/* <br /> {login.razaoSocial}! */}
       </h1>
-      <Col xs={6}>
-        <p>
+      <Col xs={6} style={{ padding: "100px 0px 30px 0px" }}>
+        <h2>O que deseja fazer hoje?</h2>
+        {/* <p>
           <br />
           Para verificar preço e disponibilidade de estoque, é só inserir o
           código do produto em um Novo Orçamento.
@@ -34,9 +35,9 @@ export const HeaderHome = () => {
           >
             Plataforma Catálogo
           </a>{" "}
-          para procurar o código do produto.
-          {/* -------------------- */}
-          {/* <button
+          para procurar o código do produto. */}
+        {/* -------------------- */}
+        {/* <button
             style={{
               color: "white",
               textDecoration: "underline",
@@ -50,7 +51,7 @@ export const HeaderHome = () => {
           >
             Consultar Listas da Plataforma Catálogo.
           </button> */}
-        </p>
+        {/* </p> */}
       </Col>
     </Row>
   );

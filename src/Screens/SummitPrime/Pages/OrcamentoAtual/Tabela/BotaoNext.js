@@ -5,6 +5,7 @@ import { Button, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { sendOrcamento } from "../../../../../Redux/Actions/SendOrcamento";
 import { changePage, setError } from "../../../../../Redux/Actions/Actions";
+import { toast } from "react-toastify";
 
 export const BotaoNext = (props) => {
   const dispatch = useDispatch();
@@ -19,6 +20,16 @@ export const BotaoNext = (props) => {
     if (pedidoMinimo && pedidoMinimo > totalDisponivel) {
       dispatch(setError("pedidoMinimo", true));
       window.scrollTo(0, document.body.scrollHeight);
+      toast.error("Pedido Mínimo Não Atingido", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     } else {
       dispatch(setError("pedidoMinimo", false));
       setShowModal(true);

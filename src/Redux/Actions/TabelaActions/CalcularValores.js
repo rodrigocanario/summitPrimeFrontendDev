@@ -12,7 +12,7 @@ export const calcularValores = () => {
 
     for (let i = 0; i < orcamentoAtivo.itens.length; i++) {
       let item = orcamentoAtivo.itens[i];
-      console.log("valor: " + item.valor);
+
       item.valorReal = item.valor;
 
       if (item.marca != "ARTOOLS") {
@@ -23,15 +23,14 @@ export const calcularValores = () => {
           item.valorReal *= 0.95;
         }
       }
-      console.log("valor sem imposto: " + item.valorReal);
-      console.log("imposto: " + item.imposto);
       item.valorReal *= item.imposto;
-      console.log("valor com imposto: " + item.valorReal);
-
       item.preco = item.valorReal * item.quantidade;
-      orcamentoAtivo.total += item.preco;
-      if (item.estoque > 0) {
-        orcamentoAtivo.totalDisponivel += item.preco;
+
+      if (item.preco) {
+        orcamentoAtivo.total += item.preco;
+        if (item.estoque > 0) {
+          orcamentoAtivo.totalDisponivel += item.preco;
+        }
       }
     }
 

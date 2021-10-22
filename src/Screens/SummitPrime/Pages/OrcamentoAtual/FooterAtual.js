@@ -22,13 +22,15 @@ export const FooterHome = () => {
             <div>Observações: </div>
             <ol style={{ paddingLeft: "2rem" }}>
               <li>
-                Consultor de vendas responsável pela sua conta é{" "}
+                Seu consultor de vendas responsável é{" "}
                 <span style={{ fontWeight: "bold" }}>
                   {info.consultor.nome}{" "}
                 </span>{" "}
                 de Whatsapp número{" "}
                 <span style={{ fontWeight: "bold" }}>
-                  {info.consultor.telefone}{" "}
+                  ({info.consultor.telefone.toString().slice(0, 2)}){" "}
+                  {info.consultor.telefone.toString().slice(2, 7)}-
+                  {info.consultor.telefone.toString().slice(7, 11)}{" "}
                 </span>{" "}
                 e e-mail{" "}
                 <span style={{ fontWeight: "bold" }}>
@@ -38,20 +40,31 @@ export const FooterHome = () => {
                 .
               </li>
               <li>
-                Respeitar o{" "}
+                Seu pedido mínimo é de{" "}
                 {errors.pedidoMinimo ? (
                   <span style={{ fontWeight: "bold", color: "red" }}>
-                    PEDIDO MÍNIMO DE R${info.pedidoMinimo.toFixed(2)}
+                    R${info.pedidoMinimo.toFixed(2)}
                   </span>
                 ) : (
                   <span style={{ fontWeight: "bold" }}>
-                    PEDIDO MÍNIMO DE R${info.pedidoMinimo.toFixed(2)}
+                    R${info.pedidoMinimo.toFixed(2)}
                   </span>
                 )}
               </li>
+              {info.creditoAprovado ? (
+                <li>
+                  Seu crédito pré-aprovado estimado é de{" "}
+                  <span style={{ fontWeight: "bold" }}>
+                    R${info.creditoAprovado}
+                  </span>{" "}
+                  .
+                </li>
+              ) : (
+                ""
+              )}
               {info.previsaoEntrega ? (
                 <li>
-                  Previsão de entrega de{" "}
+                  Sua previsão de entrega é de{" "}
                   <span style={{ fontWeight: "bold" }}>
                     {" "}
                     {info.previsaoEntrega} dias úteis após o faturamento.
@@ -61,17 +74,6 @@ export const FooterHome = () => {
                 ""
               )}
 
-              {info.creditoAprovado ? (
-                <li>
-                  Crédito pré-aprovado estimado de{" "}
-                  <span style={{ fontWeight: "bold" }}>
-                    R${info.creditoAprovado}
-                  </span>{" "}
-                  .
-                </li>
-              ) : (
-                ""
-              )}
               <li>
                 As alterações feitas neste ambiente não retornam para a
                 Plataforma Catálogo.

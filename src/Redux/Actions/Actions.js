@@ -83,6 +83,19 @@ export const hideSalvosModal = () => {
     type: "HIDESALVOSMODAL",
   };
 };
+export const toggleSideBar = (show) => {
+  return {
+    type: "TOGGLESIDEBAR",
+    show,
+  };
+};
+export const toggleModal = (modal, show) => {
+  return {
+    type: "TOGGLEMODAL",
+    modal,
+    show,
+  };
+};
 
 export const setError = (key, value) => {
   return {

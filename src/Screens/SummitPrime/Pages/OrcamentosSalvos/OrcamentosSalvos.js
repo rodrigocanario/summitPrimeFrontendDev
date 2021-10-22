@@ -1,10 +1,13 @@
 import React from "react";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
+import { BsQuestionCircle } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import {
   changePage,
   hideSalvosModal,
   showSalvosModal,
+  toggleModal,
+  toggleSideBar,
   updateOrcamentos,
 } from "../../../../Redux/Actions/Actions";
 import { ModalOrcamentosSalvos } from "./ModalOrcamentosSalvos";
@@ -17,7 +20,9 @@ export const OrcamentosSalvos = () => {
     let id = orcamentosSalvos[e.target.parentElement.id].id;
     dispatch(updateOrcamentos({ atual: id }));
     dispatch(hideSalvosModal());
+    dispatch(toggleSideBar(true));
     dispatch(changePage("orcamentoAtual"));
+    dispatch(toggleModal("atual", true));
   };
   const parseDatee = (date) => {
     let dia = date.substring(8, 10);
@@ -29,12 +34,17 @@ export const OrcamentosSalvos = () => {
   };
 
   return (
-    <Container fluid>
+    <div className="bodie">
       <Row
         style={{ height: "100%", minHeight: "100vh", paddingTop: "20px" }}
         className="justify-content-center align-content-start"
       >
         <Col xs={11}>
+          <Row className="text-center">
+            <Col style={{ padding: "0px 0px 30px 0px" }}>
+              <h1>Orçamentos Salvos</h1>
+            </Col>
+          </Row>
           <Row className="justify-content-end">
             <Col id="coluna" className="text-end" xs={1}>
               <Button
@@ -66,7 +76,11 @@ export const OrcamentosSalvos = () => {
                 {orcamentosSalvos.map((orcamento, index) => {
                   return (
                     <tr
-                      className="trOrcamentosSalvos"
+                      className={
+                        index % 2 === 0
+                          ? "tdWhite trOrcamentosSalvos"
+                          : "trOrcamentosSalvos"
+                      }
                       onClick={handleAbrirOrcamento}
                       id={index}
                       key={index}
@@ -84,6 +98,6 @@ export const OrcamentosSalvos = () => {
         </Col>
       </Row>
       <ModalOrcamentosSalvos />
-    </Container>
+    </div>
   );
 };

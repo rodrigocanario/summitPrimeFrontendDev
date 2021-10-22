@@ -9,6 +9,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(160deg, rgb(0 15 64) 0%, #002985 100%);
+  background: linear-gradient(150deg, rgb(6 0 56) 0%, #0055f1d9 100%);
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -31,7 +32,7 @@ span {
 /* --------------------login------------------- */
 
 #login-background {
-  background-color: #0000009e;
+  background-color: #0000004f;
   border-radius: 10px;
   padding: 60px;
   padding-top: 20px;
@@ -41,6 +42,7 @@ span {
   font-weight: 100;
   padding: 10px;
   margin-bottom: 45px;
+  font-size: 2rem;
 }
 .login-input {
   background-color: transparent;
@@ -71,10 +73,11 @@ span {
   text-align: center;
   color: white;
   font-family: fontSummit;
+  font-size: 3rem;
 }
 #summit-img {
   text-align: center;
-  max-width: 85px;
+  max-width: 120px;
 }
 
 /* -------------------table---------------------- */
@@ -82,9 +85,22 @@ span {
 table {
   width: 100% !important;
   table-layout: fixed !important;
+  color: white !important;
+  /* background-color: #0000002b !important; */
+  border-color: transparent !important;
+  border-radius: 10px !important;
   /* background-color: #00175abf; */
 }
+thead {
+  background-color: #0000005c !important;
+}
+th {
+  text-align: center !important;
+}
 
+tbody {
+  background-color: #00000026;
+}
 #table-header {
   background-color: rgba(255, 255, 255, 0.3);
 }
@@ -92,17 +108,23 @@ table {
   height: 665px;
   overflow-x: auto;
   margin-top: 0px;
-  background-color: #03268b78;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: #00000026;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+#table-footer {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: transparent !important;
 }
 #th {
-  padding: 0px;
+  padding: 5px 10px;
   text-align: center;
   font-size: 15px;
   color: #fff;
   text-transform: uppercase;
 }
-#td {
+td {
   padding: 0px;
   text-align: center;
   vertical-align: middle;
@@ -110,8 +132,11 @@ table {
   font-size: 15px;
   font-weight: bold;
   color: #fff;
-  border-bottom: solid 1px rgba(255, 255, 255, 0.5);
+  /* border-bottom: solid 1px rgba(255, 255, 255, 0.5); */
   height: 40px;
+}
+.tdWhite {
+  background-color: #ffffff12;
 }
 .tdNome #td-footer {
   padding-top: 30px;
@@ -123,10 +148,10 @@ table {
   width: 90px;
 }
 .tdCaixaMaster {
-  width: 108px;
+  width: 140px;
 }
 .tdDescontoCaixaMaster {
-  width: 85px;
+  width: 140px;
 }
 .tdValor {
   width: 105px;
@@ -145,6 +170,7 @@ table {
   width: 45px;
 }
 #tr {
+  background-color: #dddbff1c;
   color: white;
 }
 #trFooter {
@@ -216,14 +242,14 @@ table {
 
 /* ------------------------header------------------------ */
 .header {
-  font-size: 2rem;
+  font-size: 2rem !important;
   color: white;
-  background-color: #040048;
-  height: 100px;
+  background-color: transparent;
+  height: auto;
   width: 100%;
   margin: 0px !important;
-  box-shadow: 0 0 50px 20px #0024d5;
-  /* margin: 0px 0px 60px 0px !important; */
+  font-size: 30px;
+  padding: 5px 20px;
 }
 .h3Header:hover {
   cursor: pointer;
@@ -281,13 +307,13 @@ h2 {
 }
 /* ------------------ checkBox--------------- */
 .selectionCard {
-  background-color: #011483;
+  background-color: #0000004f;
   border-radius: 10px;
-  box-shadow: 0 0 50px 20px #0024d5;
+  /* box-shadow: 0 0 50px 20px #0024d5; */
   margin: 15px;
   padding: 15px;
   height: 350px;
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 .iconLarge {
   font-size: 160px;
@@ -305,6 +331,7 @@ h2 {
   border-radius: 25px;
   margin: 10px;
   font-size: 12px;
+  color: white;
 }
 #coluna {
   width: 125px;
@@ -329,16 +356,12 @@ h2 {
   cursor: pointer;
 }
 #buttonLogout {
-  position: absolute;
-  right: 0px;
-  top: 100px;
   width: auto;
-  padding: 3px;
-  font-size: 15px;
-  margin: 5px;
+  padding: 0;
+  margin: 0px;
   background-color: transparent;
   border: none;
-  text-decoration: underline;
+  font-size: inherit !important;
 }
 #warningLogout {
   position: absolute;
@@ -357,10 +380,13 @@ h2 {
   box-shadow: none;
 }
 .border-topp {
-  border-top: 1px solid white !important;
-  box-shadow: 0 0 50px 20px #0024d5;
-  background-color: #011483;
-  padding-top: 15px;
+  border: none;
+  /* box-shadow: 0 0 50px 20px #0024d5; */
+  padding: 35px 0px 0px 0px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #00000026;
+  margin: 20px 25px 0px 25px;
 }
 #warningHeader {
   height: 42px;
@@ -376,9 +402,37 @@ h2 {
   padding-top: 1px;
   padding-left: 0px !important;
   padding-right: 0px !important;
-  box-shadow: inset rgb(0 7 237 / 40%) 0px 0px 100px 20px;
+  /* box-shadow: inset rgb(0 7 237 / 40%) 0px 0px 100px 20px; */
 }
 .row {
   margin-right: 0px !important;
   margin-left: 0px !important;
+}
+
+/* ------------sidebar----------- */
+
+.pro-sidebar {
+  position: fixed !important;
+  height: auto !important;
+}
+.pro-sidebar-inner {
+  background-color: transparent !important;
+  backdrop-filter: blur(25px);
+}
+.pro-sidebar-header {
+  border: none !important;
+}
+.pro-icon-wrapper {
+  background-color: transparent !important;
+  font-size: 25px !important;
+}
+.pro-inner-list-item {
+  background-color: #ffffff1f !important ;
+}
+.popper-inner {
+  background-color: transparent !important ;
+}
+.bodie {
+  margin-left: 80px;
+  /* padding-top: 50px; */
 }

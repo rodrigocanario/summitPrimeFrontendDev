@@ -16,7 +16,6 @@ export const ChangeAllProdutos = (indexOrcamento) => {
           tabela: informacoes.tabela,
           UF: informacoes.UF,
         };
-        console.log(data);
         callBackend("/getProduto", token, data)
           .then(async (r) => {
             await dispatch(trocarItem(r, i, indexOrcamento));

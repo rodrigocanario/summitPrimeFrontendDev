@@ -15,6 +15,7 @@ import {
   showSalvosModal,
 } from "../../Redux/Actions/Actions";
 import { GetOrcamentos } from "../../Redux/Actions/GetOrcamentos";
+import { BiPowerOff } from "react-icons/bi";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -32,11 +33,8 @@ export const Header = () => {
   );
 
   return (
-    <Row
-      className="justify-content-center align-items-center text-center header"
-      // style={{ boxShadow: "0px 0px 50px 50px #0007ed4a" }}
-    >
-      <OverlayTrigger
+    <Row className="justify-content-end align-items-end text-end header">
+      {/* <OverlayTrigger
         trigger="click"
         placement="bottom-start"
         overlay={popover}
@@ -45,49 +43,14 @@ export const Header = () => {
           <ImWarning style={{ marginBottom: "5px" }} />
           Versão Beta 0.3.1
         </Button>
-      </OverlayTrigger>
-
-      <Button onClick={() => dispatch(logout())} id="buttonLogout">
-        {" "}
-        Logout{" "}
-      </Button>
-      <Col xs={4}>
-        <Row className="justify-content-center align-items-center text-center">
-          <Col xs={6}>
-            <h3
-              className="h3Header"
-              onClick={() => dispatch(showSalvosModal())}
-            >
-              Novo Orçamento
-            </h3>
-          </Col>
-          <Col xs={6}>
-            <h3
-              className="h3Header"
-              onClick={() => {
-                dispatch(GetOrcamentos("salvos", informacoes.cnpj));
-              }}
-            >
-              Orçamentos Salvos
-            </h3>
-          </Col>
-        </Row>
+      </OverlayTrigger> */}
+      <Col sm={1} style={{ width: "auto" }}>
+        <h6>{informacoes.razaoSocial}</h6>
       </Col>
-      <Col xs={3} className="h-100 align-items-center">
-        <Row className="align-items-center justify-content-center">
-          <Image src="logo.png" id="summit-img" alt="summit-logo" fluid />
-          <h3 className="h3Header" onClick={() => dispatch(changePage("home"))}>
-            Summit Prime{" "}
-          </h3>
-        </Row>
-      </Col>
-      <Col xs={4}>
-        <h3
-          className="h3Header"
-          onClick={() => dispatch(GetOrcamentos("vnda", informacoes.cnpj))}
-        >
-          Consultar Listas Da Plataforma Catálogo
-        </h3>
+      <Col style={{ width: "auto" }} sm={1}>
+        <Button onClick={() => dispatch(logout())} id="buttonLogout">
+          <BiPowerOff />
+        </Button>
       </Col>
     </Row>
   );

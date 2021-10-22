@@ -7,11 +7,11 @@ import { Selection } from "./Selection";
 
 export const Home = () => {
   return (
-    <Container fluid>
+    <div className="bodie">
       <HeaderHome />
       <Selection />
-      <FooterHome />
+      {/* <FooterHome /> */}
       <ModalOrcamentosSalvos />
-    </Container>
+    </div>
   );
 };

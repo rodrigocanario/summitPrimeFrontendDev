@@ -2,6 +2,7 @@ import {
   changePage,
   hideSalvosModal,
   loading,
+  toggleModal,
   updateOrcamentos,
 } from "./Actions";
 import callBackend from "./CallBackend";
@@ -38,7 +39,6 @@ export const criarOrcamento = (infos, changePagina) => {
       ultimaModificacao: new Date(),
     };
     let orcamento = { ...orcamentoPadrao, ...infos, cnpj: infos.cnpj };
-    console.log({ orcamento });
     await callBackend("/putOrcamento", token, { orcamento })
       .then(async (r) => {
         await dispatch(GetOrcamentos("salvos", parseInt(infos.cnpj), false));
@@ -47,6 +47,7 @@ export const criarOrcamento = (infos, changePagina) => {
         dispatch(loading(false));
         if (changePagina) {
           dispatch(changePage("orcamentoAtual"));
+          dispatch(toggleModal("atual", true));
         }
         Promise.resolve();
       })

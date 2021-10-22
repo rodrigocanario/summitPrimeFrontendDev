@@ -73,7 +73,7 @@ export const TRow = (props) => {
   };
 
   return (
-    <tr>
+    <tr className={props.index % 2 === 0 ? "tdWhite" : ""}>
       <td id="td" className="tdIndex">
         {props.index + 1}.
       </td>
@@ -87,16 +87,16 @@ export const TRow = (props) => {
           onKeyDown={handleEnter}
         />
       </td>
-      <td id="td">{Itens.nome}</td>
-      <td id="td" className="tdCaixaMaster">
+      <td>{Itens.nome}</td>
+      <td className="tdCaixaMaster">
         {Itens.caixaMaster ? Itens.caixaMaster + " un" : ""}
       </td>
-      <td id="td" className="tdDescontoCaixaMaster">
+      <td className="tdDescontoCaixaMaster">
         {Itens.quantidade % Itens.caixaMaster === 0 && Itens.quantidade > 0
           ? "5%"
           : ""}
       </td>
-      <td id="td" className="tdValor">
+      <td className="tdValor">
         {Itens.valorReal && Itens.valorReal !== "NaN" ? (
           <>
             {" "}
@@ -107,20 +107,20 @@ export const TRow = (props) => {
           ""
         )}
       </td>
-      <td id="td" className="tdQuantidade">
+      <td className="tdQuantidade">
         {Itens.nome ? (
           <Quantity index={props.index} indexOrcamento={props.indexOrcamento} />
         ) : (
           ""
         )}
       </td>
-      <td id="td" className="tdPreco">
+      <td className="tdPreco">
         {Itens.nome ? "R$" + parseFloat(Itens.preco).toFixed(2) : ""}
       </td>
-      <td id="td" className="tdEstoque">
+      <td className="tdEstoque">
         {Itens.nome ? (Itens.estoque > 0 ? "Disponível" : "Indisponível") : ""}
       </td>
-      <td id="td" className="tdTrash">
+      <td className="tdTrash">
         <button
           onClick={() =>
             dispatch(deleteItem(props.index, props.indexOrcamento))
