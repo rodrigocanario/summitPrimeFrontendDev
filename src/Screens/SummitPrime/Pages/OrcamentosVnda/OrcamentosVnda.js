@@ -31,7 +31,7 @@ export const OrcamentosVnda = () => {
         <Col xs={11}>
           <Row className="text-center">
             <Col style={{ padding: "0px 0px 30px 0px" }}>
-              <h1>Lista Plataforma Catálogo</h1>
+              <h1>Listas Da Plataforma Catálogo</h1>
             </Col>
           </Row>
           <Row className="align-items-end justify-content-end">

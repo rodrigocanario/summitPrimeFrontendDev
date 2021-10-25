@@ -47,7 +47,7 @@ export const BotaoNext = (props) => {
         <Modal show={showModal} animation={true} onHide={handleClose} centered>
           <Modal.Header className="align-items-center justify-content-center">
             <Modal.Title style={{ color: "black", textAlign: "center" }}>
-              ENVIADO COM SUCESSO!
+              Enviado com sucesso para seu consultor de vendas!
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -59,7 +59,7 @@ export const BotaoNext = (props) => {
                     dispatch(changePage("home"));
                   }}
                 >
-                  RETORNAR AO MENU PRINCIPAL
+                  Retornar à pagina inicial
                 </Button>
               </Col>
             </Row>

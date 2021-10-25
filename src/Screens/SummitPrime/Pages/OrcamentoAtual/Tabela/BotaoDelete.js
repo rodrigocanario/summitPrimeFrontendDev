@@ -39,7 +39,7 @@ export const BotaoDelete = () => {
         </Modal.Body>
       </Modal>
       <Button onClick={handleOpen} variant="outline-danger">
-        Deletar Orcamento
+        Deletar Orçamento
       </Button>
     </Fragment>
   );

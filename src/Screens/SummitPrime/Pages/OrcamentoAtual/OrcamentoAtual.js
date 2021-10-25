@@ -9,6 +9,7 @@ import { saveOrcamento } from "../../../../Redux/Actions/SaveOrcamento";
 import { ChangeAllProdutos } from "../../../../Redux/Actions/TabelaActions/ChangeAllProdutos";
 import { BsQuestionCircle } from "react-icons/bs";
 import { toggleModal } from "../../../../Redux/Actions/Actions";
+import { BiPencil } from "react-icons/bi";
 
 export const OrcamentoAtual = () => {
   const orcamentos = useSelector((state) => state.orcamentos);
@@ -51,6 +52,9 @@ export const OrcamentoAtual = () => {
                   defaultValue={orcamentoAtual.titulo}
                   onChange={changeTitle}
                 />
+                <sup>
+                  <BiPencil />
+                </sup>
               </h1>
             </Row>
             <Row className="align-items-end">

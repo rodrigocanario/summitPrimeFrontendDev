@@ -32,7 +32,7 @@ export const Selection = () => {
           >
             {/* <BiFileBlank className="iconLarge" /> */}
             <BiFolder className="iconLarge" />
-            <div>Meus Orçamentos Salvos</div>
+            <div>Orçamentos Salvos</div>
           </button>
         </Col>
         <Col xs={3} className="selectionCard">
@@ -41,7 +41,7 @@ export const Selection = () => {
             onClick={() => dispatch(GetOrcamentos("vnda", informacoes.cnpj))}
           >
             <BsListCheck className="iconLarge" />
-            <div>Listas da Plataforma Catálogo</div>
+            <div>Listas Da Plataforma Catálogo</div>
           </button>
         </Col>
       </Row>

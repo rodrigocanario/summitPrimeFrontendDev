@@ -35,9 +35,8 @@ export const FooterHome = () => {
                 e e-mail{" "}
                 <span style={{ fontWeight: "bold" }}>
                   {" "}
-                  {info.consultor.email}{" "}
+                  {info.consultor.email}.
                 </span>
-                .
               </li>
               <li>
                 Seu pedido mínimo é de{" "}
@@ -47,7 +46,7 @@ export const FooterHome = () => {
                   </span>
                 ) : (
                   <span style={{ fontWeight: "bold" }}>
-                    R${info.pedidoMinimo.toFixed(2)}
+                    R${info.pedidoMinimo.toFixed(2)}.
                   </span>
                 )}
               </li>
@@ -55,9 +54,8 @@ export const FooterHome = () => {
                 <li>
                   Seu crédito pré-aprovado estimado é de{" "}
                   <span style={{ fontWeight: "bold" }}>
-                    R${info.creditoAprovado}
-                  </span>{" "}
-                  .
+                    R${info.creditoAprovado.toFixed(2)}.
+                  </span>
                 </li>
               ) : (
                 ""
