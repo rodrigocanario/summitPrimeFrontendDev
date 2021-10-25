@@ -1,11 +1,4 @@
-import {
-  changePage,
-  hideVndaModal,
-  loading,
-  toggleModal,
-  toggleSideBar,
-  updateOrcamentos,
-} from "./Actions";
+import { changePage, loading, toggleModal } from "./Actions";
 import callBackend from "./CallBackend";
 import { criarOrcamento } from "./CriarOrcamento";
 import { calcularValores } from "./TabelaActions/CalcularValores";
@@ -32,9 +25,7 @@ export const criarOrcamentoVnda = (titulo) => {
           produtos.push({ ...resp, quantidade, valorReal: 0, preco: 0 });
         });
       }
-      let id = Math.random().toString(36).slice(-8).toUpperCase();
       await dispatch(criarOrcamento(titulo, produtos));
-      // await dispatch(updateOrcamentos({ atual: id }));
       await dispatch(calcularValores());
       await dispatch(toggleModal("criarOrcamento", false));
       await dispatch(toggleModal("sidebar", true));

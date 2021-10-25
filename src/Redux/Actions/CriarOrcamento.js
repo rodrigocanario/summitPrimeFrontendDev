@@ -1,10 +1,4 @@
-import {
-  changePage,
-  hideSalvosModal,
-  loading,
-  toggleModal,
-  updateOrcamentos,
-} from "./Actions";
+import { changePage, loading, toggleModal, updateOrcamentos } from "./Actions";
 import callBackend from "./CallBackend";
 import { GetOrcamentos } from "./GetOrcamentos";
 

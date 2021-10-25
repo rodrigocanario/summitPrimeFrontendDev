@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { hideSalvosModal, toggleModal } from "../../../Redux/Actions/Actions";
+import { toggleModal } from "../../../Redux/Actions/Actions";
 import { criarOrcamento } from "../../../Redux/Actions/CriarOrcamento";
 import { criarOrcamentoVnda } from "../../../Redux/Actions/CriarOrcamentoVnda";
 

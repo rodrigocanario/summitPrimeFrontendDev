@@ -1,10 +1,4 @@
-import {
-  changePage,
-  loading,
-  toggleModal,
-  toggleSideBar,
-  updateOrcamentos,
-} from "./Actions";
+import { changePage, loading, toggleModal, updateOrcamentos } from "./Actions";
 import callAirtable from "./CallAirtable";
 import callBackend from "./CallBackend";
 

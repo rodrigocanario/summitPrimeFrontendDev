@@ -1,23 +1,17 @@
 import React from "react";
 import { AiOutlineFileAdd } from "react-icons/ai";
-import { BiCart, BiFolder, BiHome, BiListUl, BiPencil } from "react-icons/bi";
+import { BiFolder, BiHome } from "react-icons/bi";
 import { BsListCheck } from "react-icons/bs";
 import {
   ProSidebar,
   Menu,
   MenuItem,
-  SubMenu,
   SidebarHeader,
   SidebarContent,
 } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  changePage,
-  showSalvosModal,
-  toggleModal,
-  toggleSideBar,
-} from "../../Redux/Actions/Actions";
+import { changePage, toggleModal } from "../../Redux/Actions/Actions";
 import { GetOrcamentos } from "../../Redux/Actions/GetOrcamentos";
 
 export const SideBar = () => {
@@ -32,7 +26,13 @@ export const SideBar = () => {
             onClick={() =>
               dispatch(toggleModal("sidebar", !modals.sidebar.show))
             }
-            icon={<img style={{ width: "55px" }} src="/logo.png"></img>}
+            icon={
+              <img
+                alt="Logo Summit Prime"
+                style={{ width: "55px" }}
+                src="/logo.png"
+              ></img>
+            }
           >
             Summit Prime
           </MenuItem>
@@ -64,7 +64,7 @@ export const SideBar = () => {
             onClick={() => dispatch(GetOrcamentos("vnda", true))}
             icon={<BsListCheck />}
           >
-            Lista P. Catálogo
+            Listas Da Plat. Cat.
           </MenuItem>
         </Menu>
       </SidebarContent>

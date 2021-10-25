@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Tabela } from "./Tabela/Tabela";
 import { FooterHome } from "./FooterAtual";
@@ -9,7 +9,6 @@ import { saveOrcamento } from "../../../../Redux/Actions/SaveOrcamento";
 import { ChangeAllProdutos } from "../../../../Redux/Actions/TabelaActions/ChangeAllProdutos";
 import { BsQuestionCircle } from "react-icons/bs";
 import { toggleModal } from "../../../../Redux/Actions/Actions";
-import Button from "@restart/ui/esm/Button";
 
 export const OrcamentoAtual = () => {
   const orcamentos = useSelector((state) => state.orcamentos);
@@ -66,7 +65,7 @@ export const OrcamentoAtual = () => {
                   </p>
                 )}
               </Col>
-              <Col className="text-end" sm={{ span: 2, offset: 2 }}>
+              <Col className="text-end" sm={5}>
                 <button
                   onClick={() => dispatch(toggleModal("instrucoes", true))}
                   style={{
@@ -77,11 +76,10 @@ export const OrcamentoAtual = () => {
                 >
                   Instruções <BsQuestionCircle />
                 </button>
-              </Col>
-              <Col id="coluna" className="text-end" xs={1}>
                 <Button
+                  style={{ float: "right" }}
+                  variant="outline-light"
                   onClick={() => dispatch(toggleModal("criarOrcamento", true))}
-                  id="novoOrcamento"
                 >
                   Novo Orçamento
                 </Button>

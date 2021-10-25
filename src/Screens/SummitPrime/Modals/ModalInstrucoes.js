@@ -1,18 +1,13 @@
-import React, { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import React from "react";
+import { Modal } from "react-bootstrap";
 import { BsQuestionCircle } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { hideSalvosModal, toggleModal } from "../../../Redux/Actions/Actions";
-import { criarOrcamento } from "../../../Redux/Actions/CriarOrcamento";
+import { toggleModal } from "../../../Redux/Actions/Actions";
 
 export const ModalInstrucoes = () => {
-  const [titulo, setTitulo] = useState("Orçamento sem nome");
   const informacoes = useSelector((state) => state.informacoes);
   const modals = useSelector((state) => state.modals);
   const dispatch = useDispatch();
-  const handleCriar = () => {
-    dispatch(criarOrcamento({ cnpj: `${informacoes.cnpj}`, titulo }, true));
-  };
 
   return (
     <Modal
@@ -44,7 +39,8 @@ export const ModalInstrucoes = () => {
           <li>Respeite seu pedido minimo de R${informacoes.pedidoMinimo}.</li>
           <li>
             É possível utilizar o botāo SHIFT junto com as setas do seu teclado
-            para uma navegação mais ágil.
+            para uma navegação mais ágil ao inserir os produtos e editar as
+            quantidades.
           </li>
         </ol>
       </Modal.Body>

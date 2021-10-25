@@ -19,7 +19,7 @@ export const calcularValores = () => {
 
       item.valorReal = item.valor;
 
-      if (item.marca != "ARTOOLS") {
+      if (item.marca !== "ARTOOLS") {
         let desconto = (100 - informacoes.desconto) / 100;
         item.valorReal *= desconto;
 

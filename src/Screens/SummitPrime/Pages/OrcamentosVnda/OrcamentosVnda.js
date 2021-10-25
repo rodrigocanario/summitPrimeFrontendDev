@@ -1,13 +1,8 @@
-import Button from "@restart/ui/esm/Button";
 import React from "react";
-import { Col, Container, Row, Table } from "react-bootstrap";
+import { Button, Col, Row, Table } from "react-bootstrap";
 import { BsQuestionCircle } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  showSalvosModal,
-  showVndaModal,
-  toggleModal,
-} from "../../../../Redux/Actions/Actions";
+import { toggleModal } from "../../../../Redux/Actions/Actions";
 const csv2json = require("csvjson-csv2json");
 
 export const OrcamentosVnda = () => {
@@ -54,8 +49,9 @@ export const OrcamentosVnda = () => {
             </Col>
             <Col id="coluna" className="text-end" xs={1}>
               <Button
+                variant="outline-light"
                 onClick={() => dispatch(toggleModal("criarOrcamento", true))}
-                id="novoOrcamento"
+                // id="novoOrcamento"
               >
                 Novo Orçamento
               </Button>

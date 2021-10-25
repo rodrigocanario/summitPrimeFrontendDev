@@ -1,11 +1,10 @@
 import React from "react";
-import { Button, Col, Container, Row, Table } from "react-bootstrap";
+import { Button, Col, Row, Table } from "react-bootstrap";
 import { BsQuestionCircle } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import {
   changePage,
   toggleModal,
-  toggleSideBar,
   updateOrcamentos,
 } from "../../../../Redux/Actions/Actions";
 
@@ -57,8 +56,8 @@ export const OrcamentosSalvos = () => {
             </Col>
             <Col id="coluna" className="text-end" xs={1}>
               <Button
+                variant="outline-light"
                 onClick={() => dispatch(toggleModal("criarOrcamento", true))}
-                id="novoOrcamento"
               >
                 Novo Orçamento
               </Button>
