@@ -436,3 +436,7 @@ h2 {
   margin-left: 80px;
   /* padding-top: 50px; */
 }
+sup {
+  font-size: 0.5em !important;
+  top: -1em !important;
+}
