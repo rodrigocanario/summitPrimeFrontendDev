@@ -7,9 +7,9 @@ import { AiOutlineCheck } from "react-icons/ai";
 import { VscLoading } from "react-icons/vsc";
 import { saveOrcamento } from "../../../../Redux/Actions/SaveOrcamento";
 import { ChangeAllProdutos } from "../../../../Redux/Actions/TabelaActions/ChangeAllProdutos";
-import { ModalOrcamentoAtual } from "./ModalOrcamentoAtual";
 import { BsQuestionCircle } from "react-icons/bs";
 import { toggleModal } from "../../../../Redux/Actions/Actions";
+import Button from "@restart/ui/esm/Button";
 
 export const OrcamentoAtual = () => {
   const orcamentos = useSelector((state) => state.orcamentos);
@@ -42,7 +42,6 @@ export const OrcamentoAtual = () => {
 
   return (
     <div className="bodie">
-      <ModalOrcamentoAtual />
       <Row className="justify-content-center text-center align-items-start">
         <Col className="text-center">
           <>
@@ -55,7 +54,7 @@ export const OrcamentoAtual = () => {
                 />
               </h1>
             </Row>
-            <Row>
+            <Row className="align-items-end">
               <Col className="text-center" sm={{ span: 2, offset: 5 }}>
                 {pages.savingOrcamento ? (
                   <p style={{ marginBottom: "0px", color: "#ff0018a8" }}>
@@ -67,9 +66,9 @@ export const OrcamentoAtual = () => {
                   </p>
                 )}
               </Col>
-              <Col className="text-end" sm={{ span: 2, offset: 3 }}>
+              <Col className="text-end" sm={{ span: 2, offset: 2 }}>
                 <button
-                  onClick={() => dispatch(toggleModal("atual", true))}
+                  onClick={() => dispatch(toggleModal("instrucoes", true))}
                   style={{
                     border: "none",
                     backgroundColor: "transparent",
@@ -78,6 +77,14 @@ export const OrcamentoAtual = () => {
                 >
                   Instruções <BsQuestionCircle />
                 </button>
+              </Col>
+              <Col id="coluna" className="text-end" xs={1}>
+                <Button
+                  onClick={() => dispatch(toggleModal("criarOrcamento", true))}
+                  id="novoOrcamento"
+                >
+                  Novo Orçamento
+                </Button>
               </Col>
             </Row>
             <Tabela />

@@ -62,39 +62,17 @@ export const savingOrcamento = (savingOrcamento) => {
     savingOrcamento,
   };
 };
-export const showVndaModal = (value) => {
-  return {
-    type: "SHOWVNDAMODAL",
-    value,
-  };
-};
-export const hideVndaModal = () => {
-  return {
-    type: "HIDEVNDAMODAL",
-  };
-};
-export const showSalvosModal = () => {
-  return {
-    type: "SHOWSALVOSMODAL",
-  };
-};
-export const hideSalvosModal = () => {
-  return {
-    type: "HIDESALVOSMODAL",
-  };
-};
-export const toggleSideBar = (show) => {
-  return {
-    type: "TOGGLESIDEBAR",
-    show,
-  };
-};
-export const toggleModal = (modal, show) => {
-  return {
+
+export const toggleModal = (modal, show, vnda) => {
+  let action = {
     type: "TOGGLEMODAL",
     modal,
     show,
   };
+  if (vnda) {
+    action.vnda = vnda;
+  }
+  return action;
 };
 
 export const setError = (key, value) => {

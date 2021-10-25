@@ -8,9 +8,10 @@ import {
 import callBackend from "./CallBackend";
 import { GetOrcamentos } from "./GetOrcamentos";
 
-export const criarOrcamento = (infos, changePagina) => {
-  return async (dispatch) => {
+export const criarOrcamento = (titulo, itens, changePagina) => {
+  return async (dispatch, getState) => {
     dispatch(loading(true));
+    let cnpj = getState().informacoes.cnpj;
     let token = localStorage.getItem("token");
     let id = Math.random().toString(36).slice(-8).toUpperCase();
     let orcamentoPadrao = {
@@ -38,22 +39,19 @@ export const criarOrcamento = (infos, changePagina) => {
       criadoEm: new Date(),
       ultimaModificacao: new Date(),
     };
-    let orcamento = { ...orcamentoPadrao, ...infos, cnpj: infos.cnpj };
-    await callBackend("/putOrcamento", token, { orcamento })
-      .then(async (r) => {
-        await dispatch(GetOrcamentos("salvos", parseInt(infos.cnpj), false));
-        dispatch(updateOrcamentos({ atual: id }));
-        dispatch(hideSalvosModal());
-        dispatch(loading(false));
-        if (changePagina) {
-          dispatch(changePage("orcamentoAtual"));
-          dispatch(toggleModal("atual", true));
-        }
-        Promise.resolve();
-      })
-      .catch((e) => {
-        console.log(e);
-        dispatch(loading(false));
-      });
+    if (itens === false) {
+      itens = orcamentoPadrao.itens;
+    }
+    let orcamento = { ...orcamentoPadrao, titulo, itens, cnpj };
+    await callBackend("/putOrcamento", token, { orcamento });
+    await dispatch(GetOrcamentos("salvos"));
+    await dispatch(updateOrcamentos({ atual: id }));
+    await dispatch(toggleModal("criarOrcamento", false));
+    await dispatch(loading(false));
+    if (changePagina) {
+      await dispatch(changePage("orcamentoAtual"));
+      await dispatch(toggleModal("informacoes", true));
+    }
+    Promise.resolve();
   };
 };

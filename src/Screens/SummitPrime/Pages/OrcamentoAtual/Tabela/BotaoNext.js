@@ -90,7 +90,7 @@ export const BotaoNext = (props) => {
       )}
 
       <Button variant="outline-light" onClick={handleNext}>
-        Enviar
+        Enviar Orçamento <br /> Para Consultor de Vendas
       </Button>
     </Fragment>
   );

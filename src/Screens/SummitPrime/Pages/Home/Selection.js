@@ -2,8 +2,12 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { AiOutlineFileAdd } from "react-icons/ai";
 import { BiCart, BiFolder, BiPencil } from "react-icons/bi";
+import { BsListCheck } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { showSalvosModal } from "../../../../Redux/Actions/Actions";
+import {
+  showSalvosModal,
+  toggleModal,
+} from "../../../../Redux/Actions/Actions";
 import { GetOrcamentos } from "../../../../Redux/Actions/GetOrcamentos";
 
 export const Selection = () => {
@@ -17,7 +21,7 @@ export const Selection = () => {
       >
         <Col xs={3} className="selectionCard">
           <button
-            onClick={() => dispatch(dispatch(showSalvosModal()))}
+            onClick={() => dispatch(toggleModal("criarOrcamento", true))}
             className="buttonLarge"
           >
             <AiOutlineFileAdd className="iconLarge" />
@@ -26,7 +30,7 @@ export const Selection = () => {
         </Col>
         <Col xs={3} className="selectionCard">
           <button
-            onClick={() => dispatch(GetOrcamentos("salvos", informacoes.cnpj))}
+            onClick={() => dispatch(GetOrcamentos("salvos", true))}
             className="buttonLarge"
           >
             {/* <BiFileBlank className="iconLarge" /> */}
@@ -39,7 +43,7 @@ export const Selection = () => {
             className="buttonLarge"
             onClick={() => dispatch(GetOrcamentos("vnda", informacoes.cnpj))}
           >
-            <BiPencil className="iconLarge" />
+            <BsListCheck className="iconLarge" />
             <div>Consultar Lista da Plataforma Catálogo</div>
           </button>
         </Col>

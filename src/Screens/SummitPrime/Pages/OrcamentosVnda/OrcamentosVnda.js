@@ -1,13 +1,13 @@
 import Button from "@restart/ui/esm/Button";
 import React from "react";
 import { Col, Container, Row, Table } from "react-bootstrap";
+import { BsQuestionCircle } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import {
   showSalvosModal,
   showVndaModal,
+  toggleModal,
 } from "../../../../Redux/Actions/Actions";
-import { ModalOrcamentosSalvos } from "../OrcamentosSalvos/ModalOrcamentosSalvos";
-import { ModalOrcamentosVnda } from "./ModalOrcamentosVnda";
 const csv2json = require("csvjson-csv2json");
 
 export const OrcamentosVnda = () => {
@@ -24,13 +24,13 @@ export const OrcamentosVnda = () => {
   };
 
   const novoOrc = async (e) => {
-    dispatch(showVndaModal(e.target.parentElement.id));
+    dispatch(toggleModal("criarOrcamento", true, e.target.parentElement.id));
   };
 
   return (
     <div className="bodie">
       <Row
-        style={{ height: "100%", minHeight: "100vh" }}
+        style={{ height: "100%", minHeight: "100vh", paddingTop: "20px" }}
         className="justify-content-center align-content-start"
       >
         <Col xs={11}>
@@ -39,10 +39,22 @@ export const OrcamentosVnda = () => {
               <h1>Lista Plataforma Catálogo</h1>
             </Col>
           </Row>
-          <Row className="justify-content-end ">
+          <Row className="align-items-end justify-content-end">
+            <Col className="text-end" sm={{ span: 2, offset: 2 }}>
+              <button
+                onClick={() => dispatch(toggleModal("instrucoes", true))}
+                style={{
+                  border: "none",
+                  backgroundColor: "transparent",
+                  color: "white",
+                }}
+              >
+                Instruções <BsQuestionCircle />
+              </button>
+            </Col>
             <Col id="coluna" className="text-end" xs={1}>
               <Button
-                onClick={() => dispatch(showSalvosModal())}
+                onClick={() => dispatch(toggleModal("criarOrcamento", true))}
                 id="novoOrcamento"
               >
                 Novo Orçamento
@@ -53,6 +65,7 @@ export const OrcamentosVnda = () => {
             <Table
               style={{
                 color: "white",
+                backgroundColor: "transparent",
                 borderColor: "white",
               }}
               bordered
@@ -101,8 +114,6 @@ export const OrcamentosVnda = () => {
           </Row>
         </Col>
       </Row>
-      <ModalOrcamentosVnda />
-      <ModalOrcamentosSalvos />
     </div>
   );
 };

@@ -10,8 +10,6 @@ export const Home = () => {
     <div className="bodie">
       <HeaderHome />
       <Selection />
-      {/* <FooterHome /> */}
-      <ModalOrcamentosSalvos />
     </div>
   );
 };

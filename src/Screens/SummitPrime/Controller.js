@@ -15,6 +15,8 @@ import { SideBar } from "./SideBar";
 import { Container } from "react-bootstrap";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import { ModalCriarOrcamento } from "./Modals/ModalCriarOrcamento";
+import { ModalInstrucoes } from "./Modals/ModalInstrucoes";
 
 export const Orcamento = () => {
   const dispatch = useDispatch();
@@ -56,6 +58,8 @@ export const Orcamento = () => {
               return <Error />;
           }
         })()}
+        <ModalCriarOrcamento />
+        <ModalInstrucoes />
       </Container>
       <ToastContainer />
     </>

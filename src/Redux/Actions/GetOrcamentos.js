@@ -1,13 +1,14 @@
 import {
   changePage,
   loading,
+  toggleModal,
   toggleSideBar,
   updateOrcamentos,
 } from "./Actions";
 import callAirtable from "./CallAirtable";
 import callBackend from "./CallBackend";
 
-export const GetOrcamentos = (type, cnpj, changePagee = true) => {
+export const GetOrcamentos = (type, changePagee) => {
   return async (dispatch, getState) => {
     try {
       dispatch(loading(true));
@@ -18,7 +19,7 @@ export const GetOrcamentos = (type, cnpj, changePagee = true) => {
         if (changePagee) {
           dispatch(changePage("orcamentosVnda"));
         }
-        dispatch(toggleSideBar(true));
+        dispatch(toggleModal("sidebar", true));
         dispatch(loading(false));
         return Promise.resolve();
       } else if (type === "salvos") {
@@ -27,12 +28,13 @@ export const GetOrcamentos = (type, cnpj, changePagee = true) => {
           let r = await callBackend("/getOrcamentoTableByCnpj", token, {
             cnpj,
           });
-          dispatch(updateOrcamentos({ [type]: r }));
+          await dispatch(updateOrcamentos({ [type]: r }));
+          console.log(r);
           if (changePagee) {
-            dispatch(changePage("orcamentosSalvos"));
+            await dispatch(changePage("orcamentosSalvos"));
           }
-          dispatch(toggleSideBar(true));
-          dispatch(loading(false));
+          await dispatch(toggleModal("sidebar", true));
+          await dispatch(loading(false));
           return Promise.resolve();
         }
       }

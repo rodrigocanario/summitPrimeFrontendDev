@@ -4,13 +4,10 @@ import { BsQuestionCircle } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import {
   changePage,
-  hideSalvosModal,
-  showSalvosModal,
   toggleModal,
   toggleSideBar,
   updateOrcamentos,
 } from "../../../../Redux/Actions/Actions";
-import { ModalOrcamentosSalvos } from "./ModalOrcamentosSalvos";
 
 export const OrcamentosSalvos = () => {
   const orcamentosSalvos = useSelector((state) => state.orcamentos.salvos);
@@ -19,8 +16,8 @@ export const OrcamentosSalvos = () => {
   const handleAbrirOrcamento = (e) => {
     let id = orcamentosSalvos[e.target.parentElement.id].id;
     dispatch(updateOrcamentos({ atual: id }));
-    dispatch(hideSalvosModal());
-    dispatch(toggleSideBar(true));
+    dispatch(toggleModal("criarOrcamento", false));
+    dispatch(toggleModal("sidebar", true));
     dispatch(changePage("orcamentoAtual"));
     dispatch(toggleModal("atual", true));
   };
@@ -45,10 +42,22 @@ export const OrcamentosSalvos = () => {
               <h1>Orçamentos Salvos</h1>
             </Col>
           </Row>
-          <Row className="justify-content-end">
+          <Row className="align-items-end justify-content-end">
+            <Col className="text-end" sm={{ span: 2, offset: 2 }}>
+              <button
+                onClick={() => dispatch(toggleModal("instrucoes", true))}
+                style={{
+                  border: "none",
+                  backgroundColor: "transparent",
+                  color: "white",
+                }}
+              >
+                Instruções <BsQuestionCircle />
+              </button>
+            </Col>
             <Col id="coluna" className="text-end" xs={1}>
               <Button
-                onClick={() => dispatch(showSalvosModal())}
+                onClick={() => dispatch(toggleModal("criarOrcamento", true))}
                 id="novoOrcamento"
               >
                 Novo Orçamento
@@ -97,7 +106,6 @@ export const OrcamentosSalvos = () => {
           </Row>
         </Col>
       </Row>
-      <ModalOrcamentosSalvos />
     </div>
   );
 };

@@ -1,9 +1,8 @@
 const reducerModals = (
   state = {
-    salvos: { show: false },
-    vnda: { show: false, value: "" },
+    criarOrcamento: { show: false, vnda: false },
     sidebar: { show: false },
-    atual: { show: false },
+    instrucoes: { show: false },
   },
   action
 ) => {
@@ -19,7 +18,8 @@ const reducerModals = (
     case "TOGGLESIDEBAR":
       return { ...state, sidebar: { show: action.show } };
     case "TOGGLEMODAL":
-      return { ...state, [action.modal]: { show: action.show } };
+      let { modal, type, ...rest } = action;
+      return { ...state, [modal]: { ...rest } };
     default:
       return state;
   }

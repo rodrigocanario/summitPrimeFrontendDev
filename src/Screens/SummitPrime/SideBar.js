@@ -1,6 +1,7 @@
 import React from "react";
 import { AiOutlineFileAdd } from "react-icons/ai";
 import { BiCart, BiFolder, BiHome, BiListUl, BiPencil } from "react-icons/bi";
+import { BsListCheck } from "react-icons/bs";
 import {
   ProSidebar,
   Menu,
@@ -14,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   changePage,
   showSalvosModal,
+  toggleModal,
   toggleSideBar,
 } from "../../Redux/Actions/Actions";
 import { GetOrcamentos } from "../../Redux/Actions/GetOrcamentos";
@@ -27,7 +29,9 @@ export const SideBar = () => {
       <SidebarHeader>
         <Menu iconShape="square">
           <MenuItem
-            onClick={() => dispatch(toggleSideBar(!modals.sidebar.show))}
+            onClick={() =>
+              dispatch(toggleModal("sidebar", !modals.sidebar.show))
+            }
             icon={<img style={{ width: "55px" }} src="/logo.png"></img>}
           >
             Summit Prime
@@ -44,21 +48,21 @@ export const SideBar = () => {
             Home
           </MenuItem>
           <MenuItem
-            onClick={() => dispatch(dispatch(showSalvosModal()))}
+            onClick={() => dispatch(toggleModal("criarOrcamento", true))}
             icon={<AiOutlineFileAdd />}
           >
             Novo Orçamento
           </MenuItem>
 
           <MenuItem
-            onClick={() => dispatch(GetOrcamentos("salvos"))}
+            onClick={() => dispatch(GetOrcamentos("salvos", true))}
             icon={<BiFolder />}
           >
             Orçamentos Salvos
           </MenuItem>
           <MenuItem
-            onClick={() => dispatch(GetOrcamentos("vnda"))}
-            icon={<BiPencil />}
+            onClick={() => dispatch(GetOrcamentos("vnda", true))}
+            icon={<BsListCheck />}
           >
             Lista P. Catálogo
           </MenuItem>

@@ -3,9 +3,13 @@ import { updatePrecos } from "../Actions";
 export const calcularValores = () => {
   return (dispatch, getState) => {
     let informacoes = getState().informacoes;
+    let orcamentoAtual = getState().orcamentos.atual;
     let orcamentoAtivo = getState().orcamentos.salvos.find(
-      (orcamento) => orcamento.id === getState().orcamentos.atual
+      (orcamento) => orcamento.id === orcamentoAtual
     );
+    console.log(orcamentoAtual);
+    console.log(getState().orcamentos.salvos);
+    console.log(orcamentoAtivo);
 
     orcamentoAtivo.total = 0;
     orcamentoAtivo.totalDisponivel = 0;

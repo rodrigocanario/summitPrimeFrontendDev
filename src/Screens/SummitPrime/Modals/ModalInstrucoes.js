@@ -2,13 +2,10 @@ import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { BsQuestionCircle } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  hideSalvosModal,
-  toggleModal,
-} from "../../../../Redux/Actions/Actions";
-import { criarOrcamento } from "../../../../Redux/Actions/CriarOrcamento";
+import { hideSalvosModal, toggleModal } from "../../../Redux/Actions/Actions";
+import { criarOrcamento } from "../../../Redux/Actions/CriarOrcamento";
 
-export const ModalOrcamentoAtual = () => {
+export const ModalInstrucoes = () => {
   const [titulo, setTitulo] = useState("Orçamento sem nome");
   const informacoes = useSelector((state) => state.informacoes);
   const modals = useSelector((state) => state.modals);
@@ -19,9 +16,9 @@ export const ModalOrcamentoAtual = () => {
 
   return (
     <Modal
-      onHide={() => dispatch(toggleModal("atual", false))}
+      onHide={() => dispatch(toggleModal("instrucoes", false))}
       className=""
-      show={modals.atual.show}
+      show={modals.instrucoes.show}
       animation={true}
       centered
     >
