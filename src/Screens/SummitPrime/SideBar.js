@@ -1,7 +1,4 @@
 import React from "react";
-import { AiOutlineFileAdd } from "react-icons/ai";
-import { BiFolder, BiHome } from "react-icons/bi";
-import { BsListCheck } from "react-icons/bs";
 import {
   ProSidebar,
   Menu,
@@ -11,8 +8,9 @@ import {
 } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
 import { useDispatch, useSelector } from "react-redux";
-import { changePage, toggleModal } from "../../Redux/Actions/Actions";
-import { GetOrcamentos } from "../../Redux/Actions/GetOrcamentos";
+import { toggleModal } from "../../Redux/Actions/Actions";
+import { ChangePage } from "../../Redux/Actions/ChangePage";
+import paginas from "./paginas";
 
 export const SideBar = () => {
   const dispatch = useDispatch();
@@ -40,32 +38,22 @@ export const SideBar = () => {
       </SidebarHeader>
       <SidebarContent>
         <Menu iconShape="square">
-          <MenuItem
-            onClick={() => dispatch(changePage("home"))}
-            icon={<BiHome />}
-            active={true}
-          >
-            Home
-          </MenuItem>
-          <MenuItem
-            onClick={() => dispatch(toggleModal("criarOrcamento", true))}
-            icon={<AiOutlineFileAdd />}
-          >
-            Novo Orçamento
-          </MenuItem>
-
-          <MenuItem
-            onClick={() => dispatch(GetOrcamentos("salvos", true))}
-            icon={<BiFolder />}
-          >
-            Orçamentos Salvos
-          </MenuItem>
-          <MenuItem
-            onClick={() => dispatch(GetOrcamentos("vnda", true))}
-            icon={<BsListCheck />}
-          >
-            Listas Da Plat. Cat.
-          </MenuItem>
+          {paginas.map((menuItem, index) => {
+            if (menuItem.isTab) {
+              return (
+                <MenuItem
+                  key={index}
+                  onClick={() => dispatch(ChangePage(menuItem.page))}
+                  icon={menuItem.icon}
+                >
+                  {menuItem.nomeAbreviado
+                    ? menuItem.nomeAbreviado
+                    : menuItem.nome}
+                </MenuItem>
+              );
+            }
+            return false;
+          })}
         </Menu>
       </SidebarContent>
     </ProSidebar>

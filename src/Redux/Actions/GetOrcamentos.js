@@ -24,9 +24,9 @@ export const GetOrcamentos = (type, changePagee) => {
           });
           await dispatch(updateOrcamentos({ [type]: r }));
           console.log(r);
-          if (changePagee) {
-            await dispatch(changePage("orcamentosSalvos"));
-          }
+          // if (changePagee) {
+          //   await dispatch(changePage("orcamentosSalvos"));
+          // }
           await dispatch(toggleModal("sidebar", true));
           await dispatch(loading(false));
           return Promise.resolve();

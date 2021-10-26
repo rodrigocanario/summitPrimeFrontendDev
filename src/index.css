@@ -315,15 +315,14 @@ h2 {
   height: 350px;
   /* border: 1px solid white; */
 }
-.iconLarge {
-  font-size: 160px;
-}
+
 .buttonLarge {
   width: 100%;
   background-color: transparent;
   height: 100%;
   border: none;
   color: white;
+  font-size: 160px;
 }
 #novoOrcamento {
   background-color: transparent;
@@ -439,4 +438,8 @@ h2 {
 sup {
   font-size: 0.5em !important;
   top: -1em !important;
+}
+.imgCatalogos {
+  height: 350px !important;
+  /* max-height: 282px; */
 }
