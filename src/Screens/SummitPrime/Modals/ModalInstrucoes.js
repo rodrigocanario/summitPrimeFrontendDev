@@ -3,6 +3,7 @@ import { Modal } from "react-bootstrap";
 import { BsQuestionCircle } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleModal } from "../../../Redux/Actions/Actions";
+import { ChangePage } from "../../../Redux/Actions/ChangePage";
 
 export const ModalInstrucoes = () => {
   const informacoes = useSelector((state) => state.informacoes);
@@ -25,7 +26,21 @@ export const ModalInstrucoes = () => {
       <Modal.Body className="vndaModalBody" style={{ color: "black" }}>
         <ol style={{ paddingLeft: "2rem" }}>
           <li>
-            Utilize seu catálogo impresso ou nosso site da{" "}
+            Utilize seu catálogo impresso ou os
+            <button
+              onClick={() => {
+                dispatch(ChangePage("catalogos"));
+              }}
+              style={{
+                color: "blue",
+                backgroundColor: "transparent",
+                border: "none",
+                textDecoration: "underline",
+              }}
+            >
+              catálogos digitais
+            </button>{" "}
+            ou nosso site da{" "}
             <a
               target="_blank"
               style={{ color: "blue" }}

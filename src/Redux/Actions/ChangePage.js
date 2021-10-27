@@ -14,8 +14,9 @@ export const ChangePage = (page) => {
         break;
 
       default:
-        await dispatch(changePage(page));
         await dispatch(toggleModal("sidebar", true));
+        await dispatch(toggleModal("instrucoes", false));
+        await dispatch(changePage(page));
         break;
     }
   };

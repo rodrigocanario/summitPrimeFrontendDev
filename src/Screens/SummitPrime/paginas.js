@@ -9,46 +9,46 @@ import { OrcamentosVnda } from "./Pages/OrcamentosVnda/OrcamentosVnda";
 
 const paginas = [
   {
+    nome: "Home",
     page: "home",
     icon: <BiHome />,
-    nome: "Home",
     component: <Home />,
     isTab: true,
   },
   {
+    nome: "Novo Orçamento",
     page: "criarOrcamento",
     icon: <AiOutlineFileAdd />,
-    nome: "Novo Orçamento",
     isTab: true,
   },
   {
+    nome: "Orçamentos Salvos",
     page: "salvos",
     icon: <BiFolder />,
-    nome: "Orçamentos Salvos",
-    isTab: true,
     component: <OrcamentosSalvos />,
+    isTab: true,
   },
   {
-    page: "vnda",
-    icon: <BsListCheck />,
     nome: "Listas Da Plataforma Catálogo",
     nomeAbreviado: "Listas Da Plat. Cat.",
-    isTab: true,
+    page: "vnda",
+    icon: <BsListCheck />,
     component: <OrcamentosVnda />,
+    isTab: true,
   },
   {
+    nome: "Catálogos",
     page: "catalogos",
     icon: <BsJournalBookmark />,
-    nome: "Catálogos",
-    isTab: true,
     component: <Catalogos />,
+    isTab: true,
   },
   {
+    nome: "Orcamento Atual",
     page: "orcamentoAtual",
     icon: <BsJournalBookmark />,
-    nome: "Orcamento Atual",
-    isTab: false,
     component: <OrcamentoAtual />,
+    isTab: false,
   },
 ];
 
