@@ -11,8 +11,8 @@ export const DeleteOrcamento = () => {
       id,
       cnpj,
     }).then(async (r) => {
-      dispatch(changePage("orcamentosSalvos"));
-      await dispatch(GetOrcamentos("salvos", cnpj, false));
+      dispatch(changePage("salvos"));
+      await dispatch(GetOrcamentos("salvos"));
     });
   };
 };

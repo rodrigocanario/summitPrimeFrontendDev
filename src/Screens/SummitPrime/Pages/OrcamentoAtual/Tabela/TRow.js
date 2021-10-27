@@ -12,6 +12,18 @@ export const TRow = (props) => {
   );
   const informacoes = useSelector((state) => state.informacoes);
 
+  const handleChange = (e) => {
+    dispatch(
+      ChangeProduto(
+        props.index,
+        props.indexOrcamento,
+        e.target.value,
+        informacoes.tabela,
+        informacoes.desconto
+      )
+    );
+  };
+
   const handleEnter = (e) => {
     switch (e.key) {
       case "Enter":
@@ -60,32 +72,23 @@ export const TRow = (props) => {
     }
   };
 
-  const handleChange = (e) => {
-    dispatch(
-      ChangeProduto(
-        props.index,
-        props.indexOrcamento,
-        e.target.value,
-        informacoes.tabela,
-        informacoes.desconto
-      )
-    );
-  };
-
   return (
     <tr className={props.index % 2 === 0 ? "tdWhite" : ""}>
       <td id="td" className="tdIndex">
         {props.index + 1}.
       </td>
       <td id="td" className="tdSku">
-        <input
-          className="table-input"
-          autoComplete="off"
-          name={"input-" + props.index}
-          defaultValue={Itens.sku}
-          onChange={handleChange}
-          onKeyDown={handleEnter}
-        />
+        <div key={Itens.sku}>
+          <input
+            autoFocus
+            className="table-input"
+            autoComplete="off"
+            name={"input-" + props.index}
+            defaultValue={Itens.sku}
+            onChange={handleChange}
+            onKeyDown={handleEnter}
+          />
+        </div>
       </td>
       <td>{Itens.nome}</td>
       <td className="tdCaixaMaster">

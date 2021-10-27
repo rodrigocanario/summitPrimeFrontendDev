@@ -10,7 +10,7 @@ export const ChangeAllProdutos = (indexOrcamento) => {
       const sku = produtos[i].sku;
 
       let informacoes = getState().informacoes;
-      if (sku) {
+      if (sku && sku.toString().length > 5 && sku / 6000 > 1) {
         let data = {
           sku,
           tabela: informacoes.tabela,

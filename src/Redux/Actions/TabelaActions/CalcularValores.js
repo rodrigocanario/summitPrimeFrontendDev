@@ -7,9 +7,6 @@ export const calcularValores = () => {
     let orcamentoAtivo = getState().orcamentos.salvos.find(
       (orcamento) => orcamento.id === orcamentoAtual
     );
-    console.log(orcamentoAtual);
-    console.log(getState().orcamentos.salvos);
-    console.log(orcamentoAtivo);
 
     orcamentoAtivo.total = 0;
     orcamentoAtivo.totalDisponivel = 0;

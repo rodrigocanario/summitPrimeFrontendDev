@@ -4,16 +4,16 @@ import { calcularValores } from "./CalcularValores";
 
 export const ChangeProduto = (index, indexOrcamento, sku) => {
   let token = localStorage.getItem("token");
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     let informacoes = getState().informacoes;
-    if (sku) {
+    if (sku && sku.toString().length > 5 && sku / 6000 > 1) {
       let data = {
         sku,
         tabela: informacoes.tabela,
         UF: informacoes.UF,
       };
       console.log(data);
-      callBackend("/getProduto", token, data)
+      await callBackend("/getProduto", token, data)
         .then(async (r) => {
           await dispatch(trocarItem(r, index, indexOrcamento));
           await dispatch(calcularValores());
@@ -22,7 +22,7 @@ export const ChangeProduto = (index, indexOrcamento, sku) => {
           await dispatch(
             trocarItem(
               {
-                sku: "",
+                sku,
                 nome: "",
                 valor: 0,
                 valorReal: 0,
@@ -38,6 +38,25 @@ export const ChangeProduto = (index, indexOrcamento, sku) => {
           );
           await dispatch(calcularValores());
         });
+    } else {
+      await dispatch(
+        trocarItem(
+          {
+            sku,
+            nome: "",
+            valor: 0,
+            valorReal: 0,
+            quantidade: 0,
+            preco: 0,
+            multiplo: 0,
+            caixaMaster: 0,
+            estoque: "",
+          },
+          index,
+          indexOrcamento
+        )
+      );
+      await dispatch(calcularValores());
     }
   };
 };

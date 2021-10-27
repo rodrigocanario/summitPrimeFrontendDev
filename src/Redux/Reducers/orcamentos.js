@@ -28,7 +28,9 @@ const reducerOrcamentos = (state = defaultState, action) => {
       });
       return { ...state, salvos };
     case "DELETEITEM":
+      console.log(index);
       state.salvos[action.indexOrcamento].itens.splice(index, 1);
+      console.log(state.salvos[action.indexOrcamento].itens);
       return { ...state };
     case "TROCARITEM":
       state.salvos[action.indexOrcamento].itens[index] = {
