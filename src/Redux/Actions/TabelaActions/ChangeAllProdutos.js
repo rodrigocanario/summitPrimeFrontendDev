@@ -16,7 +16,7 @@ export const ChangeAllProdutos = (indexOrcamento) => {
           tabela: informacoes.tabela,
           UF: informacoes.UF,
         };
-        callBackend("/getProduto", token, data)
+        await callBackend("/getProduto", token, data)
           .then(async (r) => {
             await dispatch(trocarItem(r, i, indexOrcamento));
             await dispatch(calcularValores());
@@ -40,6 +40,24 @@ export const ChangeAllProdutos = (indexOrcamento) => {
               )
             );
           });
+      } else {
+        await dispatch(
+          trocarItem(
+            {
+              sku: "",
+              nome: "",
+              valor: 0,
+              valorReal: 0,
+              quantidade: 0,
+              preco: 0,
+              multiplo: 0,
+              caixaMaster: 0,
+              estoque: "",
+            },
+            i,
+            indexOrcamento
+          )
+        );
       }
     }
     await dispatch(calcularValores());

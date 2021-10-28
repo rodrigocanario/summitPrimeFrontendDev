@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Figure, Image, Row } from "react-bootstrap";
+import { Col, Figure, Row } from "react-bootstrap";
 
 export const Catalogos = () => {
   let baseLink = "https://buckettelexpress.s3.amazonaws.com/catalogos/";
