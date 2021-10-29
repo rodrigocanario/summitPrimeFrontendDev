@@ -1,6 +1,7 @@
 let defaultState = {
   salvos: [],
   vnda: [],
+  nf: [],
   atual: false,
 };
 

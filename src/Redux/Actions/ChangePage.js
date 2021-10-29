@@ -4,6 +4,7 @@ import { GetOrcamentos } from "./GetOrcamentos";
 export const ChangePage = (page) => {
   return async (dispatch, getState) => {
     switch (page) {
+      case "nf":
       case "salvos":
       case "vnda":
         await dispatch(GetOrcamentos(page));

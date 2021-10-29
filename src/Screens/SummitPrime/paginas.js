@@ -1,8 +1,10 @@
 import { AiOutlineFileAdd } from "react-icons/ai";
 import { BiFolder, BiHome } from "react-icons/bi";
 import { BsJournalBookmark, BsListCheck } from "react-icons/bs";
+import { FaFileInvoiceDollar } from "react-icons/fa";
 import { Catalogos } from "./Pages/Catalogos/Catalogos";
 import { Home } from "./Pages/Home/Home";
+import { Nfs } from "./Pages/Nfs/Nfs";
 import { OrcamentoAtual } from "./Pages/OrcamentoAtual/OrcamentoAtual";
 import { OrcamentosSalvos } from "./Pages/OrcamentosSalvos/OrcamentosSalvos";
 import { OrcamentosVnda } from "./Pages/OrcamentosVnda/OrcamentosVnda";
@@ -49,6 +51,13 @@ const paginas = [
     icon: <BsJournalBookmark />,
     component: <OrcamentoAtual />,
     isTab: false,
+  },
+  {
+    nome: "Notas Fiscais",
+    page: "nf",
+    icon: <FaFileInvoiceDollar />,
+    component: <Nfs />,
+    isTab: true,
   },
 ];
 

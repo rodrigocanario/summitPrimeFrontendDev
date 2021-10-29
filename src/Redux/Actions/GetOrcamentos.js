@@ -6,6 +6,8 @@ export const GetOrcamentos = (type, changePagee) => {
   return async (dispatch, getState) => {
     try {
       dispatch(loading(true));
+      let url;
+      let token = localStorage.getItem("token");
       let cnpj = getState().informacoes.cnpj;
       if (type === "vnda") {
         let pedidos = await callAirtable(cnpj);
@@ -17,20 +19,20 @@ export const GetOrcamentos = (type, changePagee) => {
         dispatch(loading(false));
         return Promise.resolve();
       } else if (type === "salvos") {
-        let token = localStorage.getItem("token");
-        if (token) {
-          let r = await callBackend("/getOrcamentoTableByCnpj", token, {
-            cnpj,
-          });
-          await dispatch(updateOrcamentos({ [type]: r }));
-          console.log(r);
-          // if (changePagee) {
-          //   await dispatch(changePage("orcamentosSalvos"));
-          // }
-          await dispatch(toggleModal("sidebar", true));
-          await dispatch(loading(false));
-          return Promise.resolve();
-        }
+        url = "/getOrcamentoTableByCnpj";
+      } else if (type === "nf") {
+        url = "/getNf";
+      } else {
+        return Promise.resolve();
+      }
+      if (token) {
+        console.log({ cnpj });
+        let r = await callBackend(url, token, { cnpj });
+        console.log(r);
+        await dispatch(updateOrcamentos({ [type]: r }));
+        await dispatch(toggleModal("sidebar", true));
+        await dispatch(loading(false));
+        return Promise.resolve();
       }
     } catch (e) {
       console.log("erro no callBackend");

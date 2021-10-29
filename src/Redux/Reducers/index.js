@@ -1,5 +1,4 @@
 import { combineReducers } from "redux";
-import reducerOrcamento from "./orcamento";
 import reducerInformacoes from "./informacoes";
 import reducerPages from "./pages";
 import reducerAdminLogin from "./adminLogin";
@@ -9,7 +8,6 @@ import reducerModals from "./modals";
 import reducerErrors from "./errors";
 
 const allReducers = combineReducers({
-  orcamento: reducerOrcamento,
   informacoes: reducerInformacoes,
   pages: reducerPages,
   adminLogin: reducerAdminLogin,
