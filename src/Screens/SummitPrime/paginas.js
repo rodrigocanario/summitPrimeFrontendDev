@@ -16,12 +16,16 @@ const paginas = [
     icon: <BiHome />,
     component: <Home />,
     isTab: true,
+    notAdmin: true,
+    admin: true,
   },
   {
     nome: "Novo Orçamento",
     page: "criarOrcamento",
     icon: <AiOutlineFileAdd />,
     isTab: true,
+    notAdmin: true,
+    admin: false,
   },
   {
     nome: "Orçamentos Salvos",
@@ -29,6 +33,8 @@ const paginas = [
     icon: <BiFolder />,
     component: <OrcamentosSalvos />,
     isTab: true,
+    notAdmin: true,
+    admin: false,
   },
   {
     nome: "Listas Da Plataforma Catálogo",
@@ -37,6 +43,8 @@ const paginas = [
     icon: <BsListCheck />,
     component: <OrcamentosVnda />,
     isTab: true,
+    notAdmin: true,
+    admin: false,
   },
   {
     nome: "Catálogos",
@@ -44,6 +52,8 @@ const paginas = [
     icon: <BsJournalBookmark />,
     component: <Catalogos />,
     isTab: true,
+    notAdmin: true,
+    admin: true,
   },
   {
     nome: "Orcamento Atual",
@@ -51,6 +61,7 @@ const paginas = [
     icon: <BsJournalBookmark />,
     component: <OrcamentoAtual />,
     isTab: false,
+    notAdmin: true,
   },
   {
     nome: "Notas Fiscais",
@@ -58,6 +69,8 @@ const paginas = [
     icon: <FaFileInvoiceDollar />,
     component: <Nfs />,
     isTab: true,
+    notAdmin: true,
+    admin: false,
   },
 ];
 

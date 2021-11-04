@@ -15,6 +15,7 @@ import paginas from "./paginas";
 export const SideBar = () => {
   const dispatch = useDispatch();
   const modals = useSelector((state) => state.modals);
+  const informacoes = useSelector((state) => state.informacoes);
 
   return (
     <ProSidebar collapsed={modals.sidebar.show}>
@@ -40,17 +41,31 @@ export const SideBar = () => {
         <Menu iconShape="square">
           {paginas.map((menuItem, index) => {
             if (menuItem.isTab) {
-              return (
-                <MenuItem
-                  key={index}
-                  onClick={() => dispatch(ChangePage(menuItem.page))}
-                  icon={menuItem.icon}
-                >
-                  {menuItem.nomeAbreviado
-                    ? menuItem.nomeAbreviado
-                    : menuItem.nome}
-                </MenuItem>
-              );
+              if (informacoes.isAdmin && menuItem.admin) {
+                return (
+                  <MenuItem
+                    key={index}
+                    onClick={() => dispatch(ChangePage(menuItem.page))}
+                    icon={menuItem.icon}
+                  >
+                    {menuItem.nomeAbreviado
+                      ? menuItem.nomeAbreviado
+                      : menuItem.nome}
+                  </MenuItem>
+                );
+              } else if (!informacoes.isAdmin && menuItem.notAdmin) {
+                return (
+                  <MenuItem
+                    key={index}
+                    onClick={() => dispatch(ChangePage(menuItem.page))}
+                    icon={menuItem.icon}
+                  >
+                    {menuItem.nomeAbreviado
+                      ? menuItem.nomeAbreviado
+                      : menuItem.nome}
+                  </MenuItem>
+                );
+              }
             }
             return false;
           })}

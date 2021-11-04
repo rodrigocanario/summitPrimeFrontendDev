@@ -443,3 +443,15 @@ sup {
   height: 350px !important;
   /* max-height: 282px; */
 }
+#adminButton {
+  position: absolute;
+  right: 0px;
+  width: auto;
+  padding: 3px;
+  font-size: 15px;
+  margin: 5px;
+  color: white;
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+}
