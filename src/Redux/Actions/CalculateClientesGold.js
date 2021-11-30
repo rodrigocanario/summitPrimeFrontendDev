@@ -60,7 +60,7 @@ export const CalculateClientesGold = () => {
         };
 
         let clientesPorAno = {};
-        for (let j = i; j > -1 && i - j < 12; j--) {
+        for (let j = i; j > -1 && i - j <= 12; j--) {
           let mesKey = mesesKeys[j];
           let mes = pedidos[mesKey];
 
@@ -92,68 +92,68 @@ export const CalculateClientesGold = () => {
                 }
                 dataToSend[mesKey]["valorMes"][clienteKey].push(...cliente);
               }
-            }
-
-            // ---------------------------------------clientesPorAno----------------------------
-            if (!clientesPorAno[clienteKey]) {
-              clientesPorAno[clienteKey] = {
-                itens: [],
-                vezesNoAno: 0,
-              };
-            }
-            clientesPorAno[clienteKey]["vezesNoAno"] += 1;
-            for (let l = 0; l < cliente.length; l++) {
-              const itemm = cliente[l];
-              let indexclientesPorAno = clientesPorAno[clienteKey][
-                "itens"
-              ].findIndex((element) => {
-                return element.sku === itemm.sku;
-              });
-              if (indexclientesPorAno === -1) {
-                clientesPorAno[clienteKey]["itens"].push({ ...itemm });
-              } else {
-                clientesPorAno[clienteKey]["itens"][l].valor += parseFloat(
-                  itemm.valor.toFixed(2)
-                );
+            } else {
+              // ---------------------------------------clientesPorAno----------------------------
+              if (!clientesPorAno[clienteKey]) {
+                clientesPorAno[clienteKey] = {
+                  itens: [],
+                  vezesNoAno: 0,
+                };
+              }
+              clientesPorAno[clienteKey]["vezesNoAno"] += 1;
+              for (let l = 0; l < cliente.length; l++) {
+                const itemm = cliente[l];
+                let indexclientesPorAno = clientesPorAno[clienteKey][
+                  "itens"
+                ].findIndex((element) => {
+                  return element.sku === itemm.sku;
+                });
+                if (indexclientesPorAno === -1) {
+                  clientesPorAno[clienteKey]["itens"].push({ ...itemm });
+                } else {
+                  clientesPorAno[clienteKey]["itens"][l].valor += parseFloat(
+                    itemm.valor.toFixed(2)
+                  );
+                }
               }
             }
           }
-        }
-        let clientesPorAnoKeys = Object.keys(clientesPorAno);
-        for (let l = 0; l < clientesPorAnoKeys.length; l++) {
-          const clientesPorAnoKey = clientesPorAnoKeys[l];
-          const clientePorAno = clientesPorAno[clientesPorAnoKey];
-          // ---------------------------------------SkuAno----------------------------
-          if (clientePorAno["itens"].length > skuAno) {
-            if (!dataToSend[mesAtual]["skuAno"][clientesPorAnoKey]) {
-              dataToSend[mesAtual]["skuAno"][clientesPorAnoKey] = [];
+          let clientesPorAnoKeys = Object.keys(clientesPorAno);
+          for (let l = 0; l < clientesPorAnoKeys.length; l++) {
+            const clientesPorAnoKey = clientesPorAnoKeys[l];
+            const clientePorAno = clientesPorAno[clientesPorAnoKey];
+            // ---------------------------------------SkuAno----------------------------
+            if (clientePorAno["itens"].length > skuAno) {
+              if (!dataToSend[mesAtual]["skuAno"][clientesPorAnoKey]) {
+                dataToSend[mesAtual]["skuAno"][clientesPorAnoKey] = [];
+              }
+              dataToSend[mesAtual]["skuAno"][clientesPorAnoKey].push(
+                ...clientePorAno["itens"]
+              );
             }
-            dataToSend[mesAtual]["skuAno"][clientesPorAnoKey].push(
-              ...clientePorAno["itens"]
-            );
-          }
-          // ---------------------------------------valorAno----------------------------
-          let valorDoAno = 0;
-          for (let m = 0; m < clientePorAno["itens"].length; m++) {
-            const products = clientePorAno["itens"][m];
-            valorDoAno += products.valor;
-          }
-          if (valorDoAno > valorAno) {
-            if (!dataToSend[mesAtual]["valorAno"][clientesPorAnoKey]) {
-              dataToSend[mesAtual]["valorAno"][clientesPorAnoKey] = [];
+            // ---------------------------------------valorAno----------------------------
+            let valorDoAno = 0;
+            for (let m = 0; m < clientePorAno["itens"].length; m++) {
+              const products = clientePorAno["itens"][m];
+              valorDoAno += products.valor;
             }
-            dataToSend[mesAtual]["valorAno"][clientesPorAnoKey].push(
-              ...clientePorAno["itens"]
-            );
-          }
-          // ---------------------------------------vezesAno----------------------------
-          if (clientePorAno["vezesNoAno"] >= vezesAno) {
-            if (!dataToSend[mesAtual]["vezesAno"][clientesPorAnoKey]) {
-              dataToSend[mesAtual]["vezesAno"][clientesPorAnoKey] = [];
+            if (valorDoAno > valorAno) {
+              if (!dataToSend[mesAtual]["valorAno"][clientesPorAnoKey]) {
+                dataToSend[mesAtual]["valorAno"][clientesPorAnoKey] = [];
+              }
+              dataToSend[mesAtual]["valorAno"][clientesPorAnoKey].push(
+                ...clientePorAno["itens"]
+              );
             }
-            dataToSend[mesAtual]["vezesAno"][clientesPorAnoKey].push(
-              ...clientePorAno["itens"]
-            );
+            // ---------------------------------------vezesAno----------------------------
+            if (clientePorAno["vezesNoAno"] >= vezesAno) {
+              if (!dataToSend[mesAtual]["vezesAno"][clientesPorAnoKey]) {
+                dataToSend[mesAtual]["vezesAno"][clientesPorAnoKey] = [];
+              }
+              dataToSend[mesAtual]["vezesAno"][clientesPorAnoKey].push(
+                ...clientePorAno["itens"]
+              );
+            }
           }
         }
 
