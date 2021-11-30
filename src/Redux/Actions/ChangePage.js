@@ -1,4 +1,6 @@
 import { changePage, toggleModal } from "./Actions";
+import { CalculateClientesGold } from "./CalculateClientesGold";
+import { GetClientesGold } from "./GetClientesGold";
 import { GetOrcamentos } from "./GetOrcamentos";
 
 export const ChangePage = (page) => {
@@ -12,6 +14,12 @@ export const ChangePage = (page) => {
         break;
       case "criarOrcamento":
         dispatch(toggleModal("criarOrcamento", true));
+        break;
+
+      case "clientesGold":
+        await dispatch(GetClientesGold());
+        await dispatch(CalculateClientesGold());
+        await dispatch(changePage(page));
         break;
 
       default:

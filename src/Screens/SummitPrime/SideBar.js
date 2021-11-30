@@ -39,32 +39,58 @@ export const SideBar = () => {
       </SidebarHeader>
       <SidebarContent>
         <Menu iconShape="square">
-          {paginas.map((menuItem, index) => {
-            if (menuItem.isTab) {
-              if (informacoes.isAdmin && menuItem.admin) {
-                return (
-                  <MenuItem
-                    key={index}
-                    onClick={() => dispatch(ChangePage(menuItem.page))}
-                    icon={menuItem.icon}
-                  >
-                    {menuItem.nomeAbreviado
-                      ? menuItem.nomeAbreviado
-                      : menuItem.nome}
-                  </MenuItem>
-                );
-              } else if (!informacoes.isAdmin && menuItem.notAdmin) {
-                return (
-                  <MenuItem
-                    key={index}
-                    onClick={() => dispatch(ChangePage(menuItem.page))}
-                    icon={menuItem.icon}
-                  >
-                    {menuItem.nomeAbreviado
-                      ? menuItem.nomeAbreviado
-                      : menuItem.nome}
-                  </MenuItem>
-                );
+          {paginas.map((pagina, index) => {
+            if (pagina.isTab) {
+              switch (informacoes.role) {
+                case "master":
+                  if (pagina.master) {
+                    return (
+                      <MenuItem
+                        key={index}
+                        onClick={() => dispatch(ChangePage(pagina.page))}
+                        icon={pagina.icon}
+                      >
+                        {pagina.nomeAbreviado
+                          ? pagina.nomeAbreviado
+                          : pagina.nome}
+                      </MenuItem>
+                    );
+                  }
+                  break;
+                case "consultor":
+                  console.log(pagina.consultor);
+                  if (pagina.consultor) {
+                    return (
+                      <MenuItem
+                        key={index}
+                        onClick={() => dispatch(ChangePage(pagina.page))}
+                        icon={pagina.icon}
+                      >
+                        {pagina.nomeAbreviado
+                          ? pagina.nomeAbreviado
+                          : pagina.nome}
+                      </MenuItem>
+                    );
+                  }
+                  break;
+                case "cliente":
+                  if (pagina.cliente) {
+                    return (
+                      <MenuItem
+                        key={index}
+                        onClick={() => dispatch(ChangePage(pagina.page))}
+                        icon={pagina.icon}
+                      >
+                        {pagina.nomeAbreviado
+                          ? pagina.nomeAbreviado
+                          : pagina.nome}
+                      </MenuItem>
+                    );
+                  }
+                  break;
+
+                default:
+                  break;
               }
             }
             return false;

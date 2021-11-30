@@ -2,7 +2,9 @@ import { AiOutlineFileAdd } from "react-icons/ai";
 import { BiFolder, BiHome } from "react-icons/bi";
 import { BsJournalBookmark, BsListCheck } from "react-icons/bs";
 import { FaFileInvoiceDollar } from "react-icons/fa";
+import { IoSparklesOutline } from "react-icons/io5";
 import { Catalogos } from "./Pages/Catalogos/Catalogos";
+import { ClientesGold } from "./Pages/ClientesGold/ClientesGold";
 import { Home } from "./Pages/Home/Home";
 import { Nfs } from "./Pages/Nfs/Nfs";
 import { OrcamentoAtual } from "./Pages/OrcamentoAtual/OrcamentoAtual";
@@ -16,16 +18,18 @@ const paginas = [
     icon: <BiHome />,
     component: <Home />,
     isTab: true,
-    notAdmin: true,
-    admin: true,
+    master: true,
+    consultor: true,
+    cliente: true,
   },
   {
     nome: "Novo Orçamento",
     page: "criarOrcamento",
     icon: <AiOutlineFileAdd />,
     isTab: true,
-    notAdmin: true,
-    admin: false,
+    master: false,
+    consultor: false,
+    cliente: true,
   },
   {
     nome: "Orçamentos Salvos",
@@ -33,8 +37,9 @@ const paginas = [
     icon: <BiFolder />,
     component: <OrcamentosSalvos />,
     isTab: true,
-    notAdmin: true,
-    admin: false,
+    master: false,
+    consultor: false,
+    cliente: true,
   },
   {
     nome: "Listas Da Plataforma Catálogo",
@@ -43,8 +48,9 @@ const paginas = [
     icon: <BsListCheck />,
     component: <OrcamentosVnda />,
     isTab: true,
-    notAdmin: true,
-    admin: false,
+    master: false,
+    consultor: false,
+    cliente: true,
   },
   {
     nome: "Catálogos",
@@ -52,8 +58,9 @@ const paginas = [
     icon: <BsJournalBookmark />,
     component: <Catalogos />,
     isTab: true,
-    notAdmin: true,
-    admin: true,
+    master: true,
+    consultor: true,
+    cliente: true,
   },
   {
     nome: "Orcamento Atual",
@@ -61,7 +68,9 @@ const paginas = [
     icon: <BsJournalBookmark />,
     component: <OrcamentoAtual />,
     isTab: false,
-    notAdmin: true,
+    master: false,
+    consultor: false,
+    cliente: true,
   },
   {
     nome: "Notas Fiscais",
@@ -69,8 +78,19 @@ const paginas = [
     icon: <FaFileInvoiceDollar />,
     component: <Nfs />,
     isTab: true,
-    notAdmin: true,
-    admin: false,
+    master: false,
+    consultor: false,
+    cliente: true,
+  },
+  {
+    nome: "Clientes Ouro",
+    page: "clientesGold",
+    icon: <IoSparklesOutline />,
+    component: <ClientesGold />,
+    isTab: true,
+    master: true,
+    consultor: false,
+    cliente: false,
   },
 ];
 

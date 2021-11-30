@@ -4,11 +4,16 @@ import { Col, Figure, Row } from "react-bootstrap";
 export const Catalogos = () => {
   let baseLink = "https://buckettelexpress.s3.amazonaws.com/catalogos/";
   let listaCatalogos = [
+    // {
+    //   nomeArquivo: "bonificacaoBlackNovembro",
+    //   caption: "Bonificação Black November",
+    //   noLink: true,
+    // },
     { nomeArquivo: "catalogoTris", caption: "Catálogo Tris" },
     { nomeArquivo: "catalogoArtools", caption: "Catálogo Artools" },
     { nomeArquivo: "catalogoBazze", caption: "Catálogo Bazze" },
     { nomeArquivo: "campanhaAquarell", caption: "Campanha Aquarell" },
-    { nomeArquivo: "top15", caption: "Promoção Top 15" },
+    { nomeArquivo: "top15Novembro", caption: "Promoção Top 15" },
     { nomeArquivo: "blackFriday", caption: "Promoção Black Friday" },
   ];
   return (
@@ -32,10 +37,7 @@ export const Catalogos = () => {
                   className="text-center"
                   style={{ paddingTop: "20px" }}
                 >
-                  <a
-                    target="_blank"
-                    href={baseLink + catalogo.nomeArquivo + ".pdf"}
-                  >
+                  {catalogo.noLink ? (
                     <Figure>
                       <Figure.Image
                         className="imgCatalogos"
@@ -46,7 +48,24 @@ export const Catalogos = () => {
                         {catalogo.caption}
                       </Figure.Caption>
                     </Figure>
-                  </a>
+                  ) : (
+                    <a
+                      target="_blank"
+                      rel="noreferrer"
+                      href={baseLink + catalogo.nomeArquivo + ".pdf"}
+                    >
+                      <Figure>
+                        <Figure.Image
+                          className="imgCatalogos"
+                          alt={catalogo.nomeArquivo}
+                          src={baseLink + catalogo.nomeArquivo + ".png"}
+                        />
+                        <Figure.Caption style={{ color: "white" }}>
+                          {catalogo.caption}
+                        </Figure.Caption>
+                      </Figure>
+                    </a>
+                  )}
                 </Col>
               );
             })}

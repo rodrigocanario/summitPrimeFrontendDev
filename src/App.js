@@ -1,23 +1,23 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { Admin } from "./Screens/Admin/Admin";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+// import { Admin } from "./Screens/Admin/Admin";
 import { Error } from "./Screens/SummitPrime/Error";
-import { Orcamento } from "./Screens/SummitPrime/Controller";
+import { Controller } from "./Screens/SummitPrime/Controller";
 // import { Vnda } from "./Screens/Vnda/Vnda";
 import { VndaCarrinhosPerdidos } from "./Screens/Vnda/VndaCarrinhosPerdidos";
 
 function App() {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path="/" component={Orcamento} exact />
+      <Routes>
+        <Route path="/" element={<Controller />} exact />
         {/* <Route path="/vnda/pedidos" component={Vnda} /> */}
         <Route
           path="/vnda/carrinhosPerdidos"
-          component={VndaCarrinhosPerdidos}
+          element={<VndaCarrinhosPerdidos />}
         />
-        <Route path="/admin" component={Admin} />
-        <Route path="*" component={Error} />
-      </Switch>
+        <Route path="/admin" element={<VndaCarrinhosPerdidos />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
     </BrowserRouter>
   );
 }

@@ -82,6 +82,25 @@ export const setError = (key, value) => {
     value,
   };
 };
+export const updateClientesGoldHeaders = (header, headerValue) => {
+  return {
+    type: "UPDATEHEADERS",
+    header,
+    headerValue,
+  };
+};
+export const updateClientesGoldData = (data) => {
+  return {
+    type: "UPDATEDATA",
+    data,
+  };
+};
+export const updateClientesGoldDataCrua = (dataCrua) => {
+  return {
+    type: "UPDATEDATACRUA",
+    dataCrua,
+  };
+};
 // --------------------------
 export const calcularTotal = (index) => {
   return {

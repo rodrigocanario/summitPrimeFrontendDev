@@ -1,8 +1,6 @@
 import React from "react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Header } from "./Header";
-import { authenticate } from "../../Redux/Actions/Authenticate";
 import { Login } from "./Login";
 import { Loading } from "./Loading";
 import { SideBar } from "./SideBar";
@@ -14,14 +12,13 @@ import { ModalInstrucoes } from "./Modals/ModalInstrucoes";
 import paginas from "./paginas";
 import { Error } from "./Error";
 
-export const Orcamento = () => {
-  const dispatch = useDispatch();
+export const Controller = () => {
   const isAuthenticated = useSelector((state) => state.informacoes.isAuth);
   const pages = useSelector((state) => state.pages);
 
-  useEffect(() => {
-    dispatch(authenticate());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(authenticate());
+  // }, [dispatch]);
 
   let pagina = paginas.find((paginaa) => {
     return paginaa.page === pages.name;

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Col, Container, Row, Button, Form, Image } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import InputMask from "react-input-mask";
-import { BiGlobe } from "react-icons/bi";
 import { authenticate } from "../../Redux/Actions/Authenticate";
 
 export const Login = () => {

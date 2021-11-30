@@ -9,6 +9,7 @@ export const GetOrcamentos = (type, changePagee) => {
       let url;
       let token = localStorage.getItem("token");
       let cnpj = getState().informacoes.cnpj;
+
       if (type === "vnda") {
         let pedidos = await callAirtable(cnpj);
         dispatch(updateOrcamentos({ [type]: pedidos }));
@@ -25,8 +26,8 @@ export const GetOrcamentos = (type, changePagee) => {
       } else {
         return Promise.resolve();
       }
+
       if (token) {
-        console.log({ cnpj });
         let r = await callBackend(url, token, { cnpj });
         console.log(r);
         await dispatch(updateOrcamentos({ [type]: r }));

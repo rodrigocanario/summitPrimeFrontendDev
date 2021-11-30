@@ -14,35 +14,63 @@ export const Selection = () => {
         style={{ marginBottom: "60px", padding: "40px 0px" }}
       >
         {paginas.map((pagina, index) => {
-          if (pagina.page !== "home" && pagina.isTab) {
-            if (informacoes.isAdmin && pagina.admin) {
-              return (
-                <Col key={index} xs={2} className="selectionCard">
-                  <button
-                    onClick={() => dispatch(ChangePage(pagina.page))}
-                    className="buttonLarge"
-                  >
-                    {pagina.icon}
-                    <div style={{ paddingTop: "10px", fontSize: "20px" }}>
-                      {pagina.nome}
-                    </div>
-                  </button>
-                </Col>
-              );
-            } else if (!informacoes.isAdmin && pagina.notAdmin) {
-              return (
-                <Col key={index} xs={2} className="selectionCard">
-                  <button
-                    onClick={() => dispatch(ChangePage(pagina.page))}
-                    className="buttonLarge"
-                  >
-                    {pagina.icon}
-                    <div style={{ paddingTop: "10px", fontSize: "20px" }}>
-                      {pagina.nome}
-                    </div>
-                  </button>
-                </Col>
-              );
+          if (pagina.isTab && pagina.nome !== "Home") {
+            switch (informacoes.role) {
+              case "master":
+                if (pagina.master) {
+                  return (
+                    <Col key={index} xs={2} className="selectionCard">
+                      <button
+                        onClick={() => dispatch(ChangePage(pagina.page))}
+                        className="buttonLarge"
+                      >
+                        {pagina.icon}
+                        <div style={{ paddingTop: "10px", fontSize: "20px" }}>
+                          {pagina.nome}
+                        </div>
+                      </button>
+                    </Col>
+                  );
+                }
+                break;
+              case "consultor":
+                console.log(pagina.consultor);
+                if (pagina.consultor) {
+                  return (
+                    <Col key={index} xs={2} className="selectionCard">
+                      <button
+                        onClick={() => dispatch(ChangePage(pagina.page))}
+                        className="buttonLarge"
+                      >
+                        {pagina.icon}
+                        <div style={{ paddingTop: "10px", fontSize: "20px" }}>
+                          {pagina.nome}
+                        </div>
+                      </button>
+                    </Col>
+                  );
+                }
+                break;
+              case "cliente":
+                if (pagina.cliente) {
+                  return (
+                    <Col key={index} xs={2} className="selectionCard">
+                      <button
+                        onClick={() => dispatch(ChangePage(pagina.page))}
+                        className="buttonLarge"
+                      >
+                        {pagina.icon}
+                        <div style={{ paddingTop: "10px", fontSize: "20px" }}>
+                          {pagina.nome}
+                        </div>
+                      </button>
+                    </Col>
+                  );
+                }
+                break;
+
+              default:
+                break;
             }
           }
         })}
