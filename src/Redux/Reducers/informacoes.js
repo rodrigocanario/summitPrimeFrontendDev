@@ -4,9 +4,8 @@ const reducerInformacoes = (state = {}, action) => {
       return { ...state, ...action.infos };
 
     case "LOGOUT":
-      localStorage.removeItem("orcamento");
       localStorage.removeItem("token");
-
+      window.location.reload();
       return {};
     default:
       return state;

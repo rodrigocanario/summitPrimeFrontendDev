@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Header } from "./Header";
 import { Login } from "./Login";
 import { Loading } from "./Loading";
@@ -11,14 +11,16 @@ import { ModalCriarOrcamento } from "./Modals/ModalCriarOrcamento";
 import { ModalInstrucoes } from "./Modals/ModalInstrucoes";
 import paginas from "./paginas";
 import { Error } from "./Error";
+import { getUserInfo } from "../../Redux/Actions/GetUserInfo";
 
 export const Controller = () => {
-  const isAuthenticated = useSelector((state) => state.informacoes.isAuth);
+  const isAuthenticated = localStorage.getItem("token");
   const pages = useSelector((state) => state.pages);
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(authenticate());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getUserInfo());
+  }, []);
 
   let pagina = paginas.find((paginaa) => {
     return paginaa.page === pages.name;

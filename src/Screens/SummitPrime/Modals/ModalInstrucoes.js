@@ -45,7 +45,11 @@ export const ModalInstrucoes = () => {
               target="_blank"
               style={{ color: "blue" }}
               rel="noreferrer"
-              href={`https://summit.com.br/?agent=${informacoes.consultor.agente}`}
+              href={
+                informacoes.consultor && informacoes.consultor.agente
+                  ? `https://summit.com.br/?agent=${informacoes.consultor.agente}`
+                  : `https://summit.com.br`
+              }
             >
               Plataforma Catálogo
             </a>{" "}

@@ -14,23 +14,43 @@ export const Login = () => {
     let { name, value } = e.target;
     if (name === "cnpj") {
       value = value.replace(/[^0-9]/g, "");
+      if (isAdmin) {
+        value = value
+          .replace(/\D/g, "")
+          .replace(/(\d{3})(\d)/, "$1.$2")
+          .replace(/(\d{3})(\d)/, "$1.$2")
+          .replace(/(\d{3})(\d{1,2})/, "$1-$2")
+          .replace(/(-\d{2})\d+?$/, "$1");
+      } else {
+        value = value
+          .replace(/\D/g, "")
+          .replace(/(\d{2})(\d)/, "$1.$2")
+          .replace(/(\d{3})(\d)/, "$1.$2")
+          .replace(/(\d{3})(\d{1,2})/, "$1/$2")
+          .replace(/(\d{4})(\d{1,2})/, "$1-$2")
+          .replace(/(-\d{2})\d+?$/, "$1");
+      }
     }
     setForm({ ...form, [name]: value });
   };
 
   const submitForm = (e) => {
     e.preventDefault();
-    if (isAdmin && form.cnpj.length > 10) {
-      dispatch(authenticate(form));
-    } else if (!isAdmin && form.cnpj.length > 13) {
-      dispatch(authenticate(form));
+    if (isAdmin && form.cnpj.length === 14) {
+      dispatch(
+        authenticate({ ...form, cnpj: form.cnpj.replace(/[^0-9]/g, "") })
+      );
+    } else if (!isAdmin && form.cnpj.length === 18) {
+      dispatch(
+        authenticate({ ...form, cnpj: form.cnpj.replace(/[^0-9]/g, "") })
+      );
     }
   };
 
   return (
     <Container>
-      <button id="adminButton" onClick={() => setIsAdmin(true)}>
-        Sou Administrador
+      <button id="adminButton" onClick={() => setIsAdmin(!isAdmin)}>
+        {isAdmin ? "Não Sou Administrador" : "Sou Administrador"}
       </button>
       <Row
         style={{ height: "100vh" }}
@@ -70,8 +90,7 @@ export const Login = () => {
                 <Form onSubmit={submitForm}>
                   <Row>
                     {isAdmin ? (
-                      <InputMask
-                        mask="999.999.999-99"
+                      <input
                         className="login-input"
                         name="cnpj"
                         placeholder="CPF"
@@ -79,8 +98,7 @@ export const Login = () => {
                         value={form.cnpj}
                       />
                     ) : (
-                      <InputMask
-                        mask="99.999.999/9999-99"
+                      <input
                         className="login-input"
                         name="cnpj"
                         placeholder="CNPJ"

@@ -4,17 +4,10 @@ import { Col, Figure, Row } from "react-bootstrap";
 export const Catalogos = () => {
   let baseLink = "https://buckettelexpress.s3.amazonaws.com/catalogos/";
   let listaCatalogos = [
-    // {
-    //   nomeArquivo: "bonificacaoBlackNovembro",
-    //   caption: "Bonificação Black November",
-    //   noLink: true,
-    // },
     { nomeArquivo: "catalogoTris", caption: "Catálogo Tris" },
     { nomeArquivo: "catalogoArtools", caption: "Catálogo Artools" },
     { nomeArquivo: "catalogoBazze", caption: "Catálogo Bazze" },
-    { nomeArquivo: "campanhaAquarell", caption: "Campanha Aquarell" },
-    { nomeArquivo: "top15Novembro", caption: "Promoção Top 15" },
-    { nomeArquivo: "blackFriday", caption: "Promoção Black Friday" },
+    { nomeArquivo: "top15Dezembro", caption: "Promoção Top 15" },
   ];
   return (
     <div className="bodie">
@@ -33,7 +26,7 @@ export const Catalogos = () => {
               return (
                 <Col
                   key={index}
-                  xs={4}
+                  xs={listaCatalogos.length === 4 ? 3 : 4}
                   className="text-center"
                   style={{ paddingTop: "20px" }}
                 >

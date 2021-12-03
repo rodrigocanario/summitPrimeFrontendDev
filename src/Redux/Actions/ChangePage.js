@@ -20,6 +20,7 @@ export const ChangePage = (page) => {
         await dispatch(GetClientesGold());
         await dispatch(CalculateClientesGold());
         await dispatch(changePage(page));
+        await dispatch(toggleModal("sidebar", true));
         break;
 
       default:
