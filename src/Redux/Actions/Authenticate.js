@@ -1,36 +1,28 @@
 import { loading, login, setError } from "./Actions";
 import CallBackend from "./CallBackend";
+import { getUserInfo } from "./GetUserInfo";
 
 export const authenticate = (form) => {
-  return async (dispatch) => {
-    // let token = localStorage.getItem("token");
-    // if (token) {
-    //   await CallBackend("/isAuth", token)
-    //     .then((r) => {
-    //       dispatch(login(r));
-    //       dispatch(loading(false));
-    //     })
-    //     .catch((err) => {
-    //       window.localStorage.removeItem("token");
-    //       dispatch(loading(false));
-    //       window.location.reload();
-    //     });
-    // } else if (typeof form === "object" && form !== null) {
+  return async (dispatch, getState) => {
     dispatch(loading(true));
-    await CallBackend("/login", "", form)
+    let { socket } = getState().pages;
+
+    await CallBackend(socket, "login", "", form)
       .then((resp) => {
         if (resp && resp.token) {
           localStorage.setItem("token", resp.token);
-          resp.isAuth = true;
-          dispatch(login(resp));
+          dispatch(getUserInfo());
           dispatch(setError("login", false));
+          dispatch(loading(false));
+        }
+        if (resp && resp.error) {
+          console.log(resp.error);
+          dispatch(setError("login", true));
           dispatch(loading(false));
         }
       })
       .catch((e) => {
         console.log(e);
-        dispatch(setError("login", true));
-        dispatch(loading(false));
       });
   };
 };

@@ -6,13 +6,16 @@ export const ChangeProduto = (index, indexOrcamento, sku) => {
   let token = localStorage.getItem("token");
   return async (dispatch, getState) => {
     let informacoes = getState().informacoes;
+    let socket = getState().pages.socket;
     if (sku && sku.toString().length > 5 && sku / 6000 > 1) {
       let data = {
         sku,
         tabela: informacoes.tabela,
         UF: informacoes.UF,
       };
-      console.log(data);
+      socket.emit("infos", { token }, (a) => {
+        console.log(a);
+      });
       await callBackend("/getProduto", token, data)
         .then(async (r) => {
           await dispatch(trocarItem(r, index, indexOrcamento));

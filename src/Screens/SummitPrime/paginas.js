@@ -1,10 +1,11 @@
 import { AiOutlineFileAdd } from "react-icons/ai";
-import { BiFolder, BiHome } from "react-icons/bi";
+import { BiCart, BiFolder, BiHome } from "react-icons/bi";
 import { BsJournalBookmark, BsListCheck } from "react-icons/bs";
 import { FaFileInvoiceDollar } from "react-icons/fa";
 import { IoSparklesOutline } from "react-icons/io5";
 import { Catalogos } from "./Pages/Catalogos/Catalogos";
 import { ClientesGold } from "./Pages/ClientesGold/ClientesGold";
+import { ProductGrid } from "./Pages/Ecommerce/ProductGrid";
 import { Home } from "./Pages/Home/Home";
 import { Nfs } from "./Pages/Nfs/Nfs";
 import { OrcamentoAtual } from "./Pages/OrcamentoAtual/OrcamentoAtual";
@@ -91,6 +92,16 @@ const paginas = [
     master: true,
     consultor: false,
     cliente: false,
+  },
+  {
+    nome: "Produtos",
+    page: "produtos",
+    icon: <BiCart />,
+    component: <ProductGrid />,
+    isTab: true,
+    master: false,
+    consultor: false,
+    cliente: true,
   },
 ];
 

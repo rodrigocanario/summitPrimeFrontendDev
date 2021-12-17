@@ -1,23 +1,23 @@
-import { loading, login, setError } from "./Actions";
+import { loading, login, logout, setError } from "./Actions";
 import CallBackend from "./CallBackend";
 
 export const getUserInfo = () => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch(loading(true));
+    let { socket } = getState().pages;
     let token = localStorage.getItem("token");
     if (token) {
-      await CallBackend("/isAuth", token)
+      await CallBackend(socket, "getUserInfo", token)
         .then((r) => {
-          console.log(r);
-          dispatch(login(r));
+          dispatch(login(r.informacoes));
           dispatch(loading(false));
         })
         .catch((err) => {
-          window.localStorage.removeItem("token");
+          dispatch(logout());
           dispatch(loading(false));
-          window.location.reload();
         });
     } else {
+      dispatch(logout());
       dispatch(loading(false));
     }
   };

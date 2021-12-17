@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../Redux/Actions/Actions";
+import { loading, logout } from "../../Redux/Actions/Actions";
 import { BiPowerOff } from "react-icons/bi";
 
 export const Header = () => {
@@ -14,7 +14,13 @@ export const Header = () => {
         <h6>{informacoes.razaoSocial}</h6>
       </Col>
       <Col style={{ width: "auto" }} sm={1}>
-        <Button onClick={() => dispatch(logout())} id="buttonLogout">
+        <Button
+          onClick={() => {
+            dispatch(loading(true));
+            dispatch(logout());
+          }}
+          id="buttonLogout"
+        >
           <BiPowerOff />
         </Button>
       </Col>

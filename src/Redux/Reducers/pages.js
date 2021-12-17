@@ -1,5 +1,5 @@
 const reducerPages = (
-  state = { name: "home", loading: false, savingOrcamento: false },
+  state = { name: "home", loading: false, savingOrcamento: false, socket: {} },
   action
 ) => {
   switch (action.type) {
@@ -10,6 +10,9 @@ const reducerPages = (
       return { ...state, loading: action.loading };
     case "SAVINGORCAMENTO":
       return { ...state, savingOrcamento: action.savingOrcamento };
+
+    case "ADDSOCKET":
+      return { ...state, socket: action.socket };
 
     default:
       return state;

@@ -101,6 +101,12 @@ export const updateClientesGoldDataCrua = (dataCrua) => {
     dataCrua,
   };
 };
+export const addSocket = (socket) => {
+  return {
+    type: "ADDSOCKET",
+    socket,
+  };
+};
 // --------------------------
 export const calcularTotal = (index) => {
   return {
