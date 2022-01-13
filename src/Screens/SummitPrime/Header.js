@@ -6,7 +6,7 @@ import { BiPowerOff } from "react-icons/bi";
 
 export const Header = () => {
   const dispatch = useDispatch();
-  const informacoes = useSelector((state) => state.informacoes);
+  const informacoes = useSelector((state) => state.databank.userInfo);
 
   return (
     <Row className="justify-content-end align-items-end text-end header">

@@ -97,10 +97,6 @@ thead {
 th {
   text-align: center !important;
 }
-
-tbody {
-  background-color: #00000026;
-}
 #table-header {
   background-color: rgba(255, 255, 255, 0.3);
 }
@@ -137,6 +133,9 @@ td {
 }
 .tdWhite {
   background-color: #ffffff12;
+}
+.tdBlack {
+  background-color: #00000026;
 }
 .tdNome #td-footer {
   padding-top: 30px;

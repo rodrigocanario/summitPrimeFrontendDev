@@ -1,12 +1,12 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { ChangePage } from "../../../../Redux/Actions/ChangePage";
+import { ChangePage } from "../../../../Redux/Actions/Config/ChangePage";
 import paginas from "../../paginas";
 
 export const Selection = () => {
   const dispatch = useDispatch();
-  const informacoes = useSelector((state) => state.informacoes);
+  const informacoes = useSelector((state) => state.databank.userInfo);
   return (
     <>
       <Row
@@ -14,12 +14,13 @@ export const Selection = () => {
         style={{ marginBottom: "60px", padding: "40px 0px" }}
       >
         {paginas.map((pagina, index) => {
+          let component = "";
           if (pagina.isTab && pagina.nome !== "Home") {
             switch (informacoes.role) {
               case "master":
                 if (pagina.master) {
-                  return (
-                    <Col key={index} xs={2} className="selectionCard">
+                  component = (
+                    <Col key={index} xs={true} className="selectionCard">
                       <button
                         onClick={() => dispatch(ChangePage(pagina.page))}
                         className="buttonLarge"
@@ -34,9 +35,8 @@ export const Selection = () => {
                 }
                 break;
               case "consultor":
-                console.log(pagina.consultor);
                 if (pagina.consultor) {
-                  return (
+                  component = (
                     <Col key={index} xs={2} className="selectionCard">
                       <button
                         onClick={() => dispatch(ChangePage(pagina.page))}
@@ -53,8 +53,8 @@ export const Selection = () => {
                 break;
               case "cliente":
                 if (pagina.cliente) {
-                  return (
-                    <Col key={index} xs={2} className="selectionCard">
+                  component = (
+                    <Col key={index} xs={true} className="selectionCard">
                       <button
                         onClick={() => dispatch(ChangePage(pagina.page))}
                         className="buttonLarge"
@@ -68,11 +68,11 @@ export const Selection = () => {
                   );
                 }
                 break;
-
               default:
                 break;
             }
           }
+          return component;
         })}
       </Row>
     </>

@@ -1,17 +1,29 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "../../../../../Redux/Actions/Actions";
-import { BiMinus, BiPlus } from "react-icons/bi";
-import { ChangeQuantidade } from "../../../../../Redux/Actions/TabelaActions/ChangeQuantidade";
+import { BiMinus, BiPlus, BiTrash } from "react-icons/bi";
+import { ChangeQuantidade } from "../../../../../Redux/Actions/Itens/ChangeQuantidade";
+import { DeleteItens } from "../../../../../Redux/Actions/Itens/DeleteItens";
+import { AddItens } from "../../../../../Redux/Actions/Itens/AddItens";
 
 export const Quantity = (props) => {
   const dispatch = useDispatch();
-  const orcamentos = useSelector((state) => state.orcamentos);
+  const orcamento = useSelector(
+    (state) => state.databank.orcamentosPrime[props.indexOrcamento]
+  );
+  let produto = orcamento.itens[props.index];
   const incrementar = () => {
-    dispatch(ChangeQuantidade("inc", props.index, props.indexOrcamento));
+    dispatch(
+      ChangeQuantidade(produto.sku, produto.quantidade + props.multiplo)
+    );
   };
 
   const decrementar = () => {
-    dispatch(ChangeQuantidade("dec", props.index, props.indexOrcamento));
+    if (produto.quantidade === props.multiplo) {
+      dispatch(DeleteItens(produto.sku));
+    } else {
+      dispatch(
+        ChangeQuantidade(produto.sku, produto.quantidade - props.multiplo)
+      );
+    }
   };
 
   const handleKey = (e) => {
@@ -48,7 +60,7 @@ export const Quantity = (props) => {
         Sibling.focus();
         break;
       case "Enter":
-        dispatch(addItem());
+        dispatch(AddItens());
         break;
 
       default:
@@ -63,18 +75,13 @@ export const Quantity = (props) => {
           className="quantity-input__modifier quantity-input__modifier--left"
           onClick={decrementar}
         >
-          <BiMinus />
+          {produto.quantidade > props.multiplo ? <BiMinus /> : <BiTrash />}
         </button>
         <input
           name={`input-quantity-${props.index}`}
           className="quantity-input__screen"
           type="text"
-          value={
-            orcamentos.salvos[props.indexOrcamento].itens[props.index]
-              ? orcamentos.salvos[props.indexOrcamento].itens[props.index]
-                  .quantidade
-              : 0
-          }
+          value={produto.quantidade}
           readOnly
           onKeyDown={handleKey}
         />

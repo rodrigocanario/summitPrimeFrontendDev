@@ -1,5 +1,4 @@
-import { changePage, loading, updateClientesGoldData } from "./Actions";
-import callBackend from "./CallBackend";
+import { loading, updateClientesGoldData } from "../Actions";
 
 export const CalculateClientesGold = () => {
   return async (dispatch, getState) => {

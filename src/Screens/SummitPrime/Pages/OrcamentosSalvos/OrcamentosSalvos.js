@@ -1,26 +1,27 @@
 import React from "react";
-import { Button, Col, Row, Table } from "react-bootstrap";
+import { Col, Row, Table } from "react-bootstrap";
 import { BsQuestionCircle } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  changePage,
+  changeOrcamentoAtivo,
   toggleModal,
-  updateOrcamentos,
 } from "../../../../Redux/Actions/Actions";
+import { ChangePage } from "../../../../Redux/Actions/Config/ChangePage";
+import { NovoOrcamento } from "./NovoOrcamento";
 
 export const OrcamentosSalvos = () => {
-  const orcamentosSalvos = useSelector((state) => state.orcamentos.salvos);
+  const orcamentosSalvos = useSelector(
+    (state) => state.databank.orcamentosPrime
+  );
+  const produtos = useSelector((state) => state.databank.produtos);
   const dispatch = useDispatch();
 
   const handleAbrirOrcamento = (e) => {
-    let id = orcamentosSalvos[e.target.parentElement.id].id;
-    dispatch(updateOrcamentos({ atual: id }));
-    dispatch(toggleModal("criarOrcamento", false));
-    dispatch(toggleModal("sidebar", true));
-    dispatch(changePage("orcamentoAtual"));
-    dispatch(toggleModal("atual", true));
+    dispatch(changeOrcamentoAtivo(e.target.parentElement.id));
+    dispatch(ChangePage("orcamentoAtual"));
   };
   const parseDatee = (date) => {
+    date = date.toString();
     let dia = date.substring(8, 10);
     let mes = date.substring(5, 7);
     let ano = date.substring(0, 4);
@@ -38,13 +39,13 @@ export const OrcamentosSalvos = () => {
         <Col xs={11}>
           <Row className="text-center">
             <Col style={{ padding: "0px 0px 30px 0px" }}>
-              <h1>Orçamentos Salvos</h1>
+              <h1>Meus Orçamentos</h1>
             </Col>
           </Row>
           <Row className="align-items-end justify-content-end">
             <Col className="text-end" sm={{ span: 2, offset: 2 }}>
               <button
-                onClick={() => dispatch(toggleModal("instrucoes", true))}
+                onClick={() => dispatch(toggleModal({ instrucoes: true }))}
                 style={{
                   border: "none",
                   backgroundColor: "transparent",
@@ -54,14 +55,7 @@ export const OrcamentosSalvos = () => {
                 Instruções <BsQuestionCircle />
               </button>
             </Col>
-            <Col id="coluna" className="text-end" xs={1}>
-              <Button
-                variant="outline-light"
-                onClick={() => dispatch(toggleModal("criarOrcamento", true))}
-              >
-                Novo Orçamento
-              </Button>
-            </Col>
+            <NovoOrcamento />
           </Row>
           <Row>
             <Table
@@ -82,6 +76,19 @@ export const OrcamentosSalvos = () => {
               </thead>
               <tbody>
                 {orcamentosSalvos.map((orcamento, index) => {
+                  let total = 0;
+
+                  for (let i = 0; i < orcamento.itens.length; i++) {
+                    const item = orcamento.itens[i];
+
+                    let produto = produtos.find((prod) => {
+                      return prod.sku === item.sku;
+                    });
+                    if (produto) {
+                      total += produto.valor * item.quantidade;
+                    }
+                  }
+
                   return (
                     <tr
                       className={
@@ -95,7 +102,7 @@ export const OrcamentosSalvos = () => {
                     >
                       <td> {orcamento.titulo}</td>
                       <td>{orcamento.itens.length}</td>
-                      <td>R${parseFloat(orcamento.total).toFixed(2)}</td>
+                      <td>R${parseFloat(total).toFixed(2)}</td>
                       <td>{parseDatee(orcamento.ultimaModificacao)}</td>
                     </tr>
                   );

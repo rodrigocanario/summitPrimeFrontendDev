@@ -1,14 +1,30 @@
 import React from "react";
-import { Col, Figure, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { ProductGridHeader } from "./ProductGridHeader";
+import { ProductGridProduct } from "./ProductGridProduct";
 
 export const ProductGrid = () => {
-  let baseLink = "https://buckettelexpress.s3.amazonaws.com/catalogos/";
-  let listaCatalogos = [
-    { nomeArquivo: "catalogoTris", caption: "Catálogo Tris" },
-    { nomeArquivo: "catalogoArtools", caption: "Catálogo Artools" },
-    { nomeArquivo: "catalogoBazze", caption: "Catálogo Bazze" },
-    { nomeArquivo: "top15Dezembro", caption: "Promoção Top 15" },
-  ];
+  const databank = useSelector((state) => state.databank);
+  const indexOrcamento = useSelector((state) => state.config.orcamentoAtivo);
+  const orcamentoAtual = databank.orcamentosPrime[indexOrcamento];
+  const produtos = databank.produtos;
+  const { titulo } = orcamentoAtual;
+
+  let mapProdutos = (produto, index) => {
+    let prod = orcamentoAtual.itens.find((item) => {
+      return item.sku === produto.sku;
+    });
+    if (prod) {
+      produto.quantidade = prod.quantidade;
+    } else {
+      produto.quantidade = 0;
+    }
+    if (index < 12) {
+      return <ProductGridProduct key={index} index={index} produto={produto} />;
+    }
+  };
+
   return (
     <div className="bodie">
       <Row
@@ -18,50 +34,13 @@ export const ProductGrid = () => {
         <Col xs={11}>
           <Row className="text-center">
             <Col style={{ padding: "0px 0px 30px 0px" }}>
-              <h1>Catálogos</h1>
+              <h1>{titulo}</h1>
             </Col>
           </Row>
+          <ProductGridHeader />
+
           <Row className="justify-content-center">
-            {listaCatalogos.map((catalogo, index) => {
-              return (
-                <Col
-                  key={index}
-                  xs={listaCatalogos.length === 4 ? 3 : 4}
-                  className="text-center"
-                  style={{ paddingTop: "20px" }}
-                >
-                  {catalogo.noLink ? (
-                    <Figure>
-                      <Figure.Image
-                        className="imgCatalogos"
-                        alt={catalogo.nomeArquivo}
-                        src={baseLink + catalogo.nomeArquivo + ".png"}
-                      />
-                      <Figure.Caption style={{ color: "white" }}>
-                        {catalogo.caption}
-                      </Figure.Caption>
-                    </Figure>
-                  ) : (
-                    <a
-                      target="_blank"
-                      rel="noreferrer"
-                      href={baseLink + catalogo.nomeArquivo + ".pdf"}
-                    >
-                      <Figure>
-                        <Figure.Image
-                          className="imgCatalogos"
-                          alt={catalogo.nomeArquivo}
-                          src={baseLink + catalogo.nomeArquivo + ".png"}
-                        />
-                        <Figure.Caption style={{ color: "white" }}>
-                          {catalogo.caption}
-                        </Figure.Caption>
-                      </Figure>
-                    </a>
-                  )}
-                </Col>
-              );
-            })}
+            {produtos.map(mapProdutos)}
           </Row>
         </Col>
       </Row>

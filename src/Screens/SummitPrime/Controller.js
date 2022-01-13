@@ -7,44 +7,50 @@ import { SideBar } from "./SideBar";
 import { Container } from "react-bootstrap";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import { ModalCriarOrcamento } from "./Modals/ModalCriarOrcamento";
-import { ModalInstrucoes } from "./Modals/ModalInstrucoes";
+import { ModalCriarOrcamentoBranco } from "./Modals/CriarOrcamentoBranco";
+import { ModalInstrucoes } from "./Modals/Instrucoes";
 import paginas from "./paginas";
 import { Error } from "./Error";
-import { getUserInfo } from "../../Redux/Actions/GetUserInfo";
+import { getUserInfo } from "../../Redux/Actions/Config/GetUserInfo";
 import io from "socket.io-client";
-import { addSocket } from "../../Redux/Actions/Actions";
+import { addSocket, toggleLoading } from "../../Redux/Actions/Actions";
+import { ModalCriarOrcamentoVnda } from "./Modals/CriarOrcamentoVnda";
 let socket;
 
 export const Controller = () => {
-  const token = localStorage.getItem("token");
-  const informacoes = useSelector((state) => state.informacoes);
-  const pages = useSelector((state) => state.pages);
+  const databank = useSelector((state) => state.databank);
+  const informacoes = databank.userInfo;
+  const config = useSelector((state) => state.config);
   const dispatch = useDispatch();
   const ENDPOINTDEV = "localhost:3001";
-  const ENDPOINTPROD = "35.170.234.123:3000";
+  // const ENDPOINTPROD = "35.170.234.123:3000";
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
     socket = io(ENDPOINTDEV, { transports: ["websocket"] });
     dispatch(addSocket(socket));
+    let getinfos = async () => {
+      await dispatch(getUserInfo());
+      dispatch(toggleLoading(false));
+    };
     if (token) {
-      dispatch(getUserInfo());
+      getinfos();
     }
 
     return () => {
       socket.disconnect();
       socket.off();
     };
-  }, []);
+  }, [dispatch]);
 
   let pagina = paginas.find((paginaa) => {
-    return paginaa.page === pages.name;
+    return paginaa.page === config.currentPage;
   });
 
   if (Object.keys(informacoes).length < 1) {
     return (
       <>
-        {pages.loading ? <Loading /> : ""}
+        {config.loading ? <Loading /> : ""}
         <Login />
         <ToastContainer />
       </>
@@ -52,12 +58,13 @@ export const Controller = () => {
   }
   return (
     <>
-      {pages.loading ? <Loading /> : ""}
+      {config.loading ? <Loading /> : ""}
       <Container fluid>
         <SideBar />
         <Header />
         {pagina.component ? pagina.component : <Error />}
-        <ModalCriarOrcamento />
+        <ModalCriarOrcamentoBranco />
+        <ModalCriarOrcamentoVnda />
         <ModalInstrucoes />
       </Container>
       <ToastContainer />

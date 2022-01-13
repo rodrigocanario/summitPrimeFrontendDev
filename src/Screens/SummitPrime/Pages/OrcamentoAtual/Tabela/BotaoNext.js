@@ -3,15 +3,17 @@ import React, { useState } from "react";
 import { Fragment } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { sendOrcamento } from "../../../../../Redux/Actions/SendOrcamento";
 import { changePage, setError } from "../../../../../Redux/Actions/Actions";
 import { toast } from "react-toastify";
 
 export const BotaoNext = (props) => {
   const dispatch = useDispatch();
-  const pedidoMinimo = useSelector((state) => state.informacoes.pedidoMinimo);
+  const pedidoMinimo = useSelector(
+    (state) => state.databank.userInfo.pedidoMinimo
+  );
   const totalDisponivel = useSelector(
-    (state) => state.orcamentos.salvos[props.indexOrcamento].totalDisponivel
+    (state) =>
+      state.databank.orcamentosPrime[props.indexOrcamento].totalDisponivel
   );
   const [showModal, setShowModal] = useState(false);
   const [enviado, setEnviado] = useState(false);
@@ -38,7 +40,7 @@ export const BotaoNext = (props) => {
   const handleClose = () => setShowModal(false);
 
   const handleSend = () => {
-    dispatch(sendOrcamento());
+    // dispatch(sendOrcamento());
     setEnviado(true);
   };
   return (

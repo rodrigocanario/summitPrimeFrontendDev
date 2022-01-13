@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Fragment } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { DeleteOrcamento } from "../../../../../Redux/Actions/DeleteOrcamento";
+import { DeleteOrcamento } from "../../../../../Redux/Actions/Orcamentos/DeleteOrcamento";
 
 export const BotaoDelete = () => {
   const dispatch = useDispatch();

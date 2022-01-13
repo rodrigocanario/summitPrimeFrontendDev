@@ -8,23 +8,21 @@ import {
 } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleModal } from "../../Redux/Actions/Actions";
-import { ChangePage } from "../../Redux/Actions/ChangePage";
+import { toggleSidebar } from "../../Redux/Actions/Actions";
+import { ChangePage } from "../../Redux/Actions/Config/ChangePage";
 import paginas from "./paginas";
 
 export const SideBar = () => {
   const dispatch = useDispatch();
-  const modals = useSelector((state) => state.modals);
-  const informacoes = useSelector((state) => state.informacoes);
+  const sidebarOpen = useSelector((state) => state.config.sidebar);
+  const informacoes = useSelector((state) => state.databank.userInfo);
 
   return (
-    <ProSidebar collapsed={modals.sidebar.show}>
+    <ProSidebar collapsed={!sidebarOpen}>
       <SidebarHeader>
         <Menu iconShape="square">
           <MenuItem
-            onClick={() =>
-              dispatch(toggleModal("sidebar", !modals.sidebar.show))
-            }
+            onClick={() => dispatch(toggleSidebar(!sidebarOpen))}
             icon={
               <img
                 alt="Logo Summit Prime"

@@ -1,27 +1,19 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, deleteItem } from "../../../../../Redux/Actions/Actions";
-import { ChangeProduto } from "../../../../../Redux/Actions/TabelaActions/ChangeProduto";
 import { Quantity } from "./Quantity";
 import { BsTrash } from "react-icons/bs";
+import { ChangeQuantidade } from "../../../../../Redux/Actions/Itens/ChangeQuantidade";
+import { ChangeSku } from "../../../../../Redux/Actions/Itens/ChangeSku";
+import { DeleteItens } from "../../../../../Redux/Actions/Itens/DeleteItens";
 
 export const TRow = (props) => {
   const dispatch = useDispatch();
-  const Itens = useSelector(
-    (state) => state.orcamentos.salvos[props.indexOrcamento].itens[props.index]
+  const Item = useSelector(
+    (state) =>
+      state.databank.orcamentosPrime[props.indexOrcamento].itens[props.index]
   );
-  const informacoes = useSelector((state) => state.informacoes);
-
   const handleChange = (e) => {
-    dispatch(
-      ChangeProduto(
-        props.index,
-        props.indexOrcamento,
-        e.target.value,
-        informacoes.tabela,
-        informacoes.desconto
-      )
-    );
+    dispatch(ChangeSku(props.index, e.target.value));
   };
 
   const handleEnter = (e) => {
@@ -34,7 +26,7 @@ export const TRow = (props) => {
           nextSibling.focus();
         } else {
           (async () => {
-            await dispatch(addItem());
+            await dispatch(ChangeQuantidade());
             nextSibling = document.querySelector(
               `input[name=input-${props.index + 1}]`
             );
@@ -73,70 +65,73 @@ export const TRow = (props) => {
   };
 
   return (
-    <tr className={props.index % 2 === 0 ? "tdWhite" : ""}>
+    <tr className={props.index % 2 === 0 ? "tdWhite" : "tdBlack"}>
       <td id="td" className="tdIndex">
         {props.index + 1}.
       </td>
       <td id="td" className="tdSku">
-        <div key={Itens.sku}>
+        <div key={Item.sku}>
           <input
             autoFocus
             className="table-input"
             autoComplete="off"
             name={"input-" + props.index}
-            defaultValue={Itens.sku}
+            defaultValue={Item.sku ? Item.sku : ""}
             onChange={handleChange}
             onKeyDown={handleEnter}
           />
         </div>
       </td>
-      <td>{Itens.nome}</td>
-      <td className="tdCaixaMaster">
-        {Itens.caixaMaster ? Itens.caixaMaster + " un" : ""}
-      </td>
-      <td className="tdDescontoCaixaMaster">
-        {Itens.quantidade % Itens.caixaMaster === 0 && Itens.quantidade > 0
-          ? "5%"
-          : ""}
-      </td>
-      <td className="tdValor">
-        {Itens.valorReal && Itens.valorReal !== "NaN" ? (
-          <>
-            {" "}
-            <span>R$</span>{" "}
-            <span> {parseFloat(Itens.valorReal).toFixed(2)} </span>{" "}
-          </>
-        ) : (
-          ""
-        )}
-      </td>
-      <td className="tdQuantidade">
-        {Itens.nome ? (
-          <Quantity index={props.index} indexOrcamento={props.indexOrcamento} />
-        ) : (
-          ""
-        )}
-      </td>
-      <td className="tdPreco">
-        {Itens.nome ? "R$" + parseFloat(Itens.preco).toFixed(2) : ""}
-      </td>
-      <td className="tdEstoque">
-        {Itens.nome ? (Itens.estoque > 0 ? "Disponível" : "Indisponível") : ""}
-      </td>
-      <td className="tdTrash">
-        <button
-          onClick={() =>
-            dispatch(deleteItem(props.index, props.indexOrcamento))
-          }
-          style={{
-            border: "none",
-            backgroundColor: "transparent",
-            color: "white",
-          }}
-        >
-          <BsTrash />
-        </button>
-      </td>
+      {Item.nome ? (
+        <>
+          <td>{Item.nome}</td>
+          <td className="tdCaixaMaster">{Item.caixaMaster} un</td>
+          <td className="tdDescontoCaixaMaster">
+            {Item.quantidade % Item.caixaMaster === 0 && Item.quantidade > 0
+              ? "5%"
+              : ""}
+          </td>
+          <td className="tdValor">
+            <span>R$ {parseFloat(Item.valor).toFixed(2)} </span>{" "}
+          </td>
+          <td className="tdQuantidade">
+            <Quantity
+              multiplo={Item.multiplo}
+              index={props.index}
+              indexOrcamento={props.indexOrcamento}
+            />
+          </td>
+          <td className="tdPreco">
+            R$ {parseFloat(Item.valor * Item.quantidade).toFixed(2)}
+          </td>
+          <td className="tdEstoque">
+            {Item.estoque > 0 ? "Disponível" : "Indisponível"}
+          </td>
+          <td className="tdTrash">
+            <button
+              onClick={() => dispatch(DeleteItens(Item.sku))}
+              style={{
+                border: "none",
+                backgroundColor: "transparent",
+                color: "white",
+              }}
+            >
+              <BsTrash />
+            </button>
+          </td>
+        </>
+      ) : (
+        <>
+          <td></td>
+          <td className="tdCaixaMaster"></td>
+          <td className="tdDescontoCaixaMaster"></td>
+          <td className="tdValor"></td>
+          <td className="tdQuantidade"></td>
+          <td className="tdPreco"></td>
+          <td className="tdEstoque"></td>
+          <td className="tdTrash"></td>
+        </>
+      )}
     </tr>
   );
 };

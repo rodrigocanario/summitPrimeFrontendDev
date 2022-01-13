@@ -1,18 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { PagamentoAntecipado } from "../../../../../Redux/Actions/TabelaActions/PagamentoAntecipado";
+import { PagamentoAntecipado } from "../../../../../Redux/Actions/Orcamentos/PagamentoAntecipado";
 import { BotaoDelete } from "./BotaoDelete";
 import { BotaoNext } from "./BotaoNext";
 
 export const Tfooter = (props) => {
   const orcamento = useSelector(
-    (state) => state.orcamentos.salvos[props.indexOrcamento]
+    (state) => state.databank.orcamentosPrime[props.indexOrcamento]
   );
-  const errors = useSelector((state) => state.errors);
+  const errors = useSelector((state) => state.config.errors);
   const dispatch = useDispatch();
+  const [subtotal, setSubtotal] = useState(0);
+  const [subtotalDisponivel, setSubtotalDisponivel] = useState(0);
+  const [total, setTotal] = useState(0);
   const handleChange = (e) => {
     dispatch(PagamentoAntecipado(e.target.checked));
   };
+  useEffect(() => {
+    let sub = 0;
+    let subDisp = 0;
+    for (let i = 0; i < orcamento.itens.length; i++) {
+      const item = orcamento.itens[i];
+      sub = sub + item.valor * item.quantidade;
+      if (item.estoque > 0) {
+        subDisp = subDisp + item.valor * item.quantidade;
+      }
+    }
+    setSubtotal(sub);
+    setSubtotalDisponivel(subDisp);
+    if (orcamento.pagamentoAntecipado) {
+      setTotal(subDisp * 0.95);
+    } else {
+      setTotal(subDisp);
+    }
+  }, [orcamento]);
   return (
     <tfoot>
       <tr id="trFooter">
@@ -26,10 +47,24 @@ export const Tfooter = (props) => {
         </td>
         <td id="td-footer" className="align-middle"></td>
         <td id="td-footer" className="align-middle">
-          VALOR SUBTOTAL:
+          SUBTOTAL:
         </td>
         <td id="td-footer" className="align-middle">
-          R${orcamento.subTotal ? orcamento.subTotal.toFixed(2) : ""}
+          R$ {parseFloat(subtotal).toFixed(2)}
+        </td>
+      </tr>
+      <tr id="trFooter">
+        <td id="td-footer" className="align-middle"></td>
+        <td id="td-footer" className="align-middle"></td>
+        <td id="td-footer" className="align-middle"></td>
+        <td id="td-footer" className="align-middle"></td>
+        <td id="td-footer" className="align-middle">
+          SUBTOTAL DISPONIVEL:
+        </td>
+
+        <td id="td-footer" className="align-middle">
+          R$
+          {parseFloat(subtotalDisponivel).toFixed(2)}
         </td>
       </tr>
 
@@ -43,15 +78,16 @@ export const Tfooter = (props) => {
             <input
               onChange={handleChange}
               type="checkbox"
+              checked={orcamento.pagamentoAntecipado}
               id="pagamentoAntecipado"
               name="pagamentoAntecipado"
               style={{ marginRight: "5px" }}
             />
-            PAGAMENTO ANTECIPADO
+            DESCONTO PAGAMENTO ANTECIPADO
           </label>
         </td>
         <td id="td-footer" className="align-middle">
-          (-R${(orcamento.subTotal * 0.05).toFixed(2)})
+          (-R${(subtotalDisponivel * 0.05).toFixed(2)})
         </td>
       </tr>
       <tr id="trFooter">
@@ -60,35 +96,15 @@ export const Tfooter = (props) => {
         <td id="td-footer" className="align-middle"></td>
         <td id="td-footer" className="align-middle"></td>
         <td id="td-footer" className="align-middle">
-          VALOR TOTAL:
+          TOTAL DISPONIVEL:
         </td>
-        <td id="td-footer" className="align-middle">
-          R${orcamento.total ? parseFloat(orcamento.total).toFixed(2) : 0.0}
+        <td
+          id="td-footer"
+          style={errors.pedidoMinimo ? { color: "red" } : { color: "white" }}
+          className="align-middle"
+        >
+          R${parseFloat(total).toFixed(2)}
         </td>
-      </tr>
-      <tr id="trFooter">
-        <td id="td-footer" className="align-middle"></td>
-        <td id="td-footer" className="align-middle"></td>
-        <td id="td-footer" className="align-middle"></td>
-        <td id="td-footer" className="align-middle"></td>
-        <td id="td-footer" className="align-middle">
-          VALOR TOTAL DISPONIVEL:
-        </td>
-        {errors.pedidoMinimo ? (
-          <td id="td-footer" style={{ color: "red" }} className="align-middle">
-            R$
-            {orcamento.totalDisponivel
-              ? parseFloat(orcamento.totalDisponivel).toFixed(2)
-              : 0.0}
-          </td>
-        ) : (
-          <td id="td-footer" className="align-middle">
-            R$
-            {orcamento.totalDisponivel
-              ? parseFloat(orcamento.totalDisponivel).toFixed(2)
-              : 0.0}
-          </td>
-        )}
       </tr>
     </tfoot>
   );

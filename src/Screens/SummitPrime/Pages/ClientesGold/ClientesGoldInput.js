@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { updateClientesGoldHeaders } from "../../../../Redux/Actions/Actions";
-import { CalculateClientesGold } from "../../../../Redux/Actions/CalculateClientesGold";
+import { CalculateClientesGold } from "../../../../Redux/Actions/ClientesGold/CalculateClientesGold";
 
 export const ClientesGoldInput = (props) => {
   let { input } = props;

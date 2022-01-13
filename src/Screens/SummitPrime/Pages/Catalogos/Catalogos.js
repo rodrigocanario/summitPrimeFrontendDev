@@ -26,7 +26,7 @@ export const Catalogos = () => {
               return (
                 <Col
                   key={index}
-                  xs={listaCatalogos.length === 4 ? 3 : 4}
+                  xs={true}
                   className="text-center"
                   style={{ paddingTop: "20px" }}
                 >

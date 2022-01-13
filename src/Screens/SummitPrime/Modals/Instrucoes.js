@@ -3,18 +3,18 @@ import { Modal } from "react-bootstrap";
 import { BsQuestionCircle } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleModal } from "../../../Redux/Actions/Actions";
-import { ChangePage } from "../../../Redux/Actions/ChangePage";
+import { ChangePage } from "../../../Redux/Actions/Config/ChangePage";
 
 export const ModalInstrucoes = () => {
-  const informacoes = useSelector((state) => state.informacoes);
-  const modals = useSelector((state) => state.modals);
+  const informacoes = useSelector((state) => state.databank.userInfo);
+  const modalAberto = useSelector((state) => state.config.modals.instrucoes);
   const dispatch = useDispatch();
 
   return (
     <Modal
-      onHide={() => dispatch(toggleModal("instrucoes", false))}
+      onHide={() => dispatch(toggleModal({ instrucoes: false }))}
       className=""
-      show={modals.instrucoes.show}
+      show={modalAberto}
       animation={true}
       centered
     >

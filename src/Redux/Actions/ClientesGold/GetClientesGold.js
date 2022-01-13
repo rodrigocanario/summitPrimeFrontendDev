@@ -1,5 +1,5 @@
-import { loading, updateClientesGoldDataCrua } from "./Actions";
-import callBackend from "./CallBackend";
+import { loading, updateClientesGoldDataCrua } from "../Actions";
+import callBackend from "../Utils/CallBackend";
 
 export const GetClientesGold = () => {
   return async (dispatch, getState) => {

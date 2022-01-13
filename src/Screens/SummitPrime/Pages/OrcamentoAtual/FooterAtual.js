@@ -4,8 +4,8 @@ import { Col, Row } from "react-bootstrap";
 // import { BiGlobe } from 'react-icons/bi';
 import { useSelector } from "react-redux";
 export const FooterHome = () => {
-  const info = useSelector((state) => state.informacoes);
-  const errors = useSelector((state) => state.errors);
+  const info = useSelector((state) => state.databank.userInfo);
+  const errors = useSelector((state) => state.config.errors);
   return (
     <footer className="d-flex flex-wrap justify-content-between border-topp">
       <div className="col d-flex align-items-center">

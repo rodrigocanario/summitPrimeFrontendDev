@@ -1,3 +1,114 @@
+export const adminLogin = () => {
+  return {
+    type: "ADMINLOGIN",
+  };
+};
+export const adminLogout = () => {
+  return {
+    type: "ADMINLOGOUT",
+  };
+};
+//----------------------------- ^adminLogin^
+
+export const updateClientesGoldHeaders = (header, headerValue) => {
+  return {
+    type: "UPDATEHEADERS",
+    header,
+    headerValue,
+  };
+};
+export const updateClientesGoldData = (data) => {
+  return {
+    type: "UPDATEDATA",
+    data,
+  };
+};
+export const updateClientesGoldDataCrua = (dataCrua) => {
+  return {
+    type: "UPDATEDATACRUA",
+    dataCrua,
+  };
+};
+//----------------------------- ^clientesGold^
+export const changePage = (currentPage) => {
+  return {
+    type: "CHANGEPAGE",
+    currentPage,
+  };
+};
+export const changeOrcamentoAtivo = (orcamentoAtivo) => {
+  return {
+    type: "CHANGEORCAMENTOATIVO",
+    orcamentoAtivo,
+  };
+};
+export const addSocket = (socket) => {
+  return {
+    type: "ADDSOCKET",
+    socket,
+  };
+};
+export const toggleSidebar = (sidebar) => {
+  return {
+    type: "TOGGLESIDEBAR",
+    sidebar,
+  };
+};
+export const toggleLoading = (loading) => {
+  return {
+    type: "TOGGLELOADING",
+    loading,
+  };
+};
+export const toggleSaving = (saving) => {
+  return {
+    type: "TOGGLESAVING",
+    saving,
+  };
+};
+//----------------------------- ^config^
+
+export const updateDatabank = (input) => {
+  return {
+    type: "UPDATEDATABANK",
+    input,
+  };
+};
+export const addOrcamento = (orcamento) => {
+  return {
+    type: "ADDORCAMENTO",
+    orcamento,
+  };
+};
+export const updateOrcamentoPrime = (indexOrcamento, orcamento) => {
+  return {
+    type: "UPDATEORCAMENTOPRIME",
+    indexOrcamento,
+    orcamento,
+  };
+};
+export const deleteOrcamento = (indexOrcamento) => {
+  return {
+    type: "DELETEORCAMENTO",
+    indexOrcamento,
+  };
+};
+//----------------------------- ^databank^
+
+export const updateVndaPedidos = (pedido) => {
+  return {
+    type: "UPDATEVNDAPEDIDOS",
+    pedido,
+  };
+};
+
+export const clearVndaPedidos = () => {
+  return {
+    type: "CLEARVNDAPEDIDOS",
+  };
+};
+//----------------------------- ^vndaPedidos^
+
 export const changeQuantidade = (str, index, indexOrcamento) => {
   return {
     type: "CHANGEQUANTIDADE",
@@ -7,38 +118,24 @@ export const changeQuantidade = (str, index, indexOrcamento) => {
   };
 };
 
-export const trocarItem = (infos, index, indexOrcamento) => {
+export const changeItens = (itens, indexOrcamento) => {
   return {
-    type: "TROCARITEM",
-    infos,
-    index,
+    type: "CHANGEITENS",
+    itens,
     indexOrcamento,
   };
 };
 
-export const addItem = (indexOrcamento) => {
-  return {
-    type: "ADDITEM",
-    indexOrcamento,
-  };
-};
-export const deleteItem = (index, indexOrcamento) => {
-  return {
-    type: "DELETEITEM",
-    indexOrcamento,
-    index,
-  };
-};
-export const updateOrcamentos = (input) => {
+export const updateOrcamentos = (orcamentosArray) => {
   return {
     type: "UPDATEORCAMENTOS",
-    input,
+    orcamentosArray,
   };
 };
 
-export const updatePrecos = (indexOrcamento, orcamento) => {
+export const updateOrcamentoSalvo = (indexOrcamento, orcamento) => {
   return {
-    type: "UPDATEPRECOS",
+    type: "UPDATEORCAMENTOSALVO",
     indexOrcamento,
     orcamento,
   };
@@ -63,15 +160,11 @@ export const savingOrcamento = (savingOrcamento) => {
   };
 };
 
-export const toggleModal = (modal, show, vnda) => {
+export const toggleModal = (modal) => {
   let action = {
     type: "TOGGLEMODAL",
     modal,
-    show,
   };
-  if (vnda) {
-    action.vnda = vnda;
-  }
   return action;
 };
 
@@ -80,31 +173,6 @@ export const setError = (key, value) => {
     type: "SETERROR",
     key,
     value,
-  };
-};
-export const updateClientesGoldHeaders = (header, headerValue) => {
-  return {
-    type: "UPDATEHEADERS",
-    header,
-    headerValue,
-  };
-};
-export const updateClientesGoldData = (data) => {
-  return {
-    type: "UPDATEDATA",
-    data,
-  };
-};
-export const updateClientesGoldDataCrua = (dataCrua) => {
-  return {
-    type: "UPDATEDATACRUA",
-    dataCrua,
-  };
-};
-export const addSocket = (socket) => {
-  return {
-    type: "ADDSOCKET",
-    socket,
   };
 };
 // --------------------------
@@ -121,11 +189,6 @@ export const login = (infos) => {
     infos,
   };
 };
-export const adminLogin = () => {
-  return {
-    type: "ADMINLOGIN",
-  };
-};
 
 export const logout = () => {
   return {
@@ -133,29 +196,6 @@ export const logout = () => {
   };
 };
 
-export const adminLogout = () => {
-  return {
-    type: "ADMINLOGOUT",
-  };
-};
-
-export const changePage = (page) => {
-  return {
-    type: "SWITCH",
-    page,
-  };
-};
-export const updateVndaPedidos = (pedido) => {
-  return {
-    type: "UPDATEVNDAPEDIDOS",
-    pedido,
-  };
-};
-export const clearVndaPedidos = () => {
-  return {
-    type: "CLEARVNDAPEDIDOS",
-  };
-};
 export const addOrcamentos = (orcamentos) => {
   return {
     type: "PAGAMENTOANTECIPADO",

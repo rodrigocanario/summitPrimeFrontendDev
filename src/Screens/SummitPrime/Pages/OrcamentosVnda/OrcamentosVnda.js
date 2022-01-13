@@ -1,12 +1,13 @@
 import React from "react";
-import { Button, Col, Row, Table } from "react-bootstrap";
+import { Col, Row, Table } from "react-bootstrap";
 import { BsQuestionCircle } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleModal } from "../../../../Redux/Actions/Actions";
+import { NovoOrcamento } from "../OrcamentosSalvos/NovoOrcamento";
 const csv2json = require("csvjson-csv2json");
 
 export const OrcamentosVnda = () => {
-  const orcamentosVnda = useSelector((state) => state.orcamentos.vnda);
+  const orcamentosVnda = useSelector((state) => state.databank.orcamentosVnda);
   const dispatch = useDispatch();
 
   const parseDatee = (date) => {
@@ -19,7 +20,14 @@ export const OrcamentosVnda = () => {
   };
 
   const novoOrc = async (e) => {
-    dispatch(toggleModal("criarOrcamento", true, e.target.parentElement.id));
+    dispatch(
+      toggleModal({
+        criarOrcamentoVnda: {
+          show: true,
+          id: parseInt(e.target.parentElement.id),
+        },
+      })
+    );
   };
 
   return (
@@ -37,7 +45,7 @@ export const OrcamentosVnda = () => {
           <Row className="align-items-end justify-content-end">
             <Col className="text-end" sm={{ span: 2, offset: 2 }}>
               <button
-                onClick={() => dispatch(toggleModal("instrucoes", true))}
+                onClick={() => dispatch(toggleModal({ instrucoes: true }))}
                 style={{
                   border: "none",
                   backgroundColor: "transparent",
@@ -47,15 +55,7 @@ export const OrcamentosVnda = () => {
                 Instruções <BsQuestionCircle />
               </button>
             </Col>
-            <Col id="coluna" className="text-end" xs={1}>
-              <Button
-                variant="outline-light"
-                onClick={() => dispatch(toggleModal("criarOrcamento", true))}
-                // id="novoOrcamento"
-              >
-                Novo Orçamento
-              </Button>
-            </Col>
+            <NovoOrcamento />
           </Row>
           <Row>
             <Table

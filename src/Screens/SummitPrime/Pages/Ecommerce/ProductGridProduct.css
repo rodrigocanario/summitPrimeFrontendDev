@@ -1,0 +1,17 @@
+.figure-caption {
+  color: black !important;
+  white-space: nowrap;
+  width: 350px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.figureProducts {
+  padding: 20px !important;
+  min-width: 100%;
+}
+.lazyload-wrapper {
+  text-align: center;
+}
+.img-fluid {
+  max-height: 350px !important;
+}

@@ -1,11 +1,11 @@
-import { loading, login, setError } from "./Actions";
-import CallBackend from "./CallBackend";
+import { setError, toggleLoading } from "../Actions";
+import CallBackend from "../Utils/CallBackend";
 import { getUserInfo } from "./GetUserInfo";
 
 export const authenticate = (form) => {
   return async (dispatch, getState) => {
-    dispatch(loading(true));
-    let { socket } = getState().pages;
+    dispatch(toggleLoading(true));
+    let { socket } = getState().config;
 
     await CallBackend(socket, "login", "", form)
       .then((resp) => {
@@ -13,12 +13,12 @@ export const authenticate = (form) => {
           localStorage.setItem("token", resp.token);
           dispatch(getUserInfo());
           dispatch(setError("login", false));
-          dispatch(loading(false));
+          dispatch(toggleLoading(false));
         }
         if (resp && resp.error) {
           console.log(resp.error);
           dispatch(setError("login", true));
-          dispatch(loading(false));
+          dispatch(toggleLoading(false));
         }
       })
       .catch((e) => {
