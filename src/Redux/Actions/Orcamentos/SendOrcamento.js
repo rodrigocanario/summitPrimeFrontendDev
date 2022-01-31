@@ -1,20 +1,23 @@
-import { loading } from "./Actions";
-import callBackend from "./CallBackend";
+import { loading } from "../Actions";
+import callBackend from "../Utils/CallBackend";
 
-export const sendOrcamento = () => {
+export const SendOrcamento = () => {
   return async (dispatch, getState) => {
     dispatch(loading(true));
     let token = localStorage.getItem("token");
-    let orcamentos = getState().orcamentos.salvos;
-    let orcamentoAtual = getState().orcamentos.atual;
-    let informacoes = getState().informacoes;
+    let { socket } = getState().config;
+    let index = getState().config.orcamentoAtivo;
+    let {
+      userInfo: {
+        consultor: { email: vendedor },
+      },
+      orcamentosPrime,
+    } = getState().databank;
 
-    let orcamento = orcamentos.find((orc) => {
-      return orc.id === orcamentoAtual;
-    });
-
-    let data = { orcamento, informacoes };
-
-    await callBackend("/sendEmail", token, data).then(dispatch(loading(false)));
+    let orcamento = orcamentosPrime[index];
+    let data = { orcamento, vendedor };
+    await callBackend(socket, "sendOrcamento", token, data).then(
+      dispatch(loading(false))
+    );
   };
 };

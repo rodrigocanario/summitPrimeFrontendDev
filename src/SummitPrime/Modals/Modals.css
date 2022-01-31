@@ -1,0 +1,43 @@
+.modals {
+  backdrop-filter: blur(5px);
+  background-color: #ffffff00;
+}
+.modalHeaders {
+  color: inherit;
+  border-bottom: 1px solid #6c757d !important;
+}
+.modalBodys {
+  color: white;
+  box-shadow: #ffffff57 0px 0px 20px 10px;
+}
+#modalButtons {
+  background-color: inherit;
+  color: white;
+  border: solid 1px white;
+  border-radius: 5px;
+  padding: 10px;
+}
+.modalButtonsCancelar {
+  color: inherit;
+  border: none;
+  background-color: transparent;
+}
+.modalHeaderButtons {
+  padding: 10px 20px 20px 20px;
+  font-size: 15px;
+}
+.modal-backdrop.show {
+  opacity: 0 !important;
+}
+.modalInputs {
+  background-color: inherit;
+  margin: 10px;
+  margin-left: 0px;
+  width: 100%;
+  color: inherit;
+  border: 1px solid;
+}
+.modal-content {
+  backdrop-filter: blur(17px) !important;
+  background-color: #ffffff00 !important;
+}

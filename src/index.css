@@ -1,15 +1,39 @@
 @font-face {
-  font-family: fontSummit;
-  src: url("./Fonts/nexa-extrabold.ttf");
+  font-family: NexaBlack;
+  src: url("./Fonts/Nexa-black.otf");
+}
+@font-face {
+  font-family: NexaBold;
+  src: url("./Fonts/Nexa-bold.otf");
+}
+@font-face {
+  font-family: NexaBook;
+  src: url("./Fonts/Nexa-book.otf");
+}
+@font-face {
+  font-family: NexaExtrabold;
+  src: url("./Fonts/Nexa-extrabold.otf");
+}
+@font-face {
+  font-family: NexaLight;
+  src: url("./Fonts/Nexa-light.otf");
+}
+@font-face {
+  font-family: NexaRegular;
+  src: url("./Fonts/Nexa-regular.otf");
 }
 
 #body {
   align-items: flex-start;
-  font-family: fontSummit !important;
+  font-family: NexaLight !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(160deg, rgb(0 15 64) 0%, #002985 100%);
-  background: linear-gradient(150deg, rgb(6 0 56) 0%, #0055f1d9 100%);
+  background: radial-gradient(
+    farthest-side ellipse at 10% 0,
+    #0067fd 20%,
+    #171f9b
+  );
+  /* background: linear-gradient(150deg, rgb(6 0 56) 0%, #0055f1d9 100%); */
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -82,29 +106,29 @@ span {
 
 /* -------------------table---------------------- */
 
-table {
+.tables {
   width: 100% !important;
   table-layout: fixed !important;
   color: white !important;
-  /* background-color: #0000002b !important; */
   border-color: transparent !important;
-  border-radius: 10px !important;
-  /* background-color: #00175abf; */
 }
-thead {
-  background-color: #0000005c !important;
+.theadss {
+  font-family: "NexaBold";
 }
 th {
   text-align: center !important;
 }
 #table-header {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgb(0 0 0 / 30%);
+}
+.tbodys {
+  border-top: none !important;
 }
 #table-body {
   height: 665px;
   overflow-x: auto;
   margin-top: 0px;
-  background-color: #00000026;
+  background-color: rgb(0 0 0 / 30%);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
@@ -112,6 +136,7 @@ th {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   background-color: transparent !important;
+  width: 100%;
 }
 #th {
   padding: 5px 10px;
@@ -132,7 +157,7 @@ td {
   height: 40px;
 }
 .tdWhite {
-  background-color: #ffffff12;
+  background-color: #7b7fff38;
 }
 .tdBlack {
   background-color: #00000026;
@@ -272,7 +297,6 @@ td {
   margin: 0px 0px 30px 0px;
   border-radius: 10px;
   height: 5rem;
-  font-size: 4rem;
   color: white;
   text-align: center;
 }
@@ -281,48 +305,8 @@ h2 {
 }
 /* --------------------vndaModal------------------ */
 
-.vndaModal {
-  backdrop-filter: blur(5px);
-  background-color: #ffffff00;
-}
-.vndaModalHeader {
-  color: white;
-  border-bottom: 1px solid #6c757d !important;
-}
-.vndaModalBody {
-  color: white;
-}
-.buttonModal {
-  background-color: transparent;
-  color: white;
-  border: solid 1px white;
-  border-radius: 5px;
-  padding: 10px;
-  font-size: 20px;
-}
-.modalHeaderButtons {
-  padding: 10px 20px 20px 20px;
-  font-size: 15px;
-}
 /* ------------------ checkBox--------------- */
-.selectionCard {
-  background-color: #0000004f;
-  border-radius: 10px;
-  /* box-shadow: 0 0 50px 20px #0024d5; */
-  margin: 15px;
-  padding: 15px;
-  height: 350px;
-  /* border: 1px solid white; */
-}
 
-.buttonLarge {
-  width: 100%;
-  background-color: transparent;
-  height: 100%;
-  border: none;
-  color: white;
-  font-size: 160px;
-}
 #novoOrcamento {
   background-color: transparent;
   border: white 1px solid;

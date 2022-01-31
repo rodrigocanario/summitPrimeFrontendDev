@@ -1,0 +1,36 @@
+.figure-caption {
+  color: black !important;
+  white-space: nowrap;
+  width: 350px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.figureProducts {
+  padding: 20px !important;
+  min-width: 100%;
+}
+.lazyload-wrapper {
+  text-align: center;
+}
+.img-fluid {
+  max-height: 350px !important;
+}
+.barra-filtros {
+  position: sticky;
+  top: 10px;
+  z-index: 10;
+  padding: 10px 0px;
+  margin: 10px 0px;
+  border-radius: 20px;
+  background-color: #04048f;
+}
+.camposFiltros {
+  margin-bottom: 0px;
+  line-height: 1;
+}
+.buttonOrdem {
+  background-color: inherit;
+  color: white;
+  border: white solid 1px;
+  margin: 15px 0px;
+}

@@ -1,20 +1,19 @@
-const reducerConfig = (
-  state = {
-    currentPage: "home",
-    orcamentoAtivo: 0,
-    socket: {},
-    sideBar: false,
-    loading: false,
-    saving: false,
-    errors: { login: false, pedidoMinimo: false },
-    modals: {
-      criarOrcamentoBranco: false,
-      criarOrcamentoVnda: { show: false, id: 0 },
-      instrucoes: false,
-    },
+let defaultState = {
+  currentPage: "home",
+  orcamentoAtivo: 0,
+  socket: {},
+  sideBar: false,
+  loading: false,
+  saving: false,
+  errors: { login: false, pedidoMinimo: false },
+  modals: {
+    criarOrcamentoBranco: false,
+    criarOrcamentoVnda: { show: false, id: 0 },
+    instrucoes: false,
+    novoProduto: false,
   },
-  action
-) => {
+};
+const reducerConfig = (state = defaultState, action) => {
   let { type, ...rest } = action;
   switch (type) {
     case "CHANGEORCAMENTOATIVO":

@@ -1,13 +1,15 @@
-const reducerDatabank = (
-  state = {
-    userInfo: {},
-    produtos: [],
-    orcamentosPrime: [],
-    orcamentosVnda: [],
-  },
-  action
-) => {
+let defaultState = {
+  userInfo: {},
+  produtos: [],
+  orcamentosPrime: [],
+  orcamentosVnda: [],
+};
+
+const reducerDatabank = (state = defaultState, action) => {
   switch (action.type) {
+    case "RESET":
+      return defaultState;
+
     case "UPDATEDATABANK":
       return { ...state, ...action.input };
     case "UPDATEORCAMENTOPRIME":

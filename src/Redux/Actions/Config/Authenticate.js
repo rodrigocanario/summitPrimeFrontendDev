@@ -1,6 +1,6 @@
 import { setError, toggleLoading } from "../Actions";
 import CallBackend from "../Utils/CallBackend";
-import { getUserInfo } from "./GetUserInfo";
+import { GetUserInfo } from "./GetUserInfo";
 
 export const authenticate = (form) => {
   return async (dispatch, getState) => {
@@ -11,7 +11,7 @@ export const authenticate = (form) => {
       .then((resp) => {
         if (resp && resp.token) {
           localStorage.setItem("token", resp.token);
-          dispatch(getUserInfo());
+          dispatch(GetUserInfo());
           dispatch(setError("login", false));
           dispatch(toggleLoading(false));
         }

@@ -108,6 +108,26 @@ export const clearVndaPedidos = () => {
   };
 };
 //----------------------------- ^vndaPedidos^
+export const setFiltros = (filtros) => {
+  return {
+    type: "SETFILTROS",
+    filtros,
+  };
+};
+export const setProdutosAtivos = (produtosAtivos) => {
+  return {
+    type: "SETPRODUTOSATIVOS",
+    produtosAtivos,
+  };
+};
+export const setOrdemAtiva = (value) => {
+  return {
+    type: "SETORDEMATIVA",
+    value,
+  };
+};
+
+//----------------------------- ^loja^
 
 export const changeQuantidade = (str, index, indexOrcamento) => {
   return {
@@ -187,12 +207,6 @@ export const login = (infos) => {
   return {
     type: "LOGIN",
     infos,
-  };
-};
-
-export const logout = () => {
-  return {
-    type: "LOGOUT",
   };
 };
 
