@@ -27,12 +27,12 @@ export const Controller = () => {
   const informacoes = databank.userInfo;
   const config = useSelector((state) => state.config);
   const dispatch = useDispatch();
-  const ENDPOINTDEV = "localhost:3001";
-  // const ENDPOINTPROD = "35.170.234.123:3000";
+  // const ENDPOINTDEV = "localhost:3001";
+  const ENDPOINTPROD = "3.82.223.232:3000";
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    socket = io(ENDPOINTDEV, { transports: ["websocket"] });
+    socket = io(ENDPOINTPROD, { transports: ["websocket"] });
     dispatch(addSocket(socket));
     let getinfos = async () => {
       await dispatch(GetUserInfo());
