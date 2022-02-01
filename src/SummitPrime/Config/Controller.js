@@ -28,7 +28,7 @@ export const Controller = () => {
   const config = useSelector((state) => state.config);
   const dispatch = useDispatch();
   // const ENDPOINTDEV = "localhost:3001";
-  const ENDPOINTPROD = "3.82.223.232:3000";
+  const ENDPOINTPROD = "3.82.223.232:3001";
 
   useEffect(() => {
     const token = localStorage.getItem("token");
