@@ -7,7 +7,7 @@ import { AddItens } from "./../../../Redux/Actions/Itens/AddItens";
 import { ChangeQuantidade } from "./../../../Redux/Actions/Itens/ChangeQuantidade";
 import { DeleteItens } from "./../../../Redux/Actions/Itens/DeleteItens";
 import "./ProductGridProduct.css";
-import CornerRibbon from "react-corner-ribbon";
+// import CornerRibbon from "./cornerRibbon";
 export const ProductGridProduct = (props) => {
   let baseLink = "https://buckettelexpress.s3.amazonaws.com/FOTOS+GOFIND/";
   let { produto } = props;
@@ -44,16 +44,17 @@ export const ProductGridProduct = (props) => {
         {produto.estoque > 0 ? (
           ""
         ) : (
-          <CornerRibbon
-            position="top-right" // OPTIONAL, default as "top-right"
-            fontColor="#f0f0f0" // OPTIONAL, default as "#f0f0f0"
-            backgroundColor="rgb(223 0 21)" // OPTIONAL, default as "#2c7"
-            containerStyle={{}} // OPTIONAL, style of the ribbon
-            style={{ zIndex: 1 }} // OPTIONAL, style of ribbon content
-            className="" // OPTIONAL, css class of ribbon
-          >
-            SEM ESTOQUE
-          </CornerRibbon>
+          <></>
+          // <CornerRibbon
+          //   position="top-right" // OPTIONAL, default as "top-right"
+          //   fontColor="#f0f0f0" // OPTIONAL, default as "#f0f0f0"
+          //   backgroundColor="rgb(223 0 21)" // OPTIONAL, default as "#2c7"
+          //   containerStyle={{}} // OPTIONAL, style of the ribbon
+          //   style={{ zIndex: 1 }} // OPTIONAL, style of ribbon content
+          //   className="" // OPTIONAL, css class of ribbon
+          // >
+          //   SEM ESTOQUE
+          // </CornerRibbon>
         )}
         <a
           target="_blank"
